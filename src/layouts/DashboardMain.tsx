@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Sidebar from '../widgets/layouts/SideBar';
 import NavBar from '../widgets/layouts/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -10,7 +9,7 @@ import Profile from '../components/Profile'
 import Login from '../components/Login'
 
 
-function DashBoardMain() {
+function DashboardMain() {
   
   return (
     <div className="App">
@@ -29,4 +28,4 @@ function DashBoardMain() {
   );
 }
 
-export default DashBoardMain;
+export default DashboardMain;
