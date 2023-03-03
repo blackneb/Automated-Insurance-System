@@ -13,8 +13,8 @@ const Sidebar = () => {
     const location = useLocation()
 
     const Menus = [
-        {title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
+        {title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
         { title: 'Users', path: '/users', src: <CgProfile /> },
         { title: 'Profile', path: '/profile', src: <SiOpenaccess />, gap: 'true' },
