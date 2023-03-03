@@ -6,16 +6,18 @@ import { AiFillPieChart } from 'react-icons/ai'
 import { SiFuturelearn } from 'react-icons/si'
 import { SiOpenaccess } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
+import { AiFillCar } from 'react-icons/ai'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
 
     const Menus = [
+        {title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
-        { title: 'Analytics', path: '/course', src: <SiFuturelearn /> },
-        { title: 'Users', path: '/profile', src: <CgProfile /> },
-        { title: 'Profile', path: '/login', src: <SiOpenaccess />, gap: 'true' },
+        { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
+        { title: 'Users', path: '/users', src: <CgProfile /> },
+        { title: 'Profile', path: '/profile', src: <SiOpenaccess />, gap: 'true' },
     ]
 
     return (
