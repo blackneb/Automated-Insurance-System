@@ -20,7 +20,11 @@ function DashboardMain() {
     <div className="App">
       <BrowserRouter>
       <NavBar/>
-      <Sidebar/>
+      <div className='flex flex-row'>
+        <div>
+          <Sidebar/>
+        </div>
+        <div className='w-full'>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/dashboard' element={<Dashboard />} />
@@ -33,6 +37,10 @@ function DashboardMain() {
                 <Route path='/Analytics' element={<Analytics />} />
                 <Route path='/calander' element={<Calander />} />
             </Routes>
+        </div>
+
+      </div>
+      
         </BrowserRouter>
     </div>
   );
