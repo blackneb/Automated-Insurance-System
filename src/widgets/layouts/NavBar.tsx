@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
+import { Link, useLocation } from 'react-router-dom';
 import { AudioOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Space, Avatar } from 'antd';
 
@@ -9,8 +10,13 @@ const { Search } = Input;
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const location = useLocation();
     const onSearch = (value: string) => alert(value);
+    const Menus = [
+      { title: 'Home', path: '/' },
+      { title: 'Calander', path:'/calander'},
+      { title: 'Reports', path: '/reports'},
+  ]
 
 
 
@@ -27,26 +33,16 @@ const NavBar = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4 ">
                   <div>
-                    <a
-                      href="#"
-                      className=" hover:bg-gray-700 text-zinc-800 px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Home
-                    </a>
-
-                    <a
-                      href="#"
-                      className="text-zinc-600 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Calendar
-                    </a>
-
-                    <a
-                      href="#"
-                      className="text-zinc-600 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Reports
-                    </a>
+                    {
+                      Menus.map((items:any,index)=> (
+                        <Link to={items.path} key={index} className={`hover:bg-slate-50 hover:shadow-lg text-zinc-800 px-3 py-2 rounded-md text-sm font-medium ${
+                          location.pathname === items.path &&
+                          'bg-gray-50 dark:shadow-lg '
+                      }`}>
+                          {items.title}
+                        </Link>
+                      ))
+                    }
                   </div>
                  
                 </div>
