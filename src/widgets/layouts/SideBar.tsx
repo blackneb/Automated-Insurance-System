@@ -23,18 +23,18 @@ const Sidebar = () => {
             <div
                 className={`${
                     open ? 'w-60' : 'w-fit'
-                } hidden sm:block relative h-screen duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
+                } hidden sm:block relative h-screen duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-white`}
             >
                 <BsArrowLeftCircle
                     className={`${
                         !open && 'rotate-180'
-                    } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
+                    } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-white`}
                     onClick={() => setOpen(!open)}
                 />
                 <Link to='/'>
                     <div className={`flex ${'gap-x-4'} items-center`}>
                         {true && (
-                            <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
+                            <span className='text-xl font-medium whitespace-nowrap dark:text-zinc-700'>
                                 AIS
                             </span>
                         )}
@@ -45,10 +45,10 @@ const Sidebar = () => {
                     {Menus.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
-                                className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700
+                                className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-zinc-700 hover:bg-gray-200 dark:hover:bg-white dark:hover:shadow-lg
                         ${menu.gap ? 'mt-4' : 'mt-2'} ${
                                     location.pathname === menu.path &&
-                                    'bg-gray-200 dark:bg-gray-700'
+                                    'bg-gray-50 dark:shadow-lg '
                                 }`}
                             >
                                 <span className='text-2xl'>{menu.src}</span>
