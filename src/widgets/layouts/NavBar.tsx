@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
-import { AudioOutlined } from '@ant-design/icons';
-import { Input, Space } from 'antd';
+import { AudioOutlined, UserOutlined } from '@ant-design/icons';
+import { Input, Space, Avatar } from 'antd';
 
 const { Search } = Input;
 
@@ -54,7 +54,8 @@ const NavBar = () => {
             </div>
             <div className='flex justify-end'>
                     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
-                  </div>
+                    <Avatar className='ml-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+            </div>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
