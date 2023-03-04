@@ -30,8 +30,8 @@ function DashboardMain() {
           <div className='ml-4'>
             <Breadcrumb>
               {
-                breadcrumb.map((items:any) => (
-                  <Breadcrumb.Item>{items.title}</Breadcrumb.Item>
+                breadcrumb.map((items:any,index:any) => (
+                  <Breadcrumb.Item key={index}>{items.title}</Breadcrumb.Item>
                 ))
               }              
             </Breadcrumb>

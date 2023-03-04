@@ -1,14 +1,14 @@
 import { ADD_BREADCRUMB } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
-    {tilte:"home",path:"/"},
+    {title:"Home",path:"/"},
 ];
 
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
     switch(type){
         case ADD_BREADCRUMB:
-            return[payload];
+            return payload;
         default:
             return state;
 

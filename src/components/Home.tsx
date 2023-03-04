@@ -5,14 +5,12 @@ import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 const Home = () => {
   const dispatch = useDispatch();
-  const breadcrumb = [
-    {title:"home",path:"/"},
-    {title:"homeland",path:"/"},
+  const breadcrumb:any[] = [
+    {title:"Home",path:"/"},
   ]
-  dispatch(add_breadcrumb(breadcrumb));
   useEffect(() => {
-    
-  })
+    dispatch(add_breadcrumb(breadcrumb));
+  },[])
   return (
     <div className='mt-4 ml-4'>
       
