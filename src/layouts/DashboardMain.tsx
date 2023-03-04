@@ -12,6 +12,7 @@ import Reports from '../components/Reports';
 import Users from '../components/Users';
 import Analytics from '../components/Analytics';
 import Calander from '../components/Calander';
+import { Breadcrumb } from 'antd';
 
 
 function DashboardMain() {
@@ -25,6 +26,12 @@ function DashboardMain() {
           <Sidebar/>
         </div>
         <div className='w-full'>
+          <div className='ml-4'>
+            <Breadcrumb>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+            </Breadcrumb>
+          </div>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/dashboard' element={<Dashboard />} />
