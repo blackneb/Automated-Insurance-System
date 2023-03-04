@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Breadcrumb, Card, Space, Col, Row, Statistic } from 'antd'
+import { Card, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
@@ -10,7 +10,7 @@ const Home = () => {
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-  },[])
+  },[breadcrumb,dispatch])
   return (
     <div className='mt-4 ml-4'>
       

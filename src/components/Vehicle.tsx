@@ -1,13 +1,18 @@
-import React from 'react'
-import { Breadcrumb } from 'antd'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { add_breadcrumb } from '../redux/Actions';
 
 const Vehicle = () => {
+  const dispatch = useDispatch();
+  const breadcrumb:any[] = [
+    {title:"Home",path:"/"},
+    {title:"Vehicle",path:"/vehicle"},
+  ]
+  useEffect(() => {
+    dispatch(add_breadcrumb(breadcrumb));
+  },[breadcrumb,dispatch])
   return (
     <div className='mt-4 ml-4'>
-      <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Vehicle</Breadcrumb.Item>
-      </Breadcrumb>
       Vehicle
     </div>
   )
