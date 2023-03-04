@@ -10,7 +10,7 @@ const Home = () => {
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-  },[breadcrumb,dispatch])
+  },[])
   return (
     <div className='mt-4 ml-4'>
       

@@ -1,8 +1,7 @@
 import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
 import { Link, useLocation } from 'react-router-dom';
-import { AudioOutlined, UserOutlined } from '@ant-design/icons';
-import { Input, Space, Avatar } from 'antd';
+import { Input, Avatar } from 'antd';
 
 const { Search } = Input;
 
@@ -110,47 +109,17 @@ const NavBar = () => {
         >
           {(ref:any) => (
             <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a
-                  href="#"
-                  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Home
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Analytics
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Reports
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Users
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Calander
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Profile
-                </a>
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                {
+                      Menus.map((items:any,index)=> (
+                        <Link to={items.path} key={index} className={`hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium ${
+                          location.pathname === items.path &&
+                          'bg-gray-50 dark:shadow-lg '
+                      }`}>
+                          {items.title}
+                        </Link>
+                      ))
+                    }
               </div>
             </div>
           )}

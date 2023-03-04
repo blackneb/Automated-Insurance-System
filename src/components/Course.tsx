@@ -10,7 +10,7 @@ const Course = () => {
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-  },[breadcrumb,dispatch])
+  },[])
   return (
     <div>
       
