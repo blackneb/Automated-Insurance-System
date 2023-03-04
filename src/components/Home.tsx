@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Breadcrumb, Card, Space, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { add_breadcrumb } from '../redux/Actions';
 const Home = () => {
+  const dispatch = useDispatch();
+  const breadcrumb = [
+    {title:"home",path:"/"},
+    {title:"homeland",path:"/"},
+  ]
+  dispatch(add_breadcrumb(breadcrumb));
+  useEffect(() => {
+    
+  })
   return (
     <div className='mt-4 ml-4'>
-      <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-      </Breadcrumb>
+      
       <div className='flex flex-row flex-wrap mt-4'>
         <Row gutter={16}>
           <Col span={12}>

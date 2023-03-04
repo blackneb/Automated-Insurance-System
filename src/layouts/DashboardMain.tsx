@@ -13,10 +13,11 @@ import Users from '../components/Users';
 import Analytics from '../components/Analytics';
 import Calander from '../components/Calander';
 import { Breadcrumb } from 'antd';
+import { useSelector } from 'react-redux/es/exports';
 
 
 function DashboardMain() {
-  
+  const breadcrumb = useSelector((state:any) => state.breadcrumb);
   return (
     <div className="App">
       <BrowserRouter>
@@ -28,8 +29,11 @@ function DashboardMain() {
         <div className='w-full'>
           <div className='ml-4'>
             <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+              {
+                breadcrumb.map((items:any) => (
+                  <Breadcrumb.Item>{items.title}</Breadcrumb.Item>
+                ))
+              }              
             </Breadcrumb>
           </div>
             <Routes>
