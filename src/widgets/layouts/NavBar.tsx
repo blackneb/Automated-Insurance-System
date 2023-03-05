@@ -34,7 +34,7 @@ const NavBar = () => {
                   <div>
                     {
                       Menus.map((items:any,index)=> (
-                        <Link to={items.path} key={index} className={`hover:bg-slate-50 hover:shadow-lg text-zinc-800 px-3 py-2 rounded-md text-sm font-medium ${
+                        <Link to={items.path} key={index} className={`hover:bg-slate-50 hover:shadow-lg text-zinc-800 px-3 py-2 rounded-md text-sm font-medium mx-2 ${
                           location.pathname === items.path &&
                           'bg-gray-50 dark:shadow-lg '
                       }`}>
