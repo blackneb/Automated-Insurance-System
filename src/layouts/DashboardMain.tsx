@@ -13,6 +13,7 @@ import Users from '../components/Users';
 import Analytics from '../components/Analytics';
 import Calander from '../components/Calander';
 import Garages from '../components/Garages';
+import Signup from '../components/Signup';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -49,6 +50,7 @@ function DashboardMain() {
                 <Route path='/Analytics' element={<Analytics />} />
                 <Route path='/calander' element={<Calander />} />
                 <Route path='/garages' element={<Garages />} />
+                <Route path='/signup' element={<Signup/>} />
             </Routes>
         </div>
 
