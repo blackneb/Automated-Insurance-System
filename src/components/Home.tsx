@@ -13,11 +13,10 @@ const Home = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
-      
-      <div className='flex flex-row flex-wrap mt-4'>
+      <div className='flex flex-row flex-wrap justify-evenly'>
         <Row gutter={16}>
           <Col span={12}>
-            <Card bordered={false} style={{ width: 300 }}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
               <Statistic
                 title="Active Clients"
                 value={11.28}
@@ -30,20 +29,66 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Card className='mx-4 my-4' size="small" title="Pending Clients"  style={{ width: 300 }}>
-          <p>Card content</p>
-        </Card>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
+              <Statistic
+                title="New Client Since Last Month"
+                value={11.28}
+                precision={2}
+                valueStyle={{ color: '#3f8600' }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
+          </Col>
+        </Row>
+
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
+              <Statistic
+                title="Pending Clients"
+                value={11.28}
+                precision={2}
+                valueStyle={{ color: '#3f8600' }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
+          </Col>
+        </Row>
+
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
+              <Statistic
+                title="Total Claims"
+                value={11.28}
+                precision={2}
+                valueStyle={{ color: '#3f8600' }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
+          </Col>
+        </Row>
 
 
-        <Card className='mx-4 my-4' size="small" title="Total Claims"  style={{ width: 300 }}>
-          <p>Card content</p>
-        </Card>
-
-
-        <Card className='mx-4 my-4' size="small" title="Active Claims"  style={{ width: 300 }}>
-          <p>Card content</p>
-        </Card>
-
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
+              <Statistic
+                title="Active Claims"
+                value={11.28}
+                precision={2}
+                valueStyle={{ color: '#3f8600' }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
+          </Col>
+        </Row>
 
       </div>
     </div>
