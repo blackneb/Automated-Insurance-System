@@ -7,6 +7,7 @@ import { SiFuturelearn } from 'react-icons/si'
 import { SiOpenaccess } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import { AiFillCar } from 'react-icons/ai'
+import { GiMechanicGarage } from 'react-icons/gi'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
@@ -17,6 +18,7 @@ const Sidebar = () => {
         {title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
         { title: 'Users', path: '/users', src: <CgProfile /> },
+        { title:'Garages',path:'/garages',src:<GiMechanicGarage/>},
         { title: 'Profile', path: '/profile', src: <SiOpenaccess />, gap: 'true' },
     ]
 

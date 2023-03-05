@@ -12,6 +12,7 @@ import Reports from '../components/Reports';
 import Users from '../components/Users';
 import Analytics from '../components/Analytics';
 import Calander from '../components/Calander';
+import Garages from '../components/Garages';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -27,7 +28,7 @@ function DashboardMain() {
           <Sidebar/>
         </div>
         <div className='w-full'>
-          <div className='ml-4'>
+          <div className='ml-4 mt-2'>
             <Breadcrumb>
               {
                 breadcrumb.map((items:any,index:any) => (
@@ -47,6 +48,7 @@ function DashboardMain() {
                 <Route path='/users' element={<Users />} />
                 <Route path='/Analytics' element={<Analytics />} />
                 <Route path='/calander' element={<Calander />} />
+                <Route path='/garages' element={<Garages />} />
             </Routes>
         </div>
 
