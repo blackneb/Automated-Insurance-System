@@ -14,7 +14,7 @@ function App() {
           if(login === false){
             return(
               <div>
-                {createAccount? <Signup/> : <Login setlog={setlogin} setCreateAccount={setCreateAccount} /> }
+                {createAccount? <Signup setCreateAccount={ setCreateAccount }/> : <Login setlog={setlogin} setCreateAccount={setCreateAccount} /> }
               </div>
             )
           }
