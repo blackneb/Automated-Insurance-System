@@ -7,7 +7,7 @@ interface loginprofile {
   password:string;
 }
 
-const Login = ({setlog}:any) => {
+const Login = ({setlog, setCreateAccount}:any) => {
   const {register, handleSubmit} = useForm<loginprofile>();
   const onSubmit = handleSubmit(()=>{
     setlog(true);
@@ -41,6 +41,7 @@ const Login = ({setlog}:any) => {
             </form>
 
             <hr className="my-6 border-gray-300 w-full"/>
+            <p className="mt-8">Need an account? <p onClick={()=>{setCreateAccount(true)}} className="text-blue-500 hover:text-blue-700 font-semibold">Create an account</p></p>
           </div>
         </div>
       </section>
