@@ -34,7 +34,7 @@ const Vehicle = () => {
   },[])
 
   return (
-    <div className='mt-4 ml-4'>
+    <div className='mt-4 ml-4 h-screen'>
       <div className='flex flex-row flex-wrap justify-center'>
         <ChartVehicleBrand unique={unique} occurence={occurence}/>
         <div>
