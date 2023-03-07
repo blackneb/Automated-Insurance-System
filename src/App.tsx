@@ -9,7 +9,7 @@ function App() {
   const [login, setlogin] = useState(false);
   const [createAccount, setCreateAccount] = useState(false);
   return (
-      <div>
+      <div className='font-sans'>
         {(() => {
           if(login === false){
             return(

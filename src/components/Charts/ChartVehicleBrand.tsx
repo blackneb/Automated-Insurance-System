@@ -23,22 +23,15 @@ const ChartVehicleBrand = ({unique,occurence}:any) => {
             label: '# of Votes',
             data: occurence,
             backgroundColor: bgcolors,
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
+            borderColor: bgcolors,
             borderWidth: 1,
           },
         ],
       };
   return (
-    <div className='w-96 p-4 shadow-lg mx-4'>
+    <div className='w-96 bg-white rounded-md p-4 shadow-lg mx-4'>
       <p>Vehicle Brands</p>
-      <Pie data={data} />
+      <Doughnut data={data} />
     </div>
   )
 }

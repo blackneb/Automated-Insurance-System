@@ -5,6 +5,7 @@ import { add_breadcrumb } from '../redux/Actions';
 import Vechicles from './Tables/Vechicles';
 import {vehicles} from '../data/vehicles';
 import ChartVehicleBrand from './Charts/ChartVehicleBrand';
+import OnClaimVehicles from './Tables/OnClaimVehicles';
 
 
 const Vehicle = () => {
@@ -34,13 +35,20 @@ const Vehicle = () => {
 
   return (
     <div className='mt-4 ml-4'>
-      <div className='flex flex-row'>
+      <div className='flex flex-row flex-wrap justify-center'>
         <ChartVehicleBrand unique={unique} occurence={occurence}/>
         <div>
-          <Card size="small" title="Total Vehicles" style={{ width: 300 }}>
+          <Card className='mx-4 my-4' size="small" title="Total Vehicles" style={{ width: 300 }}>
+            <p>Number</p>
+          </Card>
+          <Card className='mx-4 my-4' size="small" title="Active Claims" style={{ width: 300 }}>
+            <p>Number</p>
+          </Card>
+          <Card className='mx-4 my-4' size="small" title="Outdated Vehicles" style={{ width: 300 }}>
             <p>Number</p>
           </Card>
         </div>
+        <OnClaimVehicles data={data}/>
       </div>
       
       <Vechicles data={data}/>
