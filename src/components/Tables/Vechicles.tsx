@@ -18,7 +18,15 @@ const Vechicles = () => {
   const data:any[] = vehicles;
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
+  const unique = data.map((item) => item.VehicleBrand).filter((value, index, self) => self.indexOf(value) === index);
+  const occurence = [];
+  for (let i=0;i<unique.length;i++){
+    const count = data.filter((items:any) => items.VehicleBrand === unique[i]).length;
+    occurence.push(count);
+  }
+  console.log(occurence);
 
+console.log(unique);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
@@ -31,6 +39,12 @@ const Vechicles = () => {
   };
 
   const columns: ColumnsType<DataType> = [
+    {
+      title: 'Number',
+      dataIndex: 'Key',
+      key: 'Key',
+      ellipsis: true,
+    },
     {
       title: 'Vehcile Type',
       dataIndex: 'vehicleType',
@@ -75,8 +89,8 @@ const Vechicles = () => {
 
 
   return (
-    <div className='mx-4'>
-      <Input className='mb-2' placeholder="input with clear icon" allowClear onChange={onChange} />
+    <div className='mx-4 border-0 p-2 shadow-lg'>
+      <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
       <Table columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.includes(searchValue))} onChange={handleChange} />
     </div>
   )
