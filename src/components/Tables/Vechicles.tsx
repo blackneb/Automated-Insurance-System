@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
-import { Button, Space, Table } from 'antd';
+import { Button, Space, Table,Input } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
-import {vehicles} from '../../data/vehicles'
+import {vehicles} from '../../data/vehicles';
+const { Search } = Input;
 
 interface DataType {
   vehicleType: string;
@@ -10,63 +11,38 @@ interface DataType {
   vehicleOwner: string;
   VehicleBrand: string;
   vehicleColor:string;
+  key:string
 }
 
 const Vechicles = () => {
   const data:any[] = vehicles;
-  console.log(data);
-
-  const [filteredInfo, setFilteredInfo] = useState<Record<string, FilterValue | null>>({});
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
+  const [searchValue, setSearchValue] = useState("");
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    console.log(e.target.value);
+    setSearchValue(e.target.value);
+  };
+  
 
   const handleChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter) => {
     console.log('Various parameters', pagination, filters, sorter);
-    setFilteredInfo(filters);
     setSortedInfo(sorter as SorterResult<DataType>);
   };
-
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
-  const clearAll = () => {
-    setFilteredInfo({});
-    setSortedInfo({});
-  };
-
-  const setAgeSort = () => {
-    setSortedInfo({
-      order: 'descend',
-      columnKey: 'age',
-    });
-  };
-
 
   const columns: ColumnsType<DataType> = [
     {
       title: 'Vehcile Type',
       dataIndex: 'vehicleType',
-      key: 'Key',
-      filters: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filteredValue: filteredInfo.vehicleType || null,
-      onFilter: (value: any, record) => record.vehicleType.includes(value),
+      key: 'vehicleType',
       sorter: (a, b) => a.vehicleType.length - b.vehicleType.length,
-      sortOrder: sortedInfo.columnKey === 'vehicletype' ? sortedInfo.order : null,
+      sortOrder: sortedInfo.columnKey === 'vehicleType' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Vehcile Plate',
       dataIndex: 'vehiclePlate',
-      key: 'Key',
-      filters: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filteredValue: filteredInfo.vehiclePlate || null,
-      onFilter: (value: any, record) => record.vehiclePlate.includes(value),
+      key: 'vehiclePlate',
       sorter: (a, b) => a.vehiclePlate.length - b.vehiclePlate.length,
       sortOrder: sortedInfo.columnKey === 'vehiclePlate' ? sortedInfo.order : null,
       ellipsis: true,
@@ -74,13 +50,7 @@ const Vechicles = () => {
     {
       title: 'Vehcile Owner',
       dataIndex: 'vehicleOwner',
-      key: 'Key',
-      filters: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filteredValue: filteredInfo.vehicleOwner || null,
-      onFilter: (value: any, record) => record.vehicleOwner.includes(value),
+      key: 'vehicleOwner',
       sorter: (a, b) => a.vehicleOwner.length - b.vehicleOwner.length,
       sortOrder: sortedInfo.columnKey === 'vehicleOwner' ? sortedInfo.order : null,
       ellipsis: true,
@@ -88,13 +58,7 @@ const Vechicles = () => {
     {
       title: 'Vehcile Brand',
       dataIndex: 'VehicleBrand',
-      key: 'Key',
-      filters: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filteredValue: filteredInfo.VehicleBrand || null,
-      onFilter: (value: any, record) => record.VehicleBrand.includes(value),
+      key: 'VehicleBrand',
       sorter: (a, b) => a.VehicleBrand.length - b.VehicleBrand.length,
       sortOrder: sortedInfo.columnKey === 'VehicleBrand' ? sortedInfo.order : null,
       ellipsis: true,
@@ -102,13 +66,7 @@ const Vechicles = () => {
     {
       title: 'Vehcile Color',
       dataIndex: 'vehicleColor',
-      key: 'Key',
-      filters: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim' },
-      ],
-      filteredValue: filteredInfo.vehicleColor || null,
-      onFilter: (value: any, record) => record.vehicleColor.includes(value),
+      key: 'vehicleColor',
       sorter: (a, b) => a.vehicleColor.length - b.vehicleColor.length,
       sortOrder: sortedInfo.columnKey === 'vehicleColor' ? sortedInfo.order : null,
       ellipsis: true,
@@ -118,7 +76,8 @@ const Vechicles = () => {
 
   return (
     <div className='mx-4'>
-      <Table columns={columns} dataSource={data} onChange={handleChange} />
+      <Input className='mb-2' placeholder="input with clear icon" allowClear onChange={onChange} />
+      <Table columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

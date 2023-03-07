@@ -14,7 +14,6 @@ const Vehicle = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
-      Vehicle
       <Vechicles/>
     </div>
   )
