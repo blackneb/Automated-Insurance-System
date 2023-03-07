@@ -38,6 +38,7 @@ function DashboardMain() {
               }              
             </Breadcrumb>
           </div>
+          <div className="scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100" >
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/dashboard' element={<Dashboard />} />
@@ -51,7 +52,8 @@ function DashboardMain() {
                 <Route path='/calander' element={<Calander />} />
                 <Route path='/garages' element={<Garages />} />
                 <Route path='/signup' element={<Signup/>} />
-            </Routes>
+              </Routes>
+          </div>
         </div>
 
       </div>
