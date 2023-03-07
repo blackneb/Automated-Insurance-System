@@ -60,7 +60,7 @@ const OnClaimVehicles = ({data}:any) => {
     <div className='mx-4 border-0 p-2 bg-white mt-4 shadow rounded-md h-96 scrollbar scrollbar-thumb-gray-200 scrollbar-track-gray-100'>
       <p>Vehicles On Claiming</p>
       <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
-      <Table style={{maxWidth:600 }} columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.includes(searchValue))} onChange={handleChange} />
+      <Table style={{maxWidth:450 }} columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
