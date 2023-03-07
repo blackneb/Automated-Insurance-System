@@ -1,12 +1,16 @@
 import React, { useEffect,useState } from 'react'
+import { Card, Space } from 'antd';
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import Vechicles from './Tables/Vechicles';
 import {vehicles} from '../data/vehicles';
+import ChartVehicleBrand from './Charts/ChartVehicleBrand';
 
 
 const Vehicle = () => {
   const dispatch = useDispatch();
+  const [unique, setUnique] = useState<string[]>([]);
+  const [occurence, setOccurence] = useState<number[]>([]);
   const data:any[] = vehicles;
   
   const breadcrumb:any[] = [
@@ -16,11 +20,13 @@ const Vehicle = () => {
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
     const unique = data.map((item) => item.VehicleBrand).filter((value, index, self) => self.indexOf(value) === index);
+    setUnique(unique);
     const occurence = [];
     for (let i=0;i<unique.length;i++){
       const count = data.filter((items:any) => items.VehicleBrand === unique[i]).length;
       occurence.push(count);
     }
+    setOccurence(occurence);
     console.log(data);
     console.log(unique);
     console.log(occurence);
@@ -28,6 +34,15 @@ const Vehicle = () => {
 
   return (
     <div className='mt-4 ml-4'>
+      <div className='flex flex-row'>
+        <ChartVehicleBrand unique={unique} occurence={occurence}/>
+        <div>
+          <Card size="small" title="Total Vehicles" style={{ width: 300 }}>
+            <p>Number</p>
+          </Card>
+        </div>
+      </div>
+      
       <Vechicles data={data}/>
     </div>
   )
