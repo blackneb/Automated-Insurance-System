@@ -4,6 +4,7 @@ import { add_breadcrumb } from '../redux/Actions';
 import TotalGarages from './Tables/TotalGarages';
 import {garages} from '../data/garages';
 import WorkingGarages from './Tables/WorkingGarages';
+import BidsOnVehicle from './Tables/BidsOnVehicle';
 
 
 const Garages = () => {
@@ -18,7 +19,10 @@ const Garages = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
-      <WorkingGarages data={data}/>
+      <div className='flex flex-row justify-center'>
+        <BidsOnVehicle data={data}/>
+        <WorkingGarages data={data}/>
+      </div>
       <TotalGarages data={data}/>
     </div>
   )
