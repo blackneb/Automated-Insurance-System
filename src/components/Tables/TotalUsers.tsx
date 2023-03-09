@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Button, Space, Table,Input } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
-import {vehicles} from '../../data/vehicles';
+import {users} from '../../data/users';
 const { Search } = Input;
 
 interface DataType{
   ID:string,
   fullName:string,
   userName:string,
-  PhoneNumber:string,
-  email:string,
+  phoneNumber:string,
+  Email:string,
   insuranceTypes:string,
   files:string,
 }
 
-const TotalUsers = () => {
+const TotalUsers = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
-    setSearchValue(e.target.value);
+    setSearchValue(e.target.value.toLowerCase());
   };
   
 
@@ -40,18 +40,18 @@ const TotalUsers = () => {
     },
     {
       title: 'Phone Number',
-      dataIndex: 'PhoneNumber',
-      key: 'PhoneNumber',
-      sorter: (a, b) => a.PhoneNumber.length - b.PhoneNumber.length,
-      sortOrder: sortedInfo.columnKey === 'PhoneNumber' ? sortedInfo.order : null,
+      dataIndex: 'phoneNumber',
+      key: 'phoneNumber',
+      sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
+      sortOrder: sortedInfo.columnKey === 'phoneNumber' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'E-mail',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => a.email.length - b.email.length,
-      sortOrder: sortedInfo.columnKey === 'email' ? sortedInfo.order : null,
+      dataIndex: 'Email',
+      key: 'Email',
+      sorter: (a, b) => a.Email.length - b.Email.length,
+      sortOrder: sortedInfo.columnKey === 'Email' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -72,8 +72,10 @@ const TotalUsers = () => {
     },
   ];
   return (
-    <div>
-      
+    <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
+      <p>Total Vehicles</p>
+      <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
+      <Table columns={columns} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
