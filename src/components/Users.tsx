@@ -14,7 +14,6 @@ const Users = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
-      Users
       <ChartUsersStatus/>
     </div>
   )
