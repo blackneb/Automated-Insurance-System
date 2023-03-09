@@ -29,7 +29,7 @@ const ChartVehicleBrand = ({unique,occurence}:any) => {
         ],
       };
   return (
-    <div className='w-96 bg-white rounded-md p-4 shadow-lg mx-4'>
+    <div className='w-96 bg-white rounded-md p-4 shadow-lg mx-4 mt-4'>
       <p>Vehicle Brands</p>
       <Doughnut data={data} />
     </div>

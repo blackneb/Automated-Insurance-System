@@ -4,6 +4,7 @@ import { add_breadcrumb } from '../redux/Actions';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
 import {users} from '../data/users';
 import TotalUsers from './Tables/TotalUsers';
+import OnClaimUsers from './Tables/OnClaimUsers';
 
 
 const Users = () => {
@@ -18,8 +19,13 @@ const Users = () => {
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
-      <ChartUsersStatus/>
-      <TotalUsers data={data} />
+      <div className='flex flex-row flex-wrap justify-center'>
+        <ChartUsersStatus/>
+        <OnClaimUsers data={data} />
+      </div>
+      <div className='flex justify-center'>
+        <TotalUsers data={data} />
+      </div>
     </div>
   )
 }

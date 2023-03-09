@@ -52,7 +52,7 @@ const data = {
   }]
 };
   return (
-    <div className='w-[32rem] bg-white rounded-md p-4 shadow mx-4'>
+    <div className='w-[32rem] bg-white rounded-md p-4 shadow mx-4 mt-4'>
       <Bar options={options} data={data} />
     </div>
   )

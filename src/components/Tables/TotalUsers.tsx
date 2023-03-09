@@ -73,8 +73,8 @@ const TotalUsers = ({data}:any) => {
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
-      <p>Total Vehicles</p>
-      <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
+      <p>Total Users</p>
+      <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
       <Table columns={columns} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
