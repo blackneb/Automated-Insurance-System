@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
+import ChartUsersStatus from './Charts/ChartUsersStatus';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Users = () => {
   return (
     <div className='mt-4 ml-4'>
       Users
+      <ChartUsersStatus/>
     </div>
   )
 }
