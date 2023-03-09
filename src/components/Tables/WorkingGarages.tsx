@@ -47,9 +47,9 @@ const WorkingGarages = ({data}:any) => {
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
-      <p>Total Users</p>
+      <p>Vehicles Currently worked</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table scroll={{ x: 420, y: 200 }} style={{maxWidth:400 }} columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

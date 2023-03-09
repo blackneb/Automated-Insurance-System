@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Button, Space, Table,Input } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
+import { Select } from 'antd';
+
 const { Search } = Input;
 
 interface DataType{
@@ -48,8 +50,19 @@ const BidsOnVehicle = ({data}:any) => {
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>Bids on Vehicles</p>
-      <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Select
+      className='mb-2 w-fit'
+      defaultValue="Vehicle001"
+      style={{ width: 120 }}
+      onChange={()=>{}}
+      options={[
+        { value: 'vehicle001', label: 'vehicle001' },
+        { value: 'vehicle002', label: 'vehicle002' },
+        { value: 'vehicle003', label: 'vehicle003' },
+        { value: 'disabled', label: 'Disabled', disabled: true },
+      ]}
+    />
+      <Table scroll={{ x: 420, y: 200 }} style={{maxWidth:400 }} columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
