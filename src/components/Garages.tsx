@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import TotalGarages from './Tables/TotalGarages';
 import {garages} from '../data/garages';
+import WorkingGarages from './Tables/WorkingGarages';
 
 
 const Garages = () => {
@@ -17,6 +18,7 @@ const Garages = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
+      <WorkingGarages data={data}/>
       <TotalGarages data={data}/>
     </div>
   )
