@@ -20,17 +20,22 @@ const Garages = () => {
   },[])
   return (
     <div className='mt-4 ml-4'>
+      <div className='flex flex-col flex-wrap justify-center'>
       <div className='flex flex-row flex-wrap justify-center'>
-      <div>
           <Card className='mx-4 my-4' size="small" title="Total Garages" style={{ width: 300 }}>
             <p>Number</p>
           </Card>
           <Card className='mx-4 my-4' size="small" title="Total Vehicles Under Garages" style={{ width: 300 }}>
             <p>Number</p>
           </Card>
+          <Card className='mx-4 my-4' size="small" title="Current Bids To Maintained" style={{ width: 300 }}>
+            <p>Number</p>
+          </Card>
         </div>
-        <BidsOnVehicle data={data}/>
-        <WorkingGarages data={data}/>
+        <div className='flex flex-row flex-wrap justify-center'>
+          <BidsOnVehicle data={data}/>
+          <WorkingGarages data={data}/>
+        </div>
       </div>
       <TotalGarages data={data}/>
     </div>
