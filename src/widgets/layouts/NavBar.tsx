@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Input, Avatar } from 'antd';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
+import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+
 
 const { Search } = Input;
 
@@ -27,6 +29,7 @@ const NavBar = () => {
           My Profile
         </a>
       ),
+      icon: <UserOutlined />,
     },
     {
       key: '2',
@@ -35,6 +38,7 @@ const NavBar = () => {
           Settings
         </a>
       ),
+      icon: <SettingOutlined />,
     },
     {
       key: '3',
@@ -43,6 +47,7 @@ const NavBar = () => {
           Log out
         </a>
       ),
+      icon: <LogoutOutlined />,
     },
   ];
 
@@ -79,7 +84,7 @@ const NavBar = () => {
             <div className='hidden md:flex justify-end ml-4'>
                     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
                     <Dropdown menu={{ items }} placement="bottom" arrow>
-                      <Avatar className='ml-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+                      <Avatar className='mx-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
                     </Dropdown>
             </div>
             <div className="-mr-2 flex md:hidden">
