@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
 import { Link, useLocation } from 'react-router-dom';
 import { Input, Avatar } from 'antd';
+import type { MenuProps } from 'antd';
+import { Button, Dropdown } from 'antd';
 
 const { Search } = Input;
 
@@ -16,6 +18,33 @@ const NavBar = () => {
       { title: 'Calander', path:'/calander'},
       { title: 'Reports', path: '/reports'},
   ]
+
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          My Profile
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          Settings
+        </a>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          Log out
+        </a>
+      ),
+    },
+  ];
 
 
 
@@ -49,7 +78,9 @@ const NavBar = () => {
             </div>
             <div className='hidden md:flex justify-end ml-4'>
                     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
-                    <Avatar className='ml-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+                    <Dropdown menu={{ items }} placement="bottom" arrow>
+                      <Avatar className='ml-8' style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>U</Avatar>
+                    </Dropdown>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
