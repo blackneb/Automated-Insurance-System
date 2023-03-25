@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
 import { Button, message, Steps, theme } from 'antd';
+import AccountSetup from './Account Create/AccountSetup';
+import BasicInformation from './Account Create/BasicInformation';
+import Profile from './Account Create/Profile';
 
 const Signup = ({setCreateAccount}:any) => {
   const steps = [
     {
       title: 'Basic Information',
-      content: 'Basic information',
+      content: <BasicInformation/>,
     },
     {
-      title: 'Type Of Insurance',
-      content: 'Types Of Insurance',
+      title: 'Account Setup',
+      content: <AccountSetup/> ,
     },
     {
-      title: 'Date Appointment',
-      content: 'Date Appointment',
-    },
-    {
-      title: 'Document Entry',
-      content: 'Document Entry',
-    },
-    {
-      title: 'Payment',
-      content: 'Payment',
+      title: 'Profile',
+      content: <Profile/> ,
     },
   ];
   const { token } = theme.useToken();
