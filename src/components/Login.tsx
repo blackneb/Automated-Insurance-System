@@ -41,7 +41,10 @@ const Login = ({setlog, setCreateAccount}:any) => {
             </form>
 
             <hr className="my-6 border-gray-300 w-full"/>
-            <p className="mt-8">Need an account? <p onClick={()=>{setCreateAccount(true)}} className="text-blue-500 hover:text-blue-700 font-semibold">Create an account</p></p>
+            <div className='flex flex-row justify-between'>
+              <p className="">Need an account?</p>
+              <p onClick={()=>{setCreateAccount(true)}} className="text-blue-500 hover:text-blue-700 font-semibold">Create an account</p>
+            </div>
           </div>
         </div>
       </section>
