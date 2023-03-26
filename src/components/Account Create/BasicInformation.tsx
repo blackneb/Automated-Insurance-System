@@ -16,69 +16,69 @@ const BasicInformation = () => {
       style={{ maxWidth: 600 }}
     >
       <Form.Item label="First Name">
-        <Input placeholder="input placeholder" />
+        <Input placeholder="" />
       </Form.Item>
       <Form.Item label="Last Name">
-        <Input placeholder="input placeholder" />
+        <Input placeholder="" />
       </Form.Item>
       <div className='flex flex-col justify-center'>
-      <h4 className='mb-2'>Address</h4>
+      <h4 className='mb-2'>Address:</h4>
 
       <div className='flex flex-row'>
 
       <div className='mx-4'>
 
-        <h3 className='mb-2'>Residential Address</h3>
+        <h3 className='mb-2'>Residential Address:</h3>
         <Form.Item label="Sub City">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Woreda">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Kebele">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="House Number">
-          <Input placeholder="input placeholder" />
+        <Form.Item label="H.Number">
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="P.O.Box">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Phone">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Email">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
 
         </div>
 
         <div className='mx-4'>
 
-        <h3 className='mb-2'>Bussiness Address</h3>
+        <h3 className='mb-2'>Bussiness Address:</h3>
         <Form.Item label="Sub City">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Woreda">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Kebele">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="House Number">
-          <Input placeholder="input placeholder" />
+        <Form.Item label="H.Number">
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="P.O.Box">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Phone">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Email">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
         <Form.Item label="Fax">
-          <Input placeholder="input placeholder" />
+          <Input placeholder="" />
         </Form.Item>
 
         </div>
