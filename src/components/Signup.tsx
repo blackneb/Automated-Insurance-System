@@ -65,7 +65,7 @@ const Signup = ({setCreateAccount}:any) => {
 
       <div className='flex flex-col justify-center mx-4 mt-4'>
         <Steps current={current} items={items} />
-        <div style={contentStyle}>{steps[current].content}</div>
+        <div>{steps[current].content}</div>
         <div style={{ marginTop: 24 }}>
           {current < steps.length - 1 && (
             <Button type="default" onClick={() => next()}>
