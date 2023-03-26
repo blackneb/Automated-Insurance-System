@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import { Button, Form, Input, Radio } from 'antd';
+import { Button, Form, Input, Radio, Upload } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
@@ -15,79 +17,30 @@ const BasicInformation = () => {
       initialValues={{ layout: formLayout }}
       style={{ maxWidth: 600 }}
     >
-      <Form.Item label="First Name">
+      <Form.Item 
+        label="First Name"
+        name="FirstName"
+        rules={[{ required: true, message: 'Please input your Last Name!' }]}>
         <Input placeholder="" />
       </Form.Item>
-      <Form.Item label="Last Name">
+      <Form.Item 
+        label="Last Name"
+        name="Last Name"
+        rules={[{ required: true, message: 'Please input your First Name!' }]}>
         <Input placeholder="" />
       </Form.Item>
-      <div className='flex flex-col justify-center'>
-      <h4 className='mb-2'>Address:</h4>
-
-      <div className='flex flex-row'>
-
-      <div className='mx-4'>
-
-        <h3 className='mb-2'>Residential Address:</h3>
-        <Form.Item label="Sub City">
-          <Input placeholder="" />
+      <Form.Item 
+          label="Profile Image" 
+          name="Profile Image"
+          valuePropName="fileList"
+          rules={[{ required: true, message: 'Please input your Profile Image!' }]}>
+          <Upload action="/upload.do" listType="picture-card">
+            <div className=''>
+              <PlusOutlined/>
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
         </Form.Item>
-        <Form.Item label="Woreda">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Kebele">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="H.Number">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="P.O.Box">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Phone">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Email">
-          <Input placeholder="" />
-        </Form.Item>
-
-        </div>
-
-        <div className='mx-4'>
-
-        <h3 className='mb-2'>Bussiness Address:</h3>
-        <Form.Item label="Sub City">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Woreda">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Kebele">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="H.Number">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="P.O.Box">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Phone">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Email">
-          <Input placeholder="" />
-        </Form.Item>
-        <Form.Item label="Fax">
-          <Input placeholder="" />
-        </Form.Item>
-
-        </div>
-
-      </div>
-      
-      
-      </div>     
-
     </Form>
     </div>
   )

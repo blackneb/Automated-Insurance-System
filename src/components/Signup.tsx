@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, message, Steps, theme } from 'antd';
 import AccountSetup from './Account Create/AccountSetup';
 import BasicInformation from './Account Create/BasicInformation';
-import Profile from './Account Create/Profile';
+import Address from './Account Create/Address';
 
 const Signup = ({setCreateAccount}:any) => {
   const steps = [
@@ -11,12 +11,12 @@ const Signup = ({setCreateAccount}:any) => {
       content: <BasicInformation/>,
     },
     {
-      title: 'Account Setup',
-      content: <AccountSetup/> ,
+      title: 'Address',
+      content: <Address/> ,
     },
     {
-      title: 'Profile',
-      content: <Profile/> ,
+      title: 'Account Setup',
+      content: <AccountSetup/> ,
     },
   ];
   const { token } = theme.useToken();
@@ -65,7 +65,7 @@ const Signup = ({setCreateAccount}:any) => {
 
       <div className='flex flex-col justify-center mx-4 mt-4'>
         <Steps current={current} items={items} />
-        <div>{steps[current].content}</div>
+        <div className='h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>{steps[current].content}</div>
         <div className='flex justify-center mt-10'>
           {current < steps.length - 1 && (
             <Button type="default" onClick={() => next()}>
