@@ -7,6 +7,7 @@ import ExtraFitting from './New Vehicle Insurance/ExtraFitting';
 import OtherInsurance from './New Vehicle Insurance/OtherInsurance';
 import AccidentBefore from './New Vehicle Insurance/AccidentBefore';
 import AdditionalInformations from './New Vehicle Insurance/AdditionalInformations';
+import DateAppointment from './New Vehicle Insurance/DateAppointment';
 
 const NewInsurance = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,10 @@ const NewInsurance = () => {
       {
         title: 'Additional Informations',
         content: <AdditionalInformations/> ,
+      },
+      {
+        title: 'Date Appointment',
+        content: <DateAppointment/> ,
       },
   ];
   const { token } = theme.useToken();
