@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Checkbox, Form, Input, Upload} from 'antd';
+import { Button, Checkbox, Form, Input, Upload, InputNumber} from 'antd';
 
 const Particular = () => {
     const onFinish = (values: any) => {
@@ -125,7 +125,7 @@ const Particular = () => {
                 name="currentEstimation"
                 rules={[{ required: true, message: 'Please input your current estimation!' }]}
                 >
-                <Input/>
+                <InputNumber placeholder='Birr' style={{width:160}} />
                 </Form.Item>
             </div>
         </div>

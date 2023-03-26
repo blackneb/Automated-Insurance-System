@@ -2,8 +2,6 @@ import React from 'react'
 import { Button, Checkbox, Form, Input, Upload} from 'antd';
 import { DatePicker, Space } from 'antd';
 
-
-
 const AccidentBefore = () => {
     const onFinish = (values: any) => {
         console.log('Success:', values);

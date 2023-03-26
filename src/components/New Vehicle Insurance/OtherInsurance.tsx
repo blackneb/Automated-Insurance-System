@@ -25,7 +25,7 @@ const OtherInsurance = () => {
             name="decline"
             rules={[{ required: true, message: 'Please input your !' }]}
             >
-            <Select placeholder="Yes/No">
+            <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>
@@ -35,7 +35,7 @@ const OtherInsurance = () => {
             name="refuse"
             rules={[{ required: true, message: 'Please input your !' }]}
             >
-            <Select placeholder="Yes/No">
+            <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>
@@ -45,7 +45,7 @@ const OtherInsurance = () => {
             name="cancel"
             rules={[{ required: true, message: 'Please input your Chassis Number!' }]}
             >
-           <Select placeholder="Yes/No">
+           <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>
@@ -55,7 +55,7 @@ const OtherInsurance = () => {
             name="require"
             rules={[{ required: true, message: 'Please input your !' }]}
             >
-            <Select placeholder="Yes/No">
+            <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>
@@ -65,7 +65,7 @@ const OtherInsurance = () => {
             name="iae"
             rules={[{ required: true, message: 'Please input your !' }]}
             >
-            <Select placeholder="Yes/No">
+            <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>
@@ -75,7 +75,7 @@ const OtherInsurance = () => {
             name="isc"
             rules={[{ required: true, message: 'Please input your !' }]}
             >
-            <Select placeholder="Yes/No">
+            <Select style={{width:150}} placeholder="Yes/No">
                 <Option value="yes">Yes</Option>
                 <Option value="no">No</Option>
             </Select>

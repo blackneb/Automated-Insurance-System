@@ -68,6 +68,11 @@ const NewInsurance = () => {
         <Steps current={current} items={items} />
         <div className='h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>{steps[current].content}</div>
         <div className='flex justify-center mt-10'>
+        {current > 0 && (
+            <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+              Previous
+            </Button>
+          )}
           {current < steps.length - 1 && (
             <Button type="default" onClick={() => next()}>
               Next
@@ -76,11 +81,6 @@ const NewInsurance = () => {
           {current === steps.length - 1 && (
             <Button type="default" onClick={() => message.success('Processing complete!')}>
               Done
-            </Button>
-          )}
-          {current > 0 && (
-            <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-              Previous
             </Button>
           )}
         </div>
