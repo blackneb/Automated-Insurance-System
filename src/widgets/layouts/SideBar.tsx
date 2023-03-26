@@ -8,14 +8,16 @@ import { SiOpenaccess } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import { AiFillCar } from 'react-icons/ai'
 import { GiMechanicGarage } from 'react-icons/gi'
+import { PlusOutlined } from '@ant-design/icons'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
 
     const Menus = [
+        { title: 'New Insurance', path: '/newinsurance', src: <PlusOutlined />},
         { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
-        {title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
+        { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
         { title: 'Users', path: '/users', src: <CgProfile /> },
         { title:'Garages',path:'/garages',src:<GiMechanicGarage/>},
