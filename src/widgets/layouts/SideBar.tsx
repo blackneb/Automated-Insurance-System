@@ -4,24 +4,37 @@ import { Link, useLocation } from 'react-router-dom'
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
 import { SiFuturelearn } from 'react-icons/si'
-import { SiOpenaccess } from 'react-icons/si'
+import { SiOpenaccess,SiAcclaim } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import { AiFillCar } from 'react-icons/ai'
 import { GiMechanicGarage } from 'react-icons/gi'
-import { PlusOutlined } from '@ant-design/icons'
+import { HiDocumentAdd } from 'react-icons/hi'
+import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
 
     const Menus = [
-        { title: 'New Insurance', path: '/newinsurance', src: <PlusOutlined />},
         { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
         { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
         { title: 'Users', path: '/users', src: <CgProfile /> },
-        { title:'Garages',path:'/garages',src:<GiMechanicGarage/>},
-        { title: 'Profile', path: '/profile', src: <SiOpenaccess />, gap: 'true' },
+        { title:'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false'},
+        { title: 'Progress', path: '/', src: <PercentageOutlined /> },
+        { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />},
+        { title: 'New Health Insurance', path: '/', src: <PlusOutlined />},
+        { title: 'My Claims', path: '/', src: <SiAcclaim /> },
+        { title: 'History', path: '/', src: <HistoryOutlined /> },
+        { title: 'Bids', path: '/', src: <ProfileOutlined /> },
+        { title: 'Vehicles', path:'/', src:<AiFillCar/>},
+        { title: 'Subitted Bids', path:'/', src:<FileProtectOutlined />},
+        { title: 'New Insurances', path:'/', src:<HiDocumentAdd/>},
+        { title: 'Claims', path: '/', src: <SiAcclaim /> },
+        { title: 'Progress', path: '/', src: <PercentageOutlined /> },
+        
+        
+        
     ]
 
     return (
