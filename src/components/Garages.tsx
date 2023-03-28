@@ -19,7 +19,7 @@ const Garages = () => {
     dispatch(add_breadcrumb(breadcrumb));
   },[])
   return (
-    <div className='mt-4 ml-4'>
+    <div className='mt-4 ml-4 h-screen'>
       <div className='flex flex-col flex-wrap justify-center'>
       <div className='flex flex-row flex-wrap justify-center'>
           <Card className='mx-4 my-4' size="small" title="Total Garages" style={{ width: 300 }}>
