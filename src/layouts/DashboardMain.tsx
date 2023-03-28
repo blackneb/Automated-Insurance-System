@@ -15,6 +15,16 @@ import Calander from '../components/Calander';
 import Garages from '../components/Garages';
 import Signup from '../components/Signup';
 import NewInsurance from '../components/NewInsurance';
+import AdminProgress from '../components/AdminProgress';
+import NewHealthInsurance from '../components/NewHealthInsurance';
+import UserClaims from '../components/UserClaims';
+import UserHistory from '../components/UserHistory';
+import Bids from '../components/Bids';
+import GarageVehicles from '../components/GarageVehicles';
+import GarageSubmittedBids from '../components/GarageSubmittedBids';
+import ExpertNewInsurance from '../components/ExpertNewInsurance';
+import ExpertClaims from '../components/ExpertClaims';
+import ExpertProgress from '../components/ExpertProgress';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -54,7 +64,16 @@ function DashboardMain() {
                 <Route path='/garages' element={<Garages />} />
                 <Route path='/signup' element={<Signup/>} />
                 <Route path='/newinsurance' element={<NewInsurance/>} />
-
+                <Route path='/adminprogress' element={ <AdminProgress/> } />
+                <Route path='/newhealthinsurance' element={ <NewHealthInsurance/> } />
+                <Route path='/userclaims' element={ <UserClaims/> } />
+                <Route path='/userhistory' element={ <UserHistory/> } />
+                <Route path='/bids' element={ <Bids/> } />
+                <Route path='/garagevehicles' element={ <GarageVehicles/> } />
+                <Route path='/garagesubmittedbids' element={ <GarageSubmittedBids/> } />
+                <Route path='/expertnewinsurances' element={ <ExpertNewInsurance/> } />
+                <Route path='/expertclaims' element={ <ExpertClaims/> } />
+                <Route path='/expertprogress' element={ <ExpertProgress/> } />
               </Routes>
           </div>
         </div>
