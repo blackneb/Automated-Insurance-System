@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Button, Space, Table,Input } from 'antd';
+import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {vehicles} from '../../data/vehicles';
 const { Search } = Input;
@@ -68,6 +69,12 @@ const Vechicles = ({data}:any) => {
       sorter: (a, b) => a.vehicleColor.length - b.vehicleColor.length,
       sortOrder: sortedInfo.columnKey === 'vehicleColor' ? sortedInfo.order : null,
       ellipsis: true,
+    },
+    {
+      title: 'Action',
+      dataIndex: '',
+      key: 'x',
+      render: () => <div><a>View</a></div> ,
     },
   ];
 
