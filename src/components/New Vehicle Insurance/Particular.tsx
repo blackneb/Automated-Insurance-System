@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload, InputNumber} from 'antd';
 
-const Particular = () => {
+const Particular = ({next}:any) => {
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        next();
       };
       
       const onFinishFailed = (errorInfo: any) => {
@@ -12,37 +13,40 @@ const Particular = () => {
   return (
     <div className='flex justify-center my-8'>
        <Form
-        name=""
-        labelCol={{ flex: '150px' }}
+        name="basic"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+        labelCol={{ flex: '150px', span: 30 }}
         labelAlign="left"
         labelWrap
         colon={false}
       >
-        <div className='flex flex-row mx-4'>
+        <div className='flex flex-row mx-4 h-[32rem]'>
             <div className='flex flex-col'>
                 <Form.Item 
                     label="Plate Number"
-                    name="plateNumber"
-                    rules={[{ required: true, message: 'Please input your Chassis Number!' }]}>
+                    name=""
+                    >
                     <Input.Group compact>
                         <Form.Item
-                        name="plateNumber"
+                        name="plateCode"
                         noStyle
-                        rules={[{ required: true, message: 'Province is required' }]}
+                        rules={[{ required: true, message: 'plate code is required' }]}
                         >
                         <Input style={{ width: '20%' }} placeholder="Code" />
                         </Form.Item>
                         <Form.Item
-                        name={['address', 'street']}
+                        name='plateCountry'
                         noStyle
-                        rules={[{ required: true, message: 'Street is required' }]}
+                        rules={[{ required: true, message: 'plate country is required' }]}
                         >
                         <Input style={{ width: '30%' }} placeholder="City" />
                         </Form.Item>
                         <Form.Item
-                        name={['address', 'street']}
+                        name='plateNumber'
                         noStyle
-                        rules={[{ required: true, message: 'Street is required' }]}
+                        rules={[{ required: true, message: 'plate number is required' }]}
                         >
                         <Input style={{ width: '50%' }} placeholder="Number" />
                         </Form.Item>
@@ -92,7 +96,7 @@ const Particular = () => {
                 <Form.Item
                 label="Cylinder Capacity"
                 name="cylinderCapacity"
-                rules={[{ required: true, message: 'Please input your !' }]}
+                rules={[{ required: true, message: 'Please input your cylinder capacity!' }]}
                 >
                 <Input/>
                 </Form.Item>
@@ -129,7 +133,11 @@ const Particular = () => {
                 </Form.Item>
             </div>
         </div>
-        
+        <div className='flex flex-row justify-center'>
+          <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+            Next
+          </Button>
+        </div>
 
       </Form>
     </div>
