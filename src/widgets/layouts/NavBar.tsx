@@ -25,9 +25,9 @@ const NavBar = () => {
     {
       key: '1',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
+        <Link to='/profile' >
           My Profile
-        </a>
+        </Link>
       ),
       icon: <UserOutlined />,
     },
