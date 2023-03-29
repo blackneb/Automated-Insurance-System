@@ -7,11 +7,10 @@ import {vehicles} from '../../data/vehicles';
 const { Search } = Input;
 
 interface DataType {
-    claimDate: string;
-    accidentId: string;
-    progress:string;
-    proposer:string;
-    key:string
+    date: string;
+    proposer: string;
+    items:string;
+    deadline:string
   }
 
 
@@ -20,7 +19,7 @@ const AllVehiclesBid = ({data}:any) => {
     const [searchValue, setSearchValue] = useState("");
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       console.log(e.target.value);
-      setSearchValue(e.target.value);
+      setSearchValue(e.target.value.toLowerCase());
     };
     
   
@@ -31,22 +30,14 @@ const AllVehiclesBid = ({data}:any) => {
     const columns: ColumnsType<DataType> = [
       {
         title: 'Date',
-        dataIndex: 'claimDate',
-        key: 'claimDate',
-        sorter: (a, b) => a.claimDate.length - b.claimDate.length,
-        sortOrder: sortedInfo.columnKey === 'claimDate' ? sortedInfo.order : null,
+        dataIndex: 'date',
+        key: 'date',
+        sorter: (a, b) => a.date.length - b.date.length,
+        sortOrder: sortedInfo.columnKey === 'date' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
-        title: 'Accident ID',
-        dataIndex: 'accidentId',
-        key: 'accidentId',
-        sorter: (a, b) => a.accidentId.length - b.accidentId.length,
-        sortOrder: sortedInfo.columnKey === 'accidentId' ? sortedInfo.order : null,
-        ellipsis: true,
-      },
-      {
-        title: 'Vehcile Owner',
+        title: 'Client Name',
         dataIndex: 'proposer',
         key: 'proposer',
         sorter: (a, b) => a.proposer.length - b.proposer.length,
@@ -54,21 +45,27 @@ const AllVehiclesBid = ({data}:any) => {
         ellipsis: true,
       },
       {
-        title: 'Progress',
-        dataIndex: '',
-        key: 'x',
-        render: () => <div><Progress percent={25} status="active" /></div> ,
+        title: 'Items Number',
+        dataIndex: 'items',
+        key: 'items',
+        sorter: (a, b) => a.items.length - b.items.length,
+        sortOrder: sortedInfo.columnKey === 'items' ? sortedInfo.order : null,
+        ellipsis: true,
       },
       {
-          title: 'Action',
-          dataIndex: '',
-          key: 'x',
-          render: () => <div><a>View</a></div> ,
-        },
+        title: 'Deadline',
+        dataIndex: 'deadline',
+        key: 'deadline',
+        sorter: (a, b) => a.deadline.length - b.deadline.length,
+        sortOrder: sortedInfo.columnKey === 'deadline' ? sortedInfo.order : null,
+        ellipsis: true,
+      },
     ];
   return (
-    <div>
-      
+    <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
+      <p>Active Bids</p>
+      <Input className='mb-2' placeholder="Search with Client name" allowClear onChange={onChange} />
+      <Table columns={columns} dataSource={data.filter((items:any) => items.proposer.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
