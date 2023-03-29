@@ -54,8 +54,8 @@ const ClaimProgress = ({data}:any) => {
     },
     {
       title: 'Progress',
-      dataIndex: '',
-      key: 'x',
+      dataIndex: 'progress',
+      key: 'progress',
       render: () => <div><Progress percent={25} status="active" /></div> ,
     },
     {

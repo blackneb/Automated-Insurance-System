@@ -67,6 +67,12 @@ const GarageSubBids = ({data}:any) => {
       sortOrder: sortedInfo.columnKey === 'ownerName' ? sortedInfo.order : null,
       ellipsis: true,
     },
+    {
+      title: 'Action',
+      dataIndex: '',
+      key: 'x',
+      render: () => <div><a>View</a></div> ,
+    },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
