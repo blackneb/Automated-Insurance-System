@@ -2,7 +2,10 @@ import React from 'react'
 import { Button, Checkbox, Form, Input, Upload} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
-const AccountSetup = () => {
+const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
+  const Done = () => {
+    
+  }
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -23,21 +26,34 @@ const AccountSetup = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input />
-        </Form.Item>
+        <div className='flex flex-col h-[32rem]'>
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+        </div>
+        <div className='flex flex-row justify-center'>
+          <Button style={{ margin: '0 8px' }} type="default" htmlType="submit" onClick={() => Done()}>
+            Done
+          </Button>
+          <Button style={{ margin: '0 8px' }} type="default" onClick={() => prev()}>
+            Prev
+          </Button>
+          <Button style={{ margin: '0 8px' }} onClick={() => { setCreateAccountReterive(false) }}>
+            Back to Login
+          </Button>
+        </div>
       </Form>
     </div>
   )

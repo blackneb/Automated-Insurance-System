@@ -5,20 +5,6 @@ import BasicInformation from './Account Create/BasicInformation';
 import Address from './Account Create/Address';
 
 const Signup = ({setCreateAccount}:any) => {
-  const steps = [
-    {
-      title: 'Basic Information',
-      content: <BasicInformation/>,
-    },
-    {
-      title: 'Address',
-      content: <Address/> ,
-    },
-    {
-      title: 'Account Setup',
-      content: <AccountSetup/> ,
-    },
-  ];
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
@@ -29,6 +15,25 @@ const Signup = ({setCreateAccount}:any) => {
   const prev = () => {
     setCurrent(current - 1);
   };
+  const setCreateAccountReterive = () => {
+    setCreateAccount(false);
+  };
+
+  const steps = [
+    {
+      title: 'Basic Information',
+      content: <BasicInformation next={next} setCreateAccountReterive={setCreateAccountReterive} />,
+    },
+    {
+      title: 'Address',
+      content: <Address next={next} prev={prev} setCreateAccountReterive={setCreateAccountReterive}/> ,
+    },
+    {
+      title: 'Account Setup',
+      content: <AccountSetup prev={prev} setCreateAccountReterive={setCreateAccountReterive}/> ,
+    },
+  ];
+  
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
@@ -65,9 +70,9 @@ const Signup = ({setCreateAccount}:any) => {
 
       <div className='flex flex-col justify-center mx-4 mt-4'>
         <Steps current={current} items={items} />
-        <div className='h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>{steps[current].content}</div>
+        <div className='scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>{steps[current].content}</div>
         <div className='flex justify-center mt-10'>
-          {current < steps.length - 1 && (
+          {/* {current < steps.length - 1 && (
             <Button type="default" onClick={() => next()}>
               Next
             </Button>
@@ -84,7 +89,7 @@ const Signup = ({setCreateAccount}:any) => {
           )}
           <Button style={{ margin: '0 8px' }} onClick={() => { setCreateAccount(false) }}>
               Back to Login
-            </Button>
+            </Button> */}
         </div>
       </div>
     </div>
