@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { add_basic_information } from '../../redux/Actions';
 
 const BasicInformation = ({next,setCreateAccountReterive}:any) => {
+  const basicInformationDefaultValue = useSelector((state:any) => state.basicInformation);
   const dispatch = useDispatch();
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -22,7 +23,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
       labelCol={{ span: 30 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
+      initialValues={basicInformationDefaultValue}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -33,7 +34,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
             name="firstName"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input />
+            <Input defaultValue={basicInformationDefaultValue.firstName} />
           </Form.Item>
 
           <Form.Item
@@ -41,7 +42,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
             name="lastName"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input />
+            <Input defaultValue={basicInformationDefaultValue.lastName} />
           </Form.Item>
 
           {/* <Form.Item 

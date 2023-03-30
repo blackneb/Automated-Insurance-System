@@ -6,6 +6,7 @@ import { add_address } from '../../redux/Actions';
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const Address = ({next,prev,setCreateAccountReterive}:any) => {
+    const addressDefaultValue = useSelector((state:any) => state.address);
     const dispatch = useDispatch();
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
@@ -25,7 +26,7 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
       labelCol={{ span: 30 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
+      initialValues={addressDefaultValue}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -39,25 +40,25 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
 
         <h3 className='mb-2'>Residential Address:</h3>
         <Form.Item label="Sub City" name="residentialSubCity" rules={[{ required: true, message: 'Please input Residential Subcity!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialSubCity} />
         </Form.Item>
         <Form.Item label="Woreda" name="residentialWoreda" rules={[{ required: true, message: 'Please input Residential Woreda!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialWoreda} />
         </Form.Item>
         <Form.Item label="Kebele" name="residentialKebele" rules={[{ required: true, message: 'Please input Residential kebele!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialKebele} />
         </Form.Item>
         <Form.Item label="H.Number" name="residentialHouseNumber" rules={[{ required: true, message: 'Please input Residential House Number!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialHouseNumber} />
         </Form.Item>
         <Form.Item label="P.O.Box" name="residentialPOBox" rules={[{ required: true, message: 'Please input Residential P.O.Box!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialPOBox} />
         </Form.Item>
         <Form.Item label="Phone" name="residentialPhone" rules={[{ required: true, message: 'Please input Residential Phone!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialPhone} />
         </Form.Item>
         <Form.Item label="Email" name="residentialEmail" rules={[{ required: true, message: 'Please input Residential Email!' }]}>
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.residentialEmail} />
         </Form.Item>
 
         </div>
@@ -66,28 +67,28 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
 
         <h3 className='mb-2'>Bussiness Address:</h3>
         <Form.Item label="Sub City" name="bussinessSubCity">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessSubCity} />
         </Form.Item>
         <Form.Item label="Woreda" name="bussinessWoreda">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessWoreda} />
         </Form.Item>
         <Form.Item label="Kebele" name="bussinessKebele">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessKebele}/>
         </Form.Item>
         <Form.Item label="H.Number" name="bussinessHouseNumber">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessHouseNumber}/>
         </Form.Item>
         <Form.Item label="P.O.Box" name="bussinessPOBox">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessPOBox}/>
         </Form.Item>
         <Form.Item label="Phone" name="bussinessPhone">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessPhone}/>
         </Form.Item>
         <Form.Item label="Email" name="bussinessEmail">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessEmail}/>
         </Form.Item>
         <Form.Item label="Fax" name="bussinessFax">
-          <Input placeholder="" />
+          <Input placeholder="" defaultValue={addressDefaultValue.bussinessFax}/>
         </Form.Item>
 
         </div>

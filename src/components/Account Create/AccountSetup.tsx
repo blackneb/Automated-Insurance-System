@@ -6,6 +6,7 @@ import { add_account_set_up } from '../../redux/Actions';
 
 const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
   const dispatch = useDispatch();
+  const accountSetupDefaultValues = useSelector((state:any) => state.accountSetup);
   const Done = () => {
     
   }
@@ -25,7 +26,7 @@ const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
         labelCol={{ span: 30 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
+        initialValues={accountSetupDefaultValues}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -33,10 +34,10 @@ const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
         <div className='flex flex-col h-[32rem]'>
           <Form.Item
             label="Username"
-            name="username"
+            name="userName"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input />
+            <Input defaultValue={accountSetupDefaultValues.userName} />
           </Form.Item>
 
           <Form.Item
@@ -44,7 +45,7 @@ const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password />
+            <Input.Password defaultValue={accountSetupDefaultValues.password} />
           </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
