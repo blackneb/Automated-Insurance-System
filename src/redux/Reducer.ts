@@ -6,6 +6,7 @@ const initialStateBreadCrumb:any[] = [
 const initialStateBasicInformation:any={
     firstName:"",
     lastName:"",
+    profileImage:"",
 }
 const initialStateAddress:any={
     residentialSubCity:"",

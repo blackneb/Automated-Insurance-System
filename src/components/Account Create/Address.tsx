@@ -23,9 +23,9 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
     <div className='flex justify-center my-4'>
       <Form
       name="basic"
-      labelCol={{ span: 30 }}
-      wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
+      labelCol={{ flex: '100px', span: 30 }}
+      labelAlign="left"
+      labelWrap
       initialValues={addressDefaultValue}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -54,10 +54,10 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
         <Form.Item label="P.O.Box" name="residentialPOBox" rules={[{ required: true, message: 'Please input Residential P.O.Box!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="Phone" name="residentialPhone" rules={[{ required: true, message: 'Please input Residential Phone!' }]}>
-          <Input placeholder=""/>
+        <Form.Item label="Phone" name="residentialPhone" rules={[{pattern: /^[\+]?[0-9]{3}[-\s\.]?[0-9]{9}$/,message: 'Please enter a valid Phone Number'},{ required: true, message: 'Please input Residential Phone!' }]}>
+          <Input placeholder="+251..."/>
         </Form.Item>
-        <Form.Item label="Email" name="residentialEmail" rules={[{ required: true, message: 'Please input Residential Email!' }]}>
+        <Form.Item label="Email" name="residentialEmail" rules={[{type: 'email',message: 'The input is not valid E-mail!'},{ required: true, message: 'Please input Residential Email!' }]}>
           <Input placeholder=""/>
         </Form.Item>
 
@@ -66,28 +66,28 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
         <div className='mx-4'>
 
         <h3 className='mb-2'>Bussiness Address:</h3>
-        <Form.Item label="Sub City" name="bussinessSubCity">
+        <Form.Item label="Sub City" name="bussinessSubCity" rules={[{ required: true, message: 'Please input Bussiness Subcity!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="Woreda" name="bussinessWoreda">
+        <Form.Item label="Woreda" name="bussinessWoreda" rules={[{ required: true, message: 'Please input Bussiness Woreda!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="Kebele" name="bussinessKebele">
+        <Form.Item label="Kebele" name="bussinessKebele" rules={[{ required: true, message: 'Please input Bussiness Kebele!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="H.Number" name="bussinessHouseNumber">
+        <Form.Item label="H.Number" name="bussinessHouseNumber" rules={[{ required: true, message: 'Please input Bussiness House Number!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="P.O.Box" name="bussinessPOBox">
+        <Form.Item label="P.O.Box" name="bussinessPOBox" rules={[{ required: true, message: 'Please input Bussiness POBox!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="Phone" name="bussinessPhone">
+        <Form.Item label="Phone" name="bussinessPhone" rules={[{pattern: /^[\+]?[0-9]{3}[-\s\.]?[0-9]{9}$/,message: 'Please enter a valid Phone Number'},{ required: true, message: 'Please input Bussiness Phone!' }]}>
+          <Input placeholder="+251..."/>
+        </Form.Item>
+        <Form.Item label="Email" name="bussinessEmail" rules={[{type: 'email',message: 'The input is not valid E-mail!'},{ required: true, message: 'Please input Bussiness Email!' }]}>
           <Input placeholder=""/>
         </Form.Item>
-        <Form.Item label="Email" name="bussinessEmail">
-          <Input placeholder=""/>
-        </Form.Item>
-        <Form.Item label="Fax" name="bussinessFax">
+        <Form.Item label="Fax" name="bussinessFax" rules={[{ required: true, message: 'Please input Bussiness Fax!' }]}>
           <Input placeholder=""/>
         </Form.Item>
 
