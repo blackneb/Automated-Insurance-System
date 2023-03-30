@@ -1,2 +1,6 @@
 export const URL =  "";
 export const ADD_BREADCRUMB = 'ADD_BREADCRUMB';
+export const ADD_BASIC_INFORMATION = 'ADD_BASIC_INFORMATION';
+export const ADD_ADDRESS = 'ADD_ADDRESS';
+export const ADD_ACCOUNT_SET_UP = 'ADD_ACCOUNT_SETUP';
+
