@@ -34,7 +34,7 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
             name="firstName"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input defaultValue={basicInformationDefaultValue.firstName} />
+            <Input />
           </Form.Item>
 
           <Form.Item
@@ -42,21 +42,29 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
             name="lastName"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input defaultValue={basicInformationDefaultValue.lastName} />
+            <Input />
           </Form.Item>
 
-          {/* <Form.Item 
+          <Form.Item 
             label="Profile Image" 
             name="profileImage"
-            valuePropName="fileList"
             rules={[{ required: true, message: 'Please input your Profile Image!' }]}>
-            <Upload action="/upload.do" listType="picture-card">
+            <Upload listType="picture-card" beforeUpload={(file:any) =>{
+              return new Promise((resolve:any,reject:any) => {
+                if(file.size > 2){
+                  reject("File size exceed");
+                }
+                else{
+                  resolve("Success");
+                }
+              })
+            }} >
               <div className=''>
                 <PlusOutlined/>
                 <div style={{ marginTop: 8 }}>Upload</div>
               </div>
             </Upload>
-          </Form.Item> */}
+          </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
           <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">

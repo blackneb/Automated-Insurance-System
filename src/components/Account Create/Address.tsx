@@ -40,25 +40,25 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
 
         <h3 className='mb-2'>Residential Address:</h3>
         <Form.Item label="Sub City" name="residentialSubCity" rules={[{ required: true, message: 'Please input Residential Subcity!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialSubCity} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Woreda" name="residentialWoreda" rules={[{ required: true, message: 'Please input Residential Woreda!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialWoreda} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Kebele" name="residentialKebele" rules={[{ required: true, message: 'Please input Residential kebele!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialKebele} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="H.Number" name="residentialHouseNumber" rules={[{ required: true, message: 'Please input Residential House Number!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialHouseNumber} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="P.O.Box" name="residentialPOBox" rules={[{ required: true, message: 'Please input Residential P.O.Box!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialPOBox} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Phone" name="residentialPhone" rules={[{ required: true, message: 'Please input Residential Phone!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialPhone} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Email" name="residentialEmail" rules={[{ required: true, message: 'Please input Residential Email!' }]}>
-          <Input placeholder="" defaultValue={addressDefaultValue.residentialEmail} />
+          <Input placeholder=""/>
         </Form.Item>
 
         </div>
@@ -67,28 +67,28 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
 
         <h3 className='mb-2'>Bussiness Address:</h3>
         <Form.Item label="Sub City" name="bussinessSubCity">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessSubCity} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Woreda" name="bussinessWoreda">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessWoreda} />
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Kebele" name="bussinessKebele">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessKebele}/>
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="H.Number" name="bussinessHouseNumber">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessHouseNumber}/>
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="P.O.Box" name="bussinessPOBox">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessPOBox}/>
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Phone" name="bussinessPhone">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessPhone}/>
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Email" name="bussinessEmail">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessEmail}/>
+          <Input placeholder=""/>
         </Form.Item>
         <Form.Item label="Fax" name="bussinessFax">
-          <Input placeholder="" defaultValue={addressDefaultValue.bussinessFax}/>
+          <Input placeholder=""/>
         </Form.Item>
 
         </div>
