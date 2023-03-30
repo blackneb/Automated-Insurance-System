@@ -1,14 +1,18 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_account_set_up } from '../../redux/Actions';
 
 const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
+  const dispatch = useDispatch();
   const Done = () => {
     
   }
 
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    dispatch(add_account_set_up(values));
   };
   
   const onFinishFailed = (errorInfo: any) => {

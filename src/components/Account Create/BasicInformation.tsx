@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
 import { Button, Form, Input, Radio, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_basic_information } from '../../redux/Actions';
 
 const BasicInformation = ({next,setCreateAccountReterive}:any) => {
+  const dispatch = useDispatch();
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    dispatch(add_basic_information(values));
     next();
   };
   

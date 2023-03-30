@@ -1,13 +1,17 @@
 import React, {useState} from 'react'
 import { Button, Form, Input, Radio, Upload } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_address } from '../../redux/Actions';
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const Address = ({next,prev,setCreateAccountReterive}:any) => {
+    const dispatch = useDispatch();
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
     const onFinish = (values: any) => {
       console.log('Success:', values);
+      dispatch(add_address(values));
       next();
     };
     
