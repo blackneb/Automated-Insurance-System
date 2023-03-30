@@ -34,25 +34,25 @@ const Address = ({next,prev,setCreateAccountReterive}:any) => {
       <div className='mx-4'>
 
         <h3 className='mb-2'>Residential Address:</h3>
-        <Form.Item label="Sub City" name="residentialSubCity">
+        <Form.Item label="Sub City" name="residentialSubCity" rules={[{ required: true, message: 'Please input Residential Subcity!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="Woreda" name="residentialWoreda">
+        <Form.Item label="Woreda" name="residentialWoreda" rules={[{ required: true, message: 'Please input Residential Woreda!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="Kebele" name="residentialKebele">
+        <Form.Item label="Kebele" name="residentialKebele" rules={[{ required: true, message: 'Please input Residential kebele!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="H.Number" name="residentialHouseNumber">
+        <Form.Item label="H.Number" name="residentialHouseNumber" rules={[{ required: true, message: 'Please input Residential House Number!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="P.O.Box" name="residentialPOBox">
+        <Form.Item label="P.O.Box" name="residentialPOBox" rules={[{ required: true, message: 'Please input Residential P.O.Box!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="Phone" name="residentialPhone">
+        <Form.Item label="Phone" name="residentialPhone" rules={[{ required: true, message: 'Please input Residential Phone!' }]}>
           <Input placeholder="" />
         </Form.Item>
-        <Form.Item label="Email" name="residentialEmail">
+        <Form.Item label="Email" name="residentialEmail" rules={[{ required: true, message: 'Please input Residential Email!' }]}>
           <Input placeholder="" />
         </Form.Item>
 
