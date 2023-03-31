@@ -1,11 +1,16 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload, Select,} from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_other_insurance } from '../../redux/Actions';
+
 const { Option } = Select;
 
-
 const OtherInsurance = ({next,prev}:any) => {
+    const dispatch = useDispatch();
+    const otherInsuranceDefaultValues = useSelector((state:any) => state.otherInsurance);
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(add_other_insurance(values));
         next();
       };
       
@@ -18,6 +23,7 @@ const OtherInsurance = ({next,prev}:any) => {
         name="basic"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        initialValues={otherInsuranceDefaultValues}
         autoComplete="off"
         labelCol={{ flex: '225px', span: 30 }}
         labelAlign="left"

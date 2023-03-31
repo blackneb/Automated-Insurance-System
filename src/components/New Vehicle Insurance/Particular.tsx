@@ -40,7 +40,7 @@ const Particular = ({next}:any) => {
                         noStyle
                         rules={[{ required: true, message: 'plate code is required' }]}
                         >
-                        <Input style={{ width: '20%' }} placeholder="Code" />
+                        <InputNumber style={{ width: '20%' }} placeholder="Code" />
                         </Form.Item>
                         <Form.Item
                         name='plateCountry'
@@ -112,7 +112,7 @@ const Particular = ({next}:any) => {
                 name="manufactureYear"
                 rules={[{ required: true, message: 'Please input your manufacture year !' }]}
                 >
-                <Input/>
+                <InputNumber/>
                 </Form.Item>
 
                 <Form.Item

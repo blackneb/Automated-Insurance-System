@@ -44,11 +44,36 @@ const initialStateParticular:any={
     passengersCarry:"",
     currentEstimation:"",
 };
-const initialStateExtraFitting:any={};
-const initialStateAccidentBefore:any={};
-const initialStateOtherInsurance:any={};
-const initialStateAdditionalInfo:any={};
-const initialStateDateAppointment:any={};
+const initialStateExtraFitting:any={
+    radio:"",
+    communication:"",
+    BCD:"",
+};
+const initialStateAccidentBefore:any={
+    accidentDate:"",
+    vehicleDamage:"",
+    personalInjury:"",
+    propertyDamage:"",
+};
+const initialStateOtherInsurance:any={
+    decline:"",
+    refuse:"",
+    cancel:"",
+    require:"",
+    iae:"",
+    isc:"",
+};
+const initialStateAdditionalInfo:any={
+    coverRequired:"",
+    driversCovered:"",
+    firstName:"",
+    lastName:"",
+    vehiclePurpose:"",
+    BSG:"",
+};
+const initialStateDateAppointment:any={
+    appointmentDate:"",
+};
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
     switch(type){

@@ -1,10 +1,15 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload} from 'antd';
 import { DatePicker, Space } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_accident_before } from '../../redux/Actions';
 
 const AccidentBefore = ({next,prev}:any) => {
+    const dispatch = useDispatch();
+    const accidentBeforeDefaultValues = useSelector((state:any) => state.accidentBefore);
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(add_accident_before(values));
         next();
       };
       
@@ -19,6 +24,7 @@ const AccidentBefore = ({next,prev}:any) => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
+            initialValues={accidentBeforeDefaultValues}
             labelCol={{ flex: '120px', span: 30 }}
             labelAlign="left"
             labelWrap

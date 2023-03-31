@@ -1,12 +1,15 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload, Select} from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_additional_info } from '../../redux/Actions';
 const { Option } = Select;
 
-
-
 const AdditionalInformations = ({next,prev}:any) => {
+    const dispatch = useDispatch();
+    const additionalInfoDefaultValues = useSelector((state:any) => state.additionalInfo);
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(add_additional_info(values));
         next();
       };
       
@@ -20,6 +23,7 @@ const AdditionalInformations = ({next,prev}:any) => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
+            initialValues={additionalInfoDefaultValues}
             labelCol={{ flex: '350px', span: 30 }}
             labelAlign="left"
             labelWrap
@@ -48,6 +52,7 @@ const AdditionalInformations = ({next,prev}:any) => {
                 </Form.Item>
                 <Form.Item 
                         label="Owner"
+                        rules={[{ required: true, message: 'Please input the Name!' }]}
                         >
                         <Input.Group style={{width:250}} compact>
                             <Form.Item

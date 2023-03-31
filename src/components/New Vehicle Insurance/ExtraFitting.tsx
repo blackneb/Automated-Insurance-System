@@ -1,9 +1,14 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload, InputNumber} from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_extra_fitting } from '../../redux/Actions';
 
 const ExtraFitting = ({next,prev}:any) => {
+    const dispatch = useDispatch();
+    const extraFittingDefaultValues = useSelector((state:any) => state.extraFitting);
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(add_extra_fitting(values));
         next();
       };
       
@@ -17,6 +22,7 @@ const ExtraFitting = ({next,prev}:any) => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
+        initialValues={extraFittingDefaultValues}
         labelCol={{ flex: '300px', span: 30 }}
         labelAlign="left"
         labelWrap

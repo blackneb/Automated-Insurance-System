@@ -1,9 +1,21 @@
 import React from 'react'
 import { DatePicker,Form, Space, Button } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_date_appointment } from '../../redux/Actions';
 
 const DateAppointment = ({prev}:any) => {
+  const dispatch = useDispatch();
+  const dateAppointmentDefaultValues = useSelector((state:any) => state.dateAppointment);
+  const particular = useSelector((state:any) => state.particular);
+  const extraFitting = useSelector((state:any) => state.extraFitting);
+  const otherInsurance = useSelector((state:any) => state.otherInsurance);
+  const accidentBefore = useSelector((state:any) => state.accidentBefore);
+  const additionalInfo = useSelector((state:any) => state.additionalInfo);
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    dispatch(add_date_appointment(values));
+    const submittedData = {...particular, ...extraFitting, ...otherInsurance, ...accidentBefore, ...additionalInfo, ...values};
+    console.log("submitted date: ", submittedData);
   };
   
   const onFinishFailed = (errorInfo: any) => {
@@ -12,8 +24,12 @@ const DateAppointment = ({prev}:any) => {
   return (
     <div className='flex justify-center my-8'>
       <Form
-        name=""
-        labelCol={{ flex: '100px' }}
+        name="basic"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+        initialValues={dateAppointmentDefaultValues}
+        labelCol={{ flex: '150px', span: 30 }}
         labelAlign="left"
         labelWrap
         colon={false}
@@ -21,7 +37,7 @@ const DateAppointment = ({prev}:any) => {
         <div className='flex flex-col h-[32rem]'>
           <Form.Item
               label="Select Date: "
-              name="radio"
+              name="appointmentDate"
               rules={[{ required: true, message: 'Please Select Date!' }]}
               >
               <DatePicker style={{ width:200 }} />
