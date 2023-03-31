@@ -49,12 +49,7 @@ const initialStateExtraFitting:any={
     communication:"",
     BCD:"",
 };
-const initialStateAccidentBefore:any={
-    accidentDate:"",
-    vehicleDamage:"",
-    personalInjury:"",
-    propertyDamage:"",
-};
+const initialStateAccidentBefore:any[]=[];
 const initialStateOtherInsurance:any={
     decline:"",
     refuse:"",

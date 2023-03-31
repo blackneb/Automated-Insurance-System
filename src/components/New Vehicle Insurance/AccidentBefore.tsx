@@ -1,16 +1,26 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { Button, Checkbox, Form, Input, Upload} from 'antd';
 import { DatePicker, Space } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { add_accident_before } from '../../redux/Actions';
 
+export interface accbefore{
+    accidentDate:any;
+    personalInjury:string;
+    propertyDamage:string;
+    vehicleDamage:string;
+}
+
 const AccidentBefore = ({next,prev}:any) => {
+    const [accidentBeforeData, setAccidentBeforeData] = useState<any[]>([]);
     const dispatch = useDispatch();
     const accidentBeforeDefaultValues = useSelector((state:any) => state.accidentBefore);
     const onFinish = (values: any) => {
         console.log('Success:', values);
-        dispatch(add_accident_before(values));
-        next();
+        setAccidentBeforeData([...accidentBeforeData, values]);
+        const accidentBeforeArray = [...accidentBeforeData,values];
+        console.log(accidentBeforeArray);
+        dispatch(add_accident_before(accidentBeforeArray));
       };
       
       const onFinishFailed = (errorInfo: any) => {
@@ -58,18 +68,17 @@ const AccidentBefore = ({next,prev}:any) => {
                     </Form.Item>
                 </div>
                 <div>
-                    <Button>Add</Button>
+                    <Button htmlType="submit">Add</Button>
                 </div>
             </div>
             <div className='flex flex-row justify-center'>
-                <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+                <Button style={{ margin: '0 8px' }} type="default" onClick={()=>next()}>
                     Next
                 </Button>
                 <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                     Previous
                 </Button>
             </div>
-            
         </Form>
         </div>
         

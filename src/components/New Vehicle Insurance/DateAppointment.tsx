@@ -9,12 +9,13 @@ const DateAppointment = ({prev}:any) => {
   const particular = useSelector((state:any) => state.particular);
   const extraFitting = useSelector((state:any) => state.extraFitting);
   const otherInsurance = useSelector((state:any) => state.otherInsurance);
-  const accidentBefore = useSelector((state:any) => state.accidentBefore);
+  const accidentbefore = useSelector((state:any) => state.accidentBefore);
   const additionalInfo = useSelector((state:any) => state.additionalInfo);
   const onFinish = (values: any) => {
     console.log('Success:', values);
     dispatch(add_date_appointment(values));
-    const submittedData = {...particular, ...extraFitting, ...otherInsurance, ...accidentBefore, ...additionalInfo, ...values};
+    const accidentBefore = {...accidentbefore};
+    const submittedData = {...particular, ...extraFitting, ...otherInsurance, accidentBefore, ...additionalInfo, ...values};
     console.log("submitted date: ", submittedData);
   };
   

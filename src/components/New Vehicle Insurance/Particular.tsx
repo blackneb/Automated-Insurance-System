@@ -32,7 +32,6 @@ const Particular = ({next}:any) => {
             <div className='flex flex-col'>
                 <Form.Item 
                     label="Plate Number"
-                    name=""
                     >
                     <Input.Group compact>
                         <Form.Item
