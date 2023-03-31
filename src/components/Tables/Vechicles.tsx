@@ -74,7 +74,7 @@ const Vechicles = ({data}:any) => {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: () => <div><a>View</a></div> ,
+      render: () => <div><Button type='link'>view</Button></div> ,
     },
   ];
 

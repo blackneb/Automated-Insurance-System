@@ -1,6 +1,7 @@
 import React from 'react'
 import Loginvector from '../images/vectorforlogin.jpg'
 import { useForm } from 'react-hook-form'
+import { Button } from 'antd'
 
 interface loginprofile {
   username:string;
@@ -43,7 +44,7 @@ const Login = ({setlog, setCreateAccount}:any) => {
             <hr className="my-6 border-gray-300 w-full"/>
             <div className='flex flex-row justify-between'>
               <p className="">Need an account?</p>
-              <p onClick={()=>{setCreateAccount(true)}} className="text-blue-500 hover:text-blue-700 font-semibold">Create an account</p>
+              <Button type='link' onClick={()=>{setCreateAccount(true)}} className="text-blue-500 hover:text-blue-700 font-semibold">Create an account</Button>
             </div>
           </div>
         </div>

@@ -58,11 +58,11 @@ const UsersMyClaims = ({data}:any) => {
       render: () => <div><Progress percent={100} status="active" /></div> ,
     },
     {
-        title: 'Action',
-        dataIndex: '',
-        key: 'x',
-        render: () => <div><a>View</a></div> ,
-      },
+      title: 'Action',
+      dataIndex: '',
+      key: 'x',
+      render: () => <div><Button type='link'>view</Button></div> ,
+    },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>

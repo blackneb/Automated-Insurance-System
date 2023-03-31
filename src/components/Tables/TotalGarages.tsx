@@ -68,6 +68,12 @@ const TotalGarages = ({data}:any) => {
       sortOrder: sortedInfo.columnKey === 'files' ? sortedInfo.order : null,
       ellipsis: true,
     },
+    {
+      title: 'Action',
+      dataIndex: '',
+      key: 'x',
+      render: () => <div><Button type='link'>view</Button></div> ,
+    },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
