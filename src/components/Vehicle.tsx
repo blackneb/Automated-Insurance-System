@@ -28,9 +28,6 @@ const Vehicle = () => {
       occurence.push(count);
     }
     setOccurence(occurence);
-    console.log(data);
-    console.log(unique);
-    console.log(occurence);
   },[])
 
   return (
