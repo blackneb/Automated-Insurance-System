@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
-import { Button, Space, Table,Input } from 'antd';
+import { Button, Space, Table,Input, Modal } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {users} from '../../data/users';
+import UsersModal from '../Modals/UsersModal';
 const { Search } = Input;
 
 interface DataType{
@@ -18,6 +19,7 @@ interface DataType{
 const TotalUsers = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -28,6 +30,9 @@ const TotalUsers = ({data}:any) => {
     console.log('Various parameters', pagination, filters, sorter);
     setSortedInfo(sorter as SorterResult<DataType>);
   };
+  const onViewRow = (record:any) => {
+    setOpenModal(true);
+  }
 
   const columns: ColumnsType<DataType> = [
     {
@@ -74,11 +79,21 @@ const TotalUsers = ({data}:any) => {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: () => <div><Button type='link'>view</Button></div> ,
+      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
     },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
+      <Modal
+        title="Users Information"
+        style={{ top: 20 }}
+        open={openModal}
+        onOk={() => setOpenModal(false)}
+        onCancel={() => setOpenModal(false)}
+        width={1200}
+      >
+        < UsersModal />
+      </Modal>
       <p>Total Users</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
       <Table columns={columns} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
