@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT } from "./ActionTypes";
+import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT, ADD_USER_TYPE } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -69,6 +69,9 @@ const initialStateAdditionalInfo:any={
 const initialStateDateAppointment:any={
     appointmentDate:"",
 };
+
+const initialStateUserType:any={
+}
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
     switch(type){
@@ -168,3 +171,13 @@ export const dateAppointmentReducers = (state=initialStateDateAppointment,action
             return state;
     };
 };
+
+export const userTypeReducers = (state=initialStateUserType, action:any)=>{
+    const { type, payload } = action;
+    switch(type){
+        case ADD_USER_TYPE:
+            return payload;
+        default:
+            return state;
+    }
+}

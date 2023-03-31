@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT } from "./ActionTypes";
+import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT, ADD_USER_TYPE } from "./ActionTypes";
 
 export const add_breadcrumb = (breadcrumb:any) => {
     return{
@@ -67,5 +67,12 @@ export const add_date_appointment = (dateappointment:any) => {
     return{
         type:ADD_DATE_APPOINTMENT,
         payload:dateappointment,
+    };
+};
+
+export const add_user_type=(usertype:any)=>{
+    return{
+        type:ADD_USER_TYPE,
+        payload:usertype,
     };
 };
