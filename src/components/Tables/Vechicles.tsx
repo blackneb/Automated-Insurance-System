@@ -94,7 +94,7 @@ const Vechicles = ({data}:any) => {
         open={openModal}
         onOk={() => setOpenModal(false)}
         onCancel={() => setOpenModal(false)}
-        width={1000}
+        width={1200}
       >
         <VehiclesModal/>
       </Modal>
