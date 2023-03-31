@@ -1,9 +1,14 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input, Upload, InputNumber} from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_particular } from '../../redux/Actions';
 
 const Particular = ({next}:any) => {
+  const dispatch = useDispatch();
+  const particularDefaultValues = useSelector((state:any) => state.particular);
     const onFinish = (values: any) => {
         console.log('Success:', values);
+        dispatch(add_particular(values));
         next();
       };
       
@@ -16,6 +21,7 @@ const Particular = ({next}:any) => {
         name="basic"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        initialValues={particularDefaultValues}
         autoComplete="off"
         labelCol={{ flex: '150px', span: 30 }}
         labelAlign="left"

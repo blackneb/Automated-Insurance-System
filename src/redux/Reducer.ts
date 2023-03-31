@@ -29,7 +29,21 @@ const initialStateAccountSetup:any={
     userName:"",
     password:"",
 };
-const initialStateParticular:any={};
+const initialStateParticular:any={
+    plateCode:"",
+    plateCountry:"",
+    plateNumber:"",
+    chassisNumber:"",
+    engineNumber:"",
+    model:"",
+    bodyType:"",
+    horsePower:"",
+    cylinderCapacity:"",
+    manufactureYear:"",
+    goodsCarry:"",
+    passengersCarry:"",
+    currentEstimation:"",
+};
 const initialStateExtraFitting:any={};
 const initialStateAccidentBefore:any={};
 const initialStateOtherInsurance:any={};
