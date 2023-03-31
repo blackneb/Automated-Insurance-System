@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP } from "./ActionTypes";
+import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -29,7 +29,12 @@ const initialStateAccountSetup:any={
     userName:"",
     password:"",
 };
-
+const initialStateParticular:any={};
+const initialStateExtraFitting:any={};
+const initialStateAccidentBefore:any={};
+const initialStateOtherInsurance:any={};
+const initialStateAdditionalInfo:any={};
+const initialStateDateAppointment:any={};
 export const breadcrumbReducers = ( state=initialStateBreadCrumb, action:any ) => {
     const { type,payload } = action;
     switch(type){
@@ -67,5 +72,65 @@ export const accountSetupReducers = (state=initialStateAccountSetup, action:any)
             return payload;
         default:
             return state;
-    }
-}
+    };
+};
+
+export const particularReducers = (state=initialStateParticular,action:any) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_PARTICULAR:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const extraFittingReducers = (state=initialStateExtraFitting, action:any) =>{
+    const { type, payload } = action;
+    switch(type){
+        case ADD_EXTRA_FITTING:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const accidentBeforeReducers = (state=initialStateAccidentBefore, action:any) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_ACCIDENT_BEFORE:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const otherInsuranceReducers = (state=initialStateOtherInsurance, action:any) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_OTHER_INSURANCE:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const additionalInfoReducers = (state=initialStateAdditionalInfo, action:any) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_ADDITIONAL_INFO:
+            return payload;
+        default:
+            return state;
+    };
+};
+
+export const dateAppointmentReducers = (state=initialStateDateAppointment,action:any) => {
+    const { type, payload } = action;
+    switch(type){
+        case ADD_DATE_APPOINTMENT:
+            return payload;
+        default:
+            return state;
+    };
+};
