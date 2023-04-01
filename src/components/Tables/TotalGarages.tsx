@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
-import { Button, Space, Table,Input } from 'antd';
+import { Button, Space, Table,Input, Modal } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
+import GarageModal from '../Modals/GarageModal';
 const { Search } = Input;
 
 interface DataType{
@@ -16,6 +17,7 @@ interface DataType{
 const TotalGarages = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -26,6 +28,9 @@ const TotalGarages = ({data}:any) => {
     console.log('Various parameters', pagination, filters, sorter);
     setSortedInfo(sorter as SorterResult<DataType>);
   };
+  const onViewRow = (record:any) => {
+    setOpenModal(true);
+  }
 
   const columns: ColumnsType<DataType> = [
     {
@@ -72,11 +77,21 @@ const TotalGarages = ({data}:any) => {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: () => <div><Button type='link'>view</Button></div> ,
+      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
     },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
+      <Modal
+        title="Garages"
+        style={{ top: 20 }}
+        open={openModal}
+        onOk={() => setOpenModal(false)}
+        onCancel={() => setOpenModal(false)}
+        width={1200}
+      >
+        < GarageModal />
+      </Modal>
       <p>Total Garages</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
       <Table columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
