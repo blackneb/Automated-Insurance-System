@@ -14,27 +14,25 @@ import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FilePr
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
-
+    const [userType, setUserType] = useState("proposer");
     const Menus = [
-        { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>},
-        { title: 'Analytics', path: '/analytics', src: <SiFuturelearn /> },
-        { title: 'Users', path: '/users', src: <CgProfile /> },
-        { title:'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false'},
-        { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined /> },
-        { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />},
-        { title: 'New Health Insurance', path: '/newhealthinsurance', src: <PlusOutlined />},
-        { title: 'My Claims', path: '/userclaims', src: <SiAcclaim /> },
-        { title: 'History', path: '/userhistory', src: <HistoryOutlined /> },
-        { title: 'Bids', path: '/bids', src: <ProfileOutlined /> },
-        { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>},
-        { title: 'Subitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />},
-        { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>},
-        { title: 'Claims', path: '/expertclaims', src: <SiAcclaim /> },
-        { title: 'Progress', path: '/expertprogress', src: <PercentageOutlined /> },
-        
-        
-        
+        { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+        { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
+        { title: 'Users', path: '/users', src: <CgProfile />, auth:"admin" },
+        { title:'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
+        { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined />, auth:"admin" },
+        { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />, auth:"proposer"},
+        { title: 'New Health Insurance', path: '/newhealthinsurance', src: <PlusOutlined />, auth:"proposer"},
+        { title: 'My Claims', path: '/userclaims', src: <SiAcclaim />, auth:"proposer" },
+        { title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
+        { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
+        { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
+        { title: 'Subitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
+        { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
+        { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
+        { title: 'Progress', path: '/expertprogress', src: <PercentageOutlined />, auth:"expert" },    
     ]
+    const sideBarLists = Menus.filter((items:any) => items.auth === userType);
 
     return (
         <>
