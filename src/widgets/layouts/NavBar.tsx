@@ -6,6 +6,16 @@ import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 
+import { BsArrowLeftCircle } from 'react-icons/bs'
+import { AiFillPieChart } from 'react-icons/ai'
+import { SiFuturelearn } from 'react-icons/si'
+import { SiOpenaccess,SiAcclaim } from 'react-icons/si'
+import { CgProfile } from 'react-icons/cg'
+import { AiFillCar } from 'react-icons/ai'
+import { GiMechanicGarage } from 'react-icons/gi'
+import { HiDocumentAdd } from 'react-icons/hi'
+import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
+
 
 const { Search } = Input;
 
@@ -20,6 +30,24 @@ const NavBar = () => {
       { title: 'Calander', path:'/calander'},
       { title: 'Reports', path: '/reports'},
   ]
+
+  const menusMobile = [
+    { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
+    { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
+    { title: 'Users', path: '/users', src: <CgProfile />, auth:"admin" },
+    { title:'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
+    { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined />, auth:"admin" },
+    { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />, auth:"proposer"},
+    { title: 'New Health Insurance', path: '/newhealthinsurance', src: <PlusOutlined />, auth:"proposer"},
+    { title: 'My Claims', path: '/userclaims', src: <SiAcclaim />, auth:"proposer" },
+    { title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
+    { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
+    { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
+    { title: 'Subitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
+    { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
+    { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
+    { title: 'Progress', path: '/expertprogress', src: <PercentageOutlined />, auth:"expert" },    
+]
 
   const items: MenuProps['items'] = [
     {
@@ -147,10 +175,10 @@ const NavBar = () => {
             <div className="md:hidden" id="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {
-                      Menus.map((items:any,index)=> (
-                        <Link to={items.path} key={index} className={`hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium ${
+                      menusMobile.map((items:any,index)=> (
+                        <Link onClick={()=> setIsOpen(false)} to={items.path} key={index} className={`hover:bg-gray-700 bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium ${
                           location.pathname === items.path &&
-                          'bg-gray-50 dark:shadow-lg '
+                          'bg-black dark:shadow-lg '
                       }`}>
                           {items.title}
                         </Link>

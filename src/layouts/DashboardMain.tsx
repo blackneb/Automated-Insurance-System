@@ -49,7 +49,7 @@ function DashboardMain() {
               }              
             </Breadcrumb>
           </div>
-          <div className="scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 " >
+          <div className="scrollbar scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100 " >
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/dashboard' element={<Dashboard />} />

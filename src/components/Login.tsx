@@ -1,7 +1,10 @@
 import React from 'react'
 import Loginvector from '../images/vectorforlogin.jpg'
 import { useForm } from 'react-hook-form'
-import { Button } from 'antd'
+import { Button, Input } from 'antd'
+import { UserOutlined } from '@ant-design/icons';
+import { RiLockPasswordLine } from 'react-icons/ri'
+
 
 interface loginprofile {
   username:string;
@@ -25,12 +28,12 @@ const Login = ({setlog, setCreateAccount}:any) => {
             <form className="mt-6" onSubmit={onSubmit}>
               <div>
                 <label className="block text-gray-700">Email Address</label>
-                <input type="email" name="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"  required/>
+                <Input style={{height:40}} prefix={<UserOutlined/>}/>
               </div>
 
               <div className="mt-4">
                 <label className="block text-gray-700">Password</label>
-                <input type="password" name="" placeholder="Enter Password" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required/>
+                <Input.Password style={{height:40}} prefix={<RiLockPasswordLine/>}/>
               </div>
 
               <div className="text-right mt-2">
