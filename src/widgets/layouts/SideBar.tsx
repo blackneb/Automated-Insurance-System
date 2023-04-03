@@ -10,6 +10,7 @@ import { AiFillCar } from 'react-icons/ai'
 import { GiMechanicGarage } from 'react-icons/gi'
 import { HiDocumentAdd } from 'react-icons/hi'
 import { GrUserExpert } from 'react-icons/gr'
+import { MdAutorenew } from 'react-icons/md'
 import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
 
 const Sidebar = () => {
@@ -32,6 +33,7 @@ const Sidebar = () => {
         { title: 'Submitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
         { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
         { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
+        { title: 'Contract Renewal', path: '/contractrenewal', src: <MdAutorenew />, auth:"expert" },
     ]
     const sideBarLists = Menus.filter((items:any) => items.auth === userType);
 
