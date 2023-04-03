@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import type { TableProps } from 'antd';
-import { Button, Space, Table,Input } from 'antd';
+import { Button, Space, Table,Input, Modal } from 'antd';
 import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {vehicles} from '../../data/vehicles';
+import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import ProgressModal from '../Modals/ProgressModal';
+
 const { Search } = Input;
 
 interface DataType {
@@ -17,6 +20,7 @@ interface DataType {
 const ActiveClaims = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
@@ -27,6 +31,9 @@ const ActiveClaims = ({data}:any) => {
     console.log('Various parameters', pagination, filters, sorter);
     setSortedInfo(sorter as SorterResult<DataType>);
   };
+  const onViewRow = (record:any) => {
+    setOpenModal(true);
+  }
   const columns: ColumnsType<DataType> = [
     {
       title: 'Date',
@@ -48,14 +55,30 @@ const ActiveClaims = ({data}:any) => {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: () => <div><Button type='link'>view</Button></div> ,
+      render: () => <div><Button type='link' onClick={()=>setOpenModal(true)}>view</Button></div> ,
+    },
+    {
+      title: 'Bids',
+      dataIndex: '',
+      key: 'x',
+      render: () => <div><Button icon={<PlusOutlined/>}>Create New Bid</Button></div> ,
     },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
+      <Modal
+        title="Vehicles"
+        style={{ top: 20 }}
+        open={openModal}
+        onOk={() => setOpenModal(false)}
+        onCancel={() => setOpenModal(false)}
+        width={1200}
+      >
+        <ProgressModal/>
+      </Modal>
       <p>New Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{x:200, y: 300 }} style={{ maxWidth:500, minWidth:300 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{x:400, y: 300 }} style={{ maxWidth:700, minWidth:300 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
