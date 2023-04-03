@@ -25,6 +25,7 @@ import GarageSubmittedBids from '../components/GarageSubmittedBids';
 import ExpertNewInsurance from '../components/ExpertNewInsurance';
 import ExpertClaims from '../components/ExpertClaims';
 import ExpertProgress from '../components/ExpertProgress';
+import AdminExperts from '../components/AdminExperts';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -74,6 +75,7 @@ function DashboardMain() {
                 <Route path='/expertnewinsurances' element={ <ExpertNewInsurance/> } />
                 <Route path='/expertclaims' element={ <ExpertClaims/> } />
                 <Route path='/expertprogress' element={ <ExpertProgress/> } />
+                <Route path='/adminexperts' element={ <AdminExperts/> } />
               </Routes>
           </div>
         </div>
