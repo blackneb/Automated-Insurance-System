@@ -6,6 +6,7 @@ import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/inter
 import {vehicles} from '../../data/vehicles';
 import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import ProgressModal from '../Modals/ProgressModal';
+import CreateNewBidModal from '../Modals/CreateNewBidModal';
 
 const { Search } = Input;
 
@@ -21,6 +22,7 @@ const ActiveClaims = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [openModalNewBid, setOpenModalNewBid] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
@@ -61,13 +63,13 @@ const ActiveClaims = ({data}:any) => {
       title: 'Bids',
       dataIndex: '',
       key: 'x',
-      render: () => <div><Button icon={<PlusOutlined/>}>Create New Bid</Button></div> ,
+      render: () => <div><Button onClick={()=>setOpenModalNewBid(true)} icon={<PlusOutlined/>}>Create New Bid</Button></div> ,
     },
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <Modal
-        title="Vehicles"
+        title="On Claim Vehicles"
         style={{ top: 20 }}
         open={openModal}
         onOk={() => setOpenModal(false)}
@@ -75,6 +77,16 @@ const ActiveClaims = ({data}:any) => {
         width={1200}
       >
         <ProgressModal/>
+      </Modal>
+      <Modal
+        title="Create New Bid for Garages"
+        style={{ top: 20 }}
+        open={openModalNewBid}
+        onOk={() => setOpenModalNewBid(false)}
+        onCancel={() => setOpenModalNewBid(false)}
+        width={800}
+      >
+        <CreateNewBidModal/>
       </Modal>
       <p>New Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
