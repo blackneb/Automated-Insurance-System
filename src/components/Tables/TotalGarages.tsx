@@ -94,7 +94,7 @@ const TotalGarages = ({data}:any) => {
       </Modal>
       <p>Total Garages</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

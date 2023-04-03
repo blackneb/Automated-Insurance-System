@@ -84,7 +84,7 @@ const UsersMyClaims = ({data}:any) => {
       </Modal>
       <p>My Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

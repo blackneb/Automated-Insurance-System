@@ -84,7 +84,7 @@ const ClaimProgress = ({data}:any) => {
       </Modal>
       <p>Total Vehicles</p>
       <Input className='mb-2' placeholder="Search with Client name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
