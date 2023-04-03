@@ -27,6 +27,7 @@ import ExpertClaims from '../components/ExpertClaims';
 import ExpertProgress from '../components/ExpertProgress';
 import AdminExperts from '../components/AdminExperts';
 import ContractRenewal from '../components/ContractRenewal';
+import ProposerContract from '../components/ProposerContract';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -78,6 +79,7 @@ function DashboardMain() {
                 <Route path='/expertprogress' element={ <ExpertProgress/> } />
                 <Route path='/adminexperts' element={ <AdminExperts/> } />
                 <Route path='/contractrenewal' element={ <ContractRenewal/> } />
+                <Route path='/proposercontract' element={ <ProposerContract/> } />
               </Routes>
           </div>
         </div>
