@@ -76,7 +76,7 @@ const AdminExpertsTable = ({data}:any) => {
       </Modal>
       <p>Total Experts</p>
       <Input className='mb-2' placeholder="Search With Expert Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 1300 }} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

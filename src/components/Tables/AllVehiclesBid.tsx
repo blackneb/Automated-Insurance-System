@@ -71,7 +71,7 @@ const AllVehiclesBid = ({data}:any) => {
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>Active Bids</p>
       <Input className='mb-2' placeholder="Search with Client name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 1300 }} dataSource={data.filter((items:any) => items.proposer.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} dataSource={data.filter((items:any) => items.proposer.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
