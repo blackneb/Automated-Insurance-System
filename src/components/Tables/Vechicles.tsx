@@ -99,7 +99,7 @@ const Vechicles = ({data}:any) => {
         <VehiclesModal/>
       </Modal>
       <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
-      <Table columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table style={{minHeight:700}} scroll={{ x: 1300 }} columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

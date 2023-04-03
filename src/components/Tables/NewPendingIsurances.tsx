@@ -79,7 +79,7 @@ const NewPendingIsurances = ({data}:any) => {
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>New pending vehicle insurances</p>
       <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
-      <Table columns={columns} dataSource={data.filter((items:any) => items.proposerName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 1300 }} dataSource={data.filter((items:any) => items.proposerName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
