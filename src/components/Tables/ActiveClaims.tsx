@@ -45,20 +45,6 @@ const ActiveClaims = ({data}:any) => {
       ellipsis: true,
     },
     {
-      title: 'Vehcile Owner',
-      dataIndex: 'proposer',
-      key: 'proposer',
-      sorter: (a, b) => a.proposer.length - b.proposer.length,
-      sortOrder: sortedInfo.columnKey === 'proposer' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Progress',
-      dataIndex: '',
-      key: 'x',
-      render: () => <div><Progress percent={100} status="active" /></div> ,
-    },
-    {
       title: 'Action',
       dataIndex: '',
       key: 'x',
@@ -69,7 +55,7 @@ const ActiveClaims = ({data}:any) => {
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>New Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{x:200, y: 300 }} style={{ maxWidth:500, minWidth:300 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

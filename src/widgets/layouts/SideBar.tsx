@@ -15,12 +15,12 @@ import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FilePr
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
-    const [userType, setUserType] = useState("proposer");
+    const [userType, setUserType] = useState("expert");
     const Menus = [
         { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
         { title: 'Users', path: '/users', src: <CgProfile />, auth:"admin" },
-        { title: 'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"admin"},
+        { title: 'Garages',path:'/garages',src:<GiMechanicGarage/>, gap: 'false', auth:"expert"},
         { title: 'Experts', path:'/adminexperts', src:<GrUserExpert/>, auth:"admin" },
         { title: 'Progress', path: '/adminprogress', src: <PercentageOutlined />, auth:"admin" },
         { title: 'New Vehicle Insurance', path: '/newinsurance', src: <PlusOutlined />, auth:"proposer"},
@@ -32,7 +32,6 @@ const Sidebar = () => {
         { title: 'Submitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
         { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
         { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
-        { title: 'Progress', path: '/expertprogress', src: <PercentageOutlined />, auth:"expert" },    
     ]
     const sideBarLists = Menus.filter((items:any) => items.auth === userType);
 
@@ -60,7 +59,7 @@ const Sidebar = () => {
                 </Link>
 
                 <ul className='pt-6'>
-                    {Menus.map((menu, index) => (
+                    {sideBarLists.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
                                 className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-zinc-700 hover:bg-gray-200 dark:hover:bg-white dark:hover:shadow-lg
