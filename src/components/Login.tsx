@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Loginvector from '../images/vectorforlogin.jpg'
 import { useForm } from 'react-hook-form'
 import { Button, Input } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
 import { RiLockPasswordLine } from 'react-icons/ri'
-
+import axios from 'axios';
 
 interface loginprofile {
   username:string;
@@ -16,6 +16,11 @@ const Login = ({setlog, setCreateAccount}:any) => {
   const onSubmit = handleSubmit(()=>{
     setlog(true);
   })
+  useEffect(() => {
+    axios.get("http://localhost:8000").then((response) => {
+      console.log(response.data);
+    })
+  }, [])
   return (
     <div>
       <section className="flex flex-col md:flex-row h-screen items-center">

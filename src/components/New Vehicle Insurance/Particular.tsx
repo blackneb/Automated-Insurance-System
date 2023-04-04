@@ -111,7 +111,7 @@ const Particular = ({next}:any) => {
                 name="manufactureYear"
                 rules={[{ required: true, message: 'Please input your manufacture year !' }]}
                 >
-                <InputNumber/>
+                <InputNumber style={{width:160}}/>
                 </Form.Item>
 
                 <Form.Item
