@@ -17,7 +17,8 @@ const Login = ({setlog, setCreateAccount}:any) => {
     setlog(true);
   })
   useEffect(() => {
-    axios.get("http://localhost:8000").then((response) => {
+
+    axios.post("http://localhost:8000/api/ais/adminlogin",{userName:"abela34",password:"12345"}).then((response) => {
       console.log(response.data);
     })
   }, [])
