@@ -71,9 +71,9 @@ const NavBar = () => {
     {
       key: '3',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#">
+        <div onClick={()=> window.location.reload()}>
           Log out
-        </a>
+        </div>
       ),
       icon: <LogoutOutlined />,
     },
