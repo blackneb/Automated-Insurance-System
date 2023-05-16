@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Select } from 'antd';
+import ChartUsersStatus from './Charts/ChartUsersStatus';
 
 const Analytics = () => {
   const dispatch = useDispatch();
+  const [labels, setLabels] = useState("UserStatusChart");
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Analytics",path:"/analytics"},
   ]
   const onChange = (value: string) => {
     console.log(`selected ${value}`);
+    setLabels(value);
   };
   
   const onSearch = (value: string) => {
@@ -34,67 +37,149 @@ const Analytics = () => {
         }
         options={[
           {
-            value: 'User Status Chart',
+            value: 'UserStatusChart',
             label: 'User Status Chart',
           },
           {
-            value: 'Vehicle Brand Chart',
+            value: 'VehicleBrandChart',
             label: 'Vehicle Brand Chart',
           },
           {
-            value: 'Yearly Claims Chart',
+            value: 'YearlyClaimsChart',
             label: 'Yearly Claims Chart',
           },
           {
-            value: 'Yearly Expenditures Chart',
+            value: 'YearlyExpendituresChart',
             label: 'Yearly Expenditures Chart',
           },
           {
-            value: 'Cover Required Chart',
+            value: 'CoverRequiredChart',
             label: 'Cover Required Chart',
           },
           {
-            value: 'Vehicle Purpose Chart',
+            value: 'VehiclePurposeChart',
             label: 'Vehicle Purpose Chart',
           },
           {
-            value: 'Horse Power Chart',
+            value: 'HorsePowerChart',
             label: 'Horse Power Chart',
           },
           {
-            value: 'Extra Fitting Chart',
+            value: 'ExtraFittingChart',
             label: 'Extra Fitting Chart',
           },
           {
-            value: 'Accident Types Chart',
+            value: 'AccidentTypesChart',
             label: 'Accident Types Chart',
           },
           {
-            value: 'Age Accident Chart',
+            value: 'AgeAccidentChart',
             label: 'Age Accident Chart',
           },
           {
-            value: 'Year Accident Chart',
+            value: 'YearAccidentChart',
             label: 'Year Accident Chart',
           },
           {
-            value: 'Vehicle Speed Accident Chart',
+            value: 'VehicleSpeedAccidentChart',
             label: 'Vehicle Speed Accident Chart',
           },
           {
-            value: 'Road Types Accident Chart',
+            value: 'RoadTypesAccidentChart',
             label: 'Road Types Accident Chart',
           },
           {
-            value: 'Gender Accident Chart',
+            value: 'GenderAccidentChart',
             label: 'Gender Accident Chart',
           },
           {
-            value: 'City Accident Chart',
+            value: 'CityAccidentChart',
             label: 'City Accident Chart',
           },
         ]}
       />
+      <div className='flex justify-center'>
+        {(()=>{
+          switch(labels){
+            case "UserStatusChart":
+              return(
+                <div>
+                  <ChartUsersStatus/>
+                </div>
+              )
+            case "VehicleBrandChart":
+              return(
+                <div>
+                </div>
+              )
+            case "YearlyClaimsChart":
+              return(
+                <div>
+                </div>
+              )
+            case "YearlyExpendituresChart":
+              return(
+                <div>
+                </div>
+              )
+            case "CoverRequiredChart":
+              return(
+                <div>
+                </div>
+              )
+            case "VehiclePurposeChart":
+              return(
+                <div>
+                </div>
+              )
+            case "HorsePowerChart":
+              return(
+                <div>
+                </div>
+              )
+            case "ExtraFittingChart":
+              return(
+                <div>
+                </div>
+              )
+            case "AccidentTypesChart":
+              return(
+                <div>
+                </div>
+              )
+            case "AgeAccidentChart":
+              return(
+                <div>
+                </div>
+              )
+            case "YearAccidentChart":
+              return(
+                <div>
+                </div>
+              )
+            case "VehicleSpeedAccidentChart":
+              return(
+                <div>
+                </div>
+              )
+            case "RoadTypesAccidentChart":
+              return(
+                <div>
+                </div>
+              )
+            case "GenderAccidentChart":
+              return(
+                <div>
+                </div>
+              )
+            case "CityAccidentChart":
+              return(
+                <div>
+                </div>
+              )       
+          }
+        })()}
+      </div>
     </div>
   )
 }
