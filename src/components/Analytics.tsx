@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Select } from 'antd';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
+import ChartVehicleBrand from './Charts/ChartVehicleBrand';
+import ClaimsChartYearly from './Charts/ClaimsChartYearly';
+import MonthlyExpenduters from './Charts/MonthlyExpenduters';
 
 const Analytics = () => {
   const dispatch = useDispatch();
@@ -115,11 +118,13 @@ const Analytics = () => {
             case "YearlyClaimsChart":
               return(
                 <div>
+                  <ClaimsChartYearly/>
                 </div>
               )
             case "YearlyExpendituresChart":
               return(
                 <div>
+                  <MonthlyExpenduters/>
                 </div>
               )
             case "CoverRequiredChart":
