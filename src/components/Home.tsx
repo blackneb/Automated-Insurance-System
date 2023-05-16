@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
 import ClaimsChartYearly from './Charts/ClaimsChartYearly';
+import MonthlyExpenduters from './Charts/MonthlyExpenduters';
 const Home = () => {
   const dispatch = useDispatch();
   const breadcrumb:any[] = [
@@ -107,9 +108,10 @@ const Home = () => {
           </Col>
         </Row>
       </div>
-      <div className='flex flex-row flex-wrap justify-center'>
+      <div className='flex flex-row flex-wrap justify-evenly'>
         <ChartUsersStatus/>
         <ClaimsChartYearly/>
+        <MonthlyExpenduters/>
       </div>
     </div>
   )
