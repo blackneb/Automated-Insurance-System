@@ -3,6 +3,8 @@ import { Card, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
+import ChartUsersStatus from './Charts/ChartUsersStatus';
+import ClaimsChartYearly from './Charts/ClaimsChartYearly';
 const Home = () => {
   const dispatch = useDispatch();
   const breadcrumb:any[] = [
@@ -12,7 +14,7 @@ const Home = () => {
     dispatch(add_breadcrumb(breadcrumb));
   },[])
   return (
-    <div className='mt-4 ml-4'>
+    <div className='mt-4 ml-4 h-screen'>
       <div className='flex flex-row flex-wrap justify-evenly'>
         <Row gutter={16}>
           <Col span={12}>
@@ -90,6 +92,24 @@ const Home = () => {
           </Col>
         </Row>
 
+        <Row gutter={16}>
+          <Col span={12}>
+            <Card className='mx-2 my-2' bordered={false} style={{ width: 300 }}>
+              <Statistic
+                title="Total Garages"
+                value={11.28}
+                precision={2}
+                valueStyle={{ color: '#3f8600' }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
+          </Col>
+        </Row>
+      </div>
+      <div className='flex flex-row flex-wrap justify-center'>
+        <ChartUsersStatus/>
+        <ClaimsChartYearly/>
       </div>
     </div>
   )
