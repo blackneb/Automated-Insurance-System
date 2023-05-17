@@ -99,6 +99,10 @@ const Analytics = () => {
             value: 'CityAccidentChart',
             label: 'City Accident Chart',
           },
+          {
+            value: 'DeathChart',
+            label: 'Death Chart',
+          },
         ]}
       />
       <div className='flex justify-center'>
@@ -181,7 +185,12 @@ const Analytics = () => {
               return(
                 <div>
                 </div>
-              )       
+              )
+            case "DeathChart":
+              return(
+                <div>
+                </div>
+              )          
           }
         })()}
       </div>
