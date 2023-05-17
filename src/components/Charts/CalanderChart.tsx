@@ -36,5 +36,10 @@ export const data = {
 };
 
 export function CalanderChart() {
-  return <PolarArea data={data} />;
+  return(
+    <div className='w-96 bg-white rounded-md p-4 shadow-lg mx-4 mt-4'>
+      <p>Monthly Actions</p>
+      <PolarArea data={data} />
+    </div>
+  ) ;
 }

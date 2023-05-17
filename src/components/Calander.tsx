@@ -19,7 +19,7 @@ const Calander = () => {
   return (
     <div className='mt-4 ml-4 flex flex-row flex-wrap justify-evenly'>
       <CalanderTable data={data} />
-      <div className='max-w-lg'>
+      <div className=''>
        <CalanderChart/>
       </div>
     </div>
