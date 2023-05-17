@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import {calander} from '../data/calander';
 import CalanderTable from './Tables/CalanderTable';
+import { CalanderChart } from './Charts/CalanderChart';
 
 
 const Calander = () => {
@@ -16,8 +17,11 @@ const Calander = () => {
     dispatch(add_breadcrumb(breadcrumb));
   },[])
   return (
-    <div className='mt-4 ml-4'>
+    <div className='mt-4 ml-4 flex flex-row flex-wrap justify-evenly'>
       <CalanderTable data={data} />
+      <div className='max-w-lg'>
+       <CalanderChart/>
+      </div>
     </div>
   )
 }
