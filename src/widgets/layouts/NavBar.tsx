@@ -60,7 +60,16 @@ const NavBar = () => {
       icon: <UserOutlined />,
     },
     {
-      key: '2',
+      key: '1',
+      label: (
+        <Link to='/changepassword' >
+          Password
+        </Link>
+      ),
+      icon: <UserOutlined />,
+    },
+    {
+      key: '3',
       label: (
         <a target="_blank" rel="noopener noreferrer" href="#">
           Settings
@@ -69,7 +78,7 @@ const NavBar = () => {
       icon: <SettingOutlined />,
     },
     {
-      key: '3',
+      key: '4',
       label: (
         <div onClick={()=> window.location.reload()}>
           Log out
