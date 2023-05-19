@@ -60,7 +60,7 @@ const NavBar = () => {
       icon: <UserOutlined />,
     },
     {
-      key: '1',
+      key: '2',
       label: (
         <Link to='/changepassword' >
           Password
