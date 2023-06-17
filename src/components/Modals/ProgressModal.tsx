@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Descriptions, Badge, Progress } from 'antd'
 
 
 const ProgressModal = () => {
+  const [progressNumber, setProgressNumber] = useState(63);
   return (
     <div className=' h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
         <Descriptions bordered>
@@ -12,7 +13,7 @@ const ProgressModal = () => {
             <Descriptions.Item label="Garage Name">+251945698745</Descriptions.Item>
             <Descriptions.Item label="Vehicle Proposer" span={2}>garage@gmail.com</Descriptions.Item>
             <Descriptions.Item label="Vehicle Owner">10</Descriptions.Item>
-            <Descriptions.Item label="Claim Progress" span={2}><Progress percent={25} status="active" /></Descriptions.Item>
+            <Descriptions.Item label="Claim Progress" span={2}><Progress percent={progressNumber} status="active" /></Descriptions.Item>
         </Descriptions>
     </div>
   )
