@@ -4,6 +4,7 @@ import { Button, Space, Table,Input, Modal } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {users} from '../../data/users';
 import UsersModal from '../Modals/UsersModal';
+import ExpertsModal from '../Modals/ExpertsModal';
 const { Search } = Input;
 
 interface DataType{
@@ -73,6 +74,7 @@ const AdminExpertsTable = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
+        <ExpertsModal/>
       </Modal>
       <p>Total Experts</p>
       <Input className='mb-2' placeholder="Search With Expert Name" allowClear onChange={onChange} />

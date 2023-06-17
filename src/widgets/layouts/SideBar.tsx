@@ -16,7 +16,7 @@ import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FilePr
 const Sidebar = () => {
     const [open, setOpen] = useState(true)
     const location = useLocation()
-    const [userType, setUserType] = useState("expert");
+    const [userType, setUserType] = useState("proposer");
     const Menus = [
         { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
