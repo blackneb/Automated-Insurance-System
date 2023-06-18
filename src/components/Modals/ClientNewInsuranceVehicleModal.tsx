@@ -51,32 +51,18 @@ const ClientNewInsuranceVehicleModal = () => {
                 Imposed special conditions: No
                 <br />
             </Descriptions.Item>
+            <Descriptions.Item label="Estimated Insurance Price">45,879 birr</Descriptions.Item>
         </Descriptions>
         <div>
-        <Form
-        name="basic"
-        labelCol={{ span: 30 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <div className='flex flex-row mt-4'>
-            <Form.Item
-                label="Estimated Insurance Price"
-                name="estimatedPrice"
-                rules={[{ required: true, message: 'Please input the Estimated Price!' }]}
-            >
-                <InputNumber style={{ width:200 }} />
-            </Form.Item>
-            <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
-                Contract
-            </Button>
+            <div className='flex flex-row justify-center my-4'>
+                <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+                     Accept Contract
+                </Button>
+
+                <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+                     Decline Contract
+                </Button>
             </div>
-            <div className='flex flex-row justify-center'>
-            </div>
-        </Form>
         </div>
     </div>
   )
