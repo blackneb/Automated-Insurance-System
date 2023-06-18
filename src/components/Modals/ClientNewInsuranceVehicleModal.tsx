@@ -54,6 +54,34 @@ const ClientNewInsuranceVehicleModal = () => {
             <Descriptions.Item label="Estimated Insurance Price">45,879 birr</Descriptions.Item>
         </Descriptions>
         <div>
+        <form method="POST" action="https://api.chapa.co/v1/hosted/pay" >
+            <input type="hidden" name="public_key" value="CHAPUBK_TEST-Ot6L5hmDhbSwv6hpST593wonzQ5LABFQ" />
+            <input type="hidden" name="tx_ref" value="negade-tx-12345678s558" />
+            <input type="hidden" name="amount" value="100" />
+            <input type="hidden" name="currency" value="ETB" />
+            <input type="hidden" name="email" value="antenehsolomon35@gmail.com" />
+            <input type="hidden" name="first_name" value="Israel" />
+            <input type="hidden" name="last_name" value="Goytom" />
+            <input type="hidden" name="title" value="Let us do this" />
+            <input type="hidden" name="description" value="Paying with Confidence with cha" />
+            <input 
+                type="hidden" 
+                name="logo" 
+                value="https://chapa.link/asset/images/chapa_swirl.svg" />
+            <input 
+                type="hidden" 
+                name="callback_url" 
+                value="https://example.com/callbackurl" />
+            <input 
+                type="hidden" 
+                name="return_url" 
+                value="https://localhost:3000" />
+            <input 
+                type="hidden" 
+                name="meta[title]" 
+                value="test" />
+            <button type="submit">Pay Now</button>
+        </form>
             <div className='flex flex-row justify-center my-4'>
                 <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
                      Accept Contract
