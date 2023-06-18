@@ -43,7 +43,7 @@ const Sidebar = () => {
             <div
                 className={`${
                     open ? 'w-60' : 'w-fit'
-                } hidden sm:block relative h-full duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-white`}
+                } hidden sm:block relative h-full duration-300 bg-gray-400 border-r border-gray-400 dark:border-gray-600 p-5 dark:bg-white`}
             >
                 <BsArrowLeftCircle
                     className={`${
@@ -62,7 +62,7 @@ const Sidebar = () => {
                 </Link>
 
                 <ul className='pt-6'>
-                    {Menus.map((menu, index) => (
+                    {sideBarLists.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
                                 className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-zinc-700 hover:bg-gray-200 dark:hover:bg-white dark:hover:shadow-lg

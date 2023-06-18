@@ -10,7 +10,7 @@ const { Search } = Input;
 interface DataType {
   claimDate: string;
   accidentId: string;
-  progress:string;
+  progress:any;
   proposer:string;
   key:string
 }
@@ -59,9 +59,9 @@ const UsersMyClaims = ({data}:any) => {
     },
     {
       title: 'Progress',
-      dataIndex: '',
-      key: 'x',
-      render: () => <div><Progress percent={100} status="active" /></div> ,
+      dataIndex: 'progress',
+      key: 'progress',
+      render: (progress) => <div><Progress percent={progress} status="active" /></div> ,
     },
     {
       title: 'Action',

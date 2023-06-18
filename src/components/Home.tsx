@@ -6,6 +6,7 @@ import { add_breadcrumb } from '../redux/Actions';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
 import ClaimsChartYearly from './Charts/ClaimsChartYearly';
 import MonthlyExpenduters from './Charts/MonthlyExpenduters';
+import CityAccidentChart from './Charts/CityAccidentChart';
 const Home = () => {
   const dispatch = useDispatch();
   const breadcrumb:any[] = [
@@ -15,7 +16,10 @@ const Home = () => {
     dispatch(add_breadcrumb(breadcrumb));
   },[])
   return (
-    <div className='mt-4 ml-4 h-screen'>
+    <div className='mt-2 ml-4 h-screen'>
+        <div className='shadow border-b-2 border-gray-400 mx-2 mb-4'>
+          <h1>Statistics Highlight</h1>
+        </div>
       <div className='flex flex-row flex-wrap justify-evenly'>
         <Row gutter={16}>
           <Col span={12}>
@@ -108,10 +112,14 @@ const Home = () => {
           </Col>
         </Row>
       </div>
+      <div className='shadow border-b-2 border-gray-400 mx-2 my-4'>
+          <h1>Charts Highlight</h1>
+        </div>
       <div className='flex flex-row flex-wrap justify-evenly'>
         <ChartUsersStatus/>
         <ClaimsChartYearly/>
         <MonthlyExpenduters/>
+        <CityAccidentChart/>
       </div>
     </div>
   )
