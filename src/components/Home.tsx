@@ -2,13 +2,16 @@ import React, { useEffect } from 'react'
 import { Card, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
+import { clientnewinsurancevehicle } from '../data/clientnewinsurancevehicle';
 import { add_breadcrumb } from '../redux/Actions';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
 import ClaimsChartYearly from './Charts/ClaimsChartYearly';
 import MonthlyExpenduters from './Charts/MonthlyExpenduters';
 import CityAccidentChart from './Charts/CityAccidentChart';
+import ClientNewPendingIsurances from './Tables/ClientNewPendingInsurances';
 const Home = () => {
   const dispatch = useDispatch();
+  const data:any[] = clientnewinsurancevehicle;
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
   ]
@@ -121,6 +124,7 @@ const Home = () => {
         <MonthlyExpenduters/>
         <CityAccidentChart/>
       </div>
+      <ClientNewPendingIsurances data={data} />
     </div>
   )
 }
