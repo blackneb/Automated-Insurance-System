@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Descriptions, Badge, Form, InputNumber, Button } from 'antd'
 
 
 const ClientNewInsuranceVehicleModal = () => {
+    const [reference, setReference] = useState("");
     const onFinish = async (values: any) => {
         console.log('Success:', values);
       };
@@ -10,6 +11,11 @@ const ClientNewInsuranceVehicleModal = () => {
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
+
+      useEffect(() => {
+        setReference(Date().toString());
+        console.log(reference);
+      }, [])
   return (
     <div className=' h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
         <Descriptions bordered>
@@ -56,8 +62,8 @@ const ClientNewInsuranceVehicleModal = () => {
         <div>
         <form method="POST" action="https://api.chapa.co/v1/hosted/pay" >
             <input type="hidden" name="public_key" value="CHAPUBK_TEST-Ot6L5hmDhbSwv6hpST593wonzQ5LABFQ" />
-            <input type="hidden" name="tx_ref" value="negade-tx-12345678s558" />
-            <input type="hidden" name="amount" value="100" />
+            <input type="hidden" name="tx_ref" value={"aszcdfjlzvkarea"} />
+            <input type="hidden" name="amount" value="25000" />
             <input type="hidden" name="currency" value="ETB" />
             <input type="hidden" name="email" value="antenehsolomon35@gmail.com" />
             <input type="hidden" name="first_name" value="Israel" />
@@ -75,22 +81,23 @@ const ClientNewInsuranceVehicleModal = () => {
             <input 
                 type="hidden" 
                 name="return_url" 
-                value="https://localhost:3000" />
+                value="http://localhost:3000" />
             <input 
                 type="hidden" 
                 name="meta[title]" 
                 value="test" />
-            <button type="submit">Pay Now</button>
-        </form>
+            
             <div className='flex flex-row justify-center my-4'>
                 <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
                      Accept Contract
                 </Button>
 
-                <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">
+                <Button style={{ margin: '0 8px' }} type="default" >
                      Decline Contract
                 </Button>
             </div>
+            
+        </form>
         </div>
     </div>
   )

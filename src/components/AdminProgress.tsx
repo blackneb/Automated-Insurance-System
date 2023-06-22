@@ -5,6 +5,7 @@ import {progress} from '../data/progress';
 import ClaimProgress from './Tables/ClaimProgress';
 
 const AdminProgress = () => {
+  const screenHeight = window.innerHeight;
   const dispatch = useDispatch();  
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},

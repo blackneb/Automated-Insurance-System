@@ -4,6 +4,7 @@ import { Button, Form, Input, Upload} from 'antd';
 
 const ExpertCreateAccount = () => {
     const onFinish = async (values: any) => {
+        alert(JSON.stringify(values, null, 2));
         console.log('Success:', values);
       };
       
