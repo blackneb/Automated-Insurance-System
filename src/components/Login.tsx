@@ -1,12 +1,24 @@
-import React, { useEffect } from 'react'
+import React, {useState,useEffect } from 'react'
 import Loginvector from '../images/vectorforlogin.jpg'
 import { useForm } from 'react-hook-form'
 import { Button, Input, Form, notification } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
 import { RiLockPasswordLine } from 'react-icons/ri'
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { add_user_type } from '../redux/Actions';
 
-type NotificationType = 'success' | 'info' | 'warning' | 'error';
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 
 interface loginprofile {
   username:string;
@@ -14,15 +26,23 @@ interface loginprofile {
 }
 
 const Login = ({setlog, setCreateAccount}:any) => {
-  const [api, contextHolder] = notification.useNotification();
-  const openNotificationWithIcon = (type: NotificationType) => {
-    api[type]({
-      message: 'Notification Title',
-      description:
-        'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-    });
-  };
+  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const [servity, setServity] = useState<any>("error");
+  const vertical = 'top'
+  const horizontal = 'right'
   const {register, handleSubmit} = useForm<loginprofile>();
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   const onFinish = async (values: any) => {
     console.log('Success:', values);
     try {
@@ -32,23 +52,29 @@ const Login = ({setlog, setCreateAccount}:any) => {
         },
       });
       await console.log(response.data);
-      const res =  await axios.post('http://automated.blackneb.com/api/ais/login', values, {
+      try{
+        const res =  await axios.post('http://automated.blackneb.com/api/ais/login', values, {
         headers: {
           Authorization: `Bearer ${response.data.access}`,
           'Content-Type': 'application/json',
         },
       });
-      console.log(res.data)
+      console.log(res.data);
+      dispatch(add_user_type(res.data[0]));
       console.log(res.data[0].username);
       if(res.data[0].status === "pass"){
         setlog(true);
       }
       else{
-        console.log("login error");
+        handleClick();
+      }
+      }
+      catch(error){
+        handleClick();
       }
     } catch (error) {
-      openNotificationWithIcon('error');
       console.error(error);
+      handleClick();
     }
     //setlog(true);
     
@@ -121,6 +147,15 @@ const Login = ({setlog, setCreateAccount}:any) => {
           </div>
         </div>
       </section>
+
+      <Stack spacing={2} sx={{ width: '100%' }}>
+      <Snackbar anchorOrigin={{ vertical, horizontal }} open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={servity} sx={{ width: '100%' }}>
+          login Failed!
+        </Alert>
+      </Snackbar>
+    </Stack>
+
     </div>
   )
 }

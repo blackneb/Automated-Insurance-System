@@ -12,11 +12,13 @@ import { HiDocumentAdd } from 'react-icons/hi'
 import { GrUserExpert } from 'react-icons/gr'
 import { MdAutorenew } from 'react-icons/md'
 import { PlusOutlined, PercentageOutlined,HistoryOutlined,ProfileOutlined,FileProtectOutlined } from '@ant-design/icons'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true)
     const location = useLocation()
-    const [userType, setUserType] = useState("admin");
+    const usertype = useSelector((state:any) => state.userType.accounttype);
+    console.log(usertype);
     const Menus = [
         { title: 'Vehicle', path:'/vehicle', src:<AiFillCar/>, auth:"admin"},
         { title: 'Analytics', path: '/analytics', src: <SiFuturelearn />, auth:"admin" },
@@ -36,7 +38,7 @@ const Sidebar = () => {
         { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },
         { title: 'Contract Renewal', path: '/contractrenewal', src: <MdAutorenew />, auth:"expert" },
     ]
-    const sideBarLists = Menus.filter((items:any) => items.auth === userType);
+    const sideBarLists = Menus.filter((items:any) => items.auth === usertype);
 
     return (
         <>
