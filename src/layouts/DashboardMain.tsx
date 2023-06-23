@@ -35,6 +35,138 @@ import { useSelector } from 'react-redux/es/exports';
 
 function DashboardMain() {
   const breadcrumb = useSelector((state:any) => state.breadcrumb);
+  const MainRoutes = [
+    {
+      path:"/",
+      element:<Home/>,
+      auth:"",
+    },
+    {
+      path:"/dashboard",
+      element:<Dashboard/>,
+      auth:"",
+    },
+    {
+      path:"/profile",
+      element:<Profile />,
+      auth:"",
+    },
+    {
+      path:"/login",
+      element:<Login />,
+      auth:"",
+    },
+    {
+      path:"/vehicle",
+      element:<Vehicle />,
+      auth:"",
+    },
+    {
+      path:"/reports",
+      element:<Reports />,
+      auth:"",
+    },
+    {
+      path:"/users",
+      element:<Users />,
+      auth:"",
+    },
+    {
+      path:"/Analytics",
+      element:<Analytics />,
+      auth:"",
+    },
+    {
+      path:"/calander",
+      element:<Calander />,
+      auth:"",
+    },
+    {
+      path:"/garages",
+      element:<Garages />,
+      auth:"",
+    },
+    {
+      path:"/signup",
+      element:<Signup/>,
+      auth:"",
+    },
+    {
+      path:"/newinsurance",
+      element:<NewInsurance/>,
+      auth:"",
+    },
+    {
+      path:"/adminprogress",
+      element:<AdminProgress/>,
+      auth:"",
+    },
+    {
+      path:"/newhealthinsurance",
+      element:<NewHealthInsurance/>,
+      auth:"",
+    },
+    {
+      path:"/userclaims",
+      element:<UserClaims/>,
+      auth:"",
+    },
+    {
+      path:"/userhistory",
+      element:<UserHistory/>,
+      auth:"",
+    },
+    {
+      path:"/bids",
+      element:<Bids/>,
+      auth:"",
+    },
+    {
+      path:"/garagevehicles",
+      element:<GarageVehicles/>,
+      auth:"",
+    },
+    {
+      path:"/garagesubmittedbids",
+      element:<GarageSubmittedBids/>,
+      auth:"",
+    },
+    {
+      path:"/expertnewinsurances",
+      element:<ExpertNewInsurance/>,
+      auth:"",
+    },
+    {
+      path:"/expertclaims",
+      element:<ExpertClaims/>,
+      auth:"",
+    },
+    {
+      path:"/expertprogress",
+      element:<ExpertProgress/>,
+      auth:"",
+    },
+    {
+      path:"/adminexperts",
+      element:<AdminExperts/>,
+      auth:"",
+    },
+    {
+      path:"/contractrenewal",
+      element:<ContractRenewal/>,
+      auth:"",
+    },
+    {
+      path:"/proposercontract",
+      element:<ProposerContract/>,
+      auth:"",
+    },
+    {
+      path:"/changepassword",
+      element:<ChangePassword/>,
+      auth:"",
+    },
+  ]
   return (
     <div className="App">
       <BrowserRouter>
@@ -55,33 +187,9 @@ function DashboardMain() {
           </div>
           <div className="scrollbar scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100 " >
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/course' element={<Course />} />
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/vehicle' element={<Vehicle />} />
-                <Route path='/reports' element={<Reports />} />
-                <Route path='/users' element={<Users />} />
-                <Route path='/Analytics' element={<Analytics />} />
-                <Route path='/calander' element={<Calander />} />
-                <Route path='/garages' element={<Garages />} />
-                <Route path='/signup' element={<Signup/>} />
-                <Route path='/newinsurance' element={<NewInsurance/>} />
-                <Route path='/adminprogress' element={ <AdminProgress/> } />
-                <Route path='/newhealthinsurance' element={ <NewHealthInsurance/> } />
-                <Route path='/userclaims' element={ <UserClaims/> } />
-                <Route path='/userhistory' element={ <UserHistory/> } />
-                <Route path='/bids' element={ <Bids/> } />
-                <Route path='/garagevehicles' element={ <GarageVehicles/> } />
-                <Route path='/garagesubmittedbids' element={ <GarageSubmittedBids/> } />
-                <Route path='/expertnewinsurances' element={ <ExpertNewInsurance/> } />
-                <Route path='/expertclaims' element={ <ExpertClaims/> } />
-                <Route path='/expertprogress' element={ <ExpertProgress/> } />
-                <Route path='/adminexperts' element={ <AdminExperts/> } />
-                <Route path='/contractrenewal' element={ <ContractRenewal/> } />
-                <Route path='/proposercontract' element={ <ProposerContract/> } />
-                <Route path='/changepassword' element={<ChangePassword/>} />
+                {MainRoutes.map((item:any) => (
+                  <Route path={item.path} element={item.element} />
+                ))}
               </Routes>
           </div>
         </div>
