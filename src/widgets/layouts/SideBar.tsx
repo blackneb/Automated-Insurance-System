@@ -65,6 +65,7 @@ const Sidebar = () => {
                     {sideBarLists.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
+                               key={index}
                                 className={`flex items-center gap-x-2 p-1 text-base font-normal rounded-lg cursor-pointer dark:text-zinc-700 hover:bg-gray-200 dark:hover:bg-white dark:hover:shadow-lg
                         ${menu.gap ? 'mt-4' : 'mt-2'} ${
                                     location.pathname === menu.path &&

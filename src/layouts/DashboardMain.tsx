@@ -187,8 +187,8 @@ function DashboardMain() {
           </div>
           <div className="scrollbar scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100 " >
             <Routes>
-                {MainRoutes.map((item:any) => (
-                  <Route path={item.path} element={item.element} />
+                {MainRoutes.map((item:any, index:any) => (
+                  <Route key={item.path} path={item.path} element={item.element} />
                 ))}
               </Routes>
           </div>
