@@ -49,7 +49,9 @@ const initialStateExtraFitting:any={
     communication:"",
     BCD:"",
 };
-const initialStateAccidentBefore:any[]=[];
+const initialStateAccidentBefore = {
+    accidentBefore:[],
+}
 const initialStateOtherInsurance:any={
     decline:"",
     refuse:"",
@@ -136,7 +138,7 @@ export const accidentBeforeReducers = (state=initialStateAccidentBefore, action:
     const { type, payload } = action;
     switch(type){
         case ADD_ACCIDENT_BEFORE:
-            return payload;
+            return {...state,accidentBefore:[...state.accidentBefore,payload]}
         default:
             return state;
     };

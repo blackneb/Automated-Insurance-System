@@ -34,21 +34,21 @@ const ExtraFitting = ({next,prev}:any) => {
               name="radio"
               rules={[{ required: true, message: 'Please input the amount!' }]}
               >
-              <InputNumber placeholder='Birr' />
+              <Input placeholder='Birr' />
           </Form.Item>
           <Form.Item
               label="Communication Equipment ?"
               name="communication"
               rules={[{ required: true, message: 'Please input the amount!' }]}
               >
-              <InputNumber placeholder='Birr' />
+              <Input placeholder='Birr' />
           </Form.Item>
           <Form.Item
               label="Bull bar, carry boy, droppers extension ?"
               name="BCD"
               rules={[{ required: true, message: 'Please input the amount!' }]}
               >
-              <InputNumber placeholder='Birr' />
+              <Input placeholder='Birr' />
           </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>

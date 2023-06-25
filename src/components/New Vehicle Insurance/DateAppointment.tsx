@@ -11,12 +11,17 @@ const DateAppointment = ({prev}:any) => {
   const otherInsurance = useSelector((state:any) => state.otherInsurance);
   const accidentbefore = useSelector((state:any) => state.accidentBefore);
   const additionalInfo = useSelector((state:any) => state.additionalInfo);
+  const pid:string = useSelector((state:any) => state.userType.proposerID).toString();
   const onFinish = (values: any) => {
     console.log('Success:', values);
     dispatch(add_date_appointment(values));
     const accidentBefore = {...accidentbefore};
-    const submittedData = {...particular, ...extraFitting, ...otherInsurance, accidentBefore, ...additionalInfo, ...values};
-    console.log("submitted date: ", submittedData);
+    const proposerId = {
+      proposerId:pid,
+      expertId:"",
+    }
+    const submittedData = {...particular, ...extraFitting, ...otherInsurance, ...accidentBefore, ...additionalInfo, ...values,...proposerId};
+    console.log(JSON.stringify(submittedData,null,2));
   };
   
   const onFinishFailed = (errorInfo: any) => {
