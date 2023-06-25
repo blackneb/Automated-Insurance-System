@@ -29,6 +29,7 @@ import AdminExperts from '../components/AdminExperts';
 import ContractRenewal from '../components/ContractRenewal';
 import ProposerContract from '../components/ProposerContract';
 import ChangePassword from '../components/ChangePassword';
+import VerifyPayment from '../components/VerifyPayment';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
@@ -139,6 +140,11 @@ function DashboardMain() {
     {
       path:"/expertclaims",
       element:<ExpertClaims/>,
+      auth:"",
+    },
+    {
+      path:"/verifypayment",
+      element:<VerifyPayment/> ,
       auth:"",
     },
     {

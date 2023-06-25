@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { Descriptions, Badge, Form, InputNumber, Button } from 'antd'
+import { useDispatch } from 'react-redux';
+import { add_reference } from '../../redux/Actions';
 
-
-const ClientNewInsuranceVehicleModal = () => {
+const ClientNewInsuranceVehicleModal = ({data}:any) => {
+    const dispatch = useDispatch()
     const [reference, setReference] = useState("");
+    const [transactionReference, setTransactionReference] = useState<string>();
+    const contract_price = data.contract_price;
     const onFinish = async (values: any) => {
         console.log('Success:', values);
       };
@@ -14,12 +18,17 @@ const ClientNewInsuranceVehicleModal = () => {
 
       useEffect(() => {
         setReference(Date().toString());
-        console.log(reference);
+        let date = new Date();
+        let forRef = `${date.getDate()}${date.getMonth() + 1}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
+        let transactionReferences = data.proposer.toString() + "" +  forRef;
+        console.log(transactionReferences)
+        dispatch(add_reference(transactionReferences))
+        setTransactionReference(transactionReferences);
       }, [])
   return (
     <div className=' h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
         <Descriptions bordered>
-            <Descriptions.Item label="Engine Number" span={3}>12345</Descriptions.Item>
+            {/* <Descriptions.Item label="Engine Number" span={3}>12345</Descriptions.Item>
             <Descriptions.Item label="Chassis Number" span={3}>12345</Descriptions.Item>
             <Descriptions.Item label="Plate Number" span={2}>3-AA-B12456</Descriptions.Item>
             <Descriptions.Item label="Body Type">Silver</Descriptions.Item>
@@ -56,14 +65,14 @@ const ClientNewInsuranceVehicleModal = () => {
                 <br />
                 Imposed special conditions: No
                 <br />
-            </Descriptions.Item>
+            </Descriptions.Item> */}
             <Descriptions.Item label="Estimated Insurance Price">45,879 birr</Descriptions.Item>
         </Descriptions>
         <div>
         <form method="POST" action="https://api.chapa.co/v1/hosted/pay" >
             <input type="hidden" name="public_key" value="CHAPUBK_TEST-Ot6L5hmDhbSwv6hpST593wonzQ5LABFQ" />
-            <input type="hidden" name="tx_ref" value={"aszcdfjlzvkarea"} />
-            <input type="hidden" name="amount" value="25000" />
+            <input type="hidden" name="tx_ref" value={transactionReference} />
+            <input type="hidden" name="amount" value={contract_price} />
             <input type="hidden" name="currency" value="ETB" />
             <input type="hidden" name="email" value="antenehsolomon35@gmail.com" />
             <input type="hidden" name="first_name" value="Israel" />
@@ -81,7 +90,7 @@ const ClientNewInsuranceVehicleModal = () => {
             <input 
                 type="hidden" 
                 name="return_url" 
-                value="http://localhost:3000" />
+                value="http://localhost:3000/verifypayment" />
             <input 
                 type="hidden" 
                 name="meta[title]" 

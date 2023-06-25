@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Card, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clientnewinsurancevehicle } from '../data/clientnewinsurancevehicle';
 import { add_breadcrumb } from '../redux/Actions';
 import ChartUsersStatus from './Charts/ChartUsersStatus';
@@ -9,14 +9,20 @@ import ClaimsChartYearly from './Charts/ClaimsChartYearly';
 import MonthlyExpenduters from './Charts/MonthlyExpenduters';
 import CityAccidentChart from './Charts/CityAccidentChart';
 import ClientNewPendingIsurances from './Tables/ClientNewPendingInsurances';
+import axios from 'axios';
+import { add_contract } from '../redux/Actions';
 const Home = () => {
   const dispatch = useDispatch();
   const data:any[] = clientnewinsurancevehicle;
+  const sampleData = useSelector((state:any) => state.contract)
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get("http://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
+      dispatch(add_contract(response.data));
+    })
   },[])
   return (
     <div className='mt-2 ml-4 h-screen'>
@@ -124,7 +130,7 @@ const Home = () => {
         <MonthlyExpenduters/>
         <CityAccidentChart/>
       </div>
-      <ClientNewPendingIsurances data={data} />
+      <ClientNewPendingIsurances data={sampleData} />
     </div>
   )
 }
