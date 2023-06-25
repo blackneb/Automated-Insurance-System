@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form, Input, Tag} from 'antd';
 
 
-const CreateNewBidModal = () => {
+const CreateNewBidModal = ({data}:any) => {
     const [items, setItems] = useState<any[]>([]);
     const onFinish = (values: any) => {
         console.log('Success:', values);

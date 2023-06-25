@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import {progress} from '../data/progress';
 import ActiveClaims from './Tables/ActiveClaims';
 import { Card, Space } from 'antd';
 import ClaimProgress from './Tables/ClaimProgress';
+import axios from 'axios';
 
 
 const ExpertClaims = () => {
   const dispatch = useDispatch();  
+  const [sampleData, setSampleDate] = useState([]);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"claims",path:"/userclaims"},
@@ -16,6 +18,9 @@ const ExpertClaims = () => {
   const data:any[] = progress;
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get("http://ais.blackneb.com/api/ais/getclaims").then((response:any) => {
+      setSampleDate(response.data);
+    })
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
@@ -34,7 +39,7 @@ const ExpertClaims = () => {
               <p>Number</p>
             </Card>
           </div>
-        <ActiveClaims data={data}/>
+        <ActiveClaims data={sampleData}/>
         </div>
         <ClaimProgress data={data}/>
     </div>

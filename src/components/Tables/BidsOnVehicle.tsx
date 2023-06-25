@@ -62,7 +62,6 @@ const BidsOnVehicle = ({data}:any) => {
         { value: 'disabled', label: 'Disabled', disabled: true },
       ]}
     />
-    <Button className='ml-4'>Create New Bid</Button>
       <Table scroll={{x:200, y: 300 }} style={{ maxWidth:500, minWidth:300 }} columns={columns} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )

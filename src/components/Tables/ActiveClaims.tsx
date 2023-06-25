@@ -11,11 +11,11 @@ import CreateNewBidModal from '../Modals/CreateNewBidModal';
 const { Search } = Input;
 
 interface DataType {
-  claimDate: string;
-  accidentId: string;
+  date: string;
+  accident_id: string;
   progress:string;
   proposer:string;
-  key:string
+  id:string
 }
 
 const ActiveClaims = ({data}:any) => {
@@ -23,6 +23,7 @@ const ActiveClaims = ({data}:any) => {
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [openModalNewBid, setOpenModalNewBid] = useState(false);
+  const [ selectedValue, setSelectedValue ] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
@@ -34,23 +35,24 @@ const ActiveClaims = ({data}:any) => {
     setSortedInfo(sorter as SorterResult<DataType>);
   };
   const onViewRow = (record:any) => {
-    setOpenModal(true);
+    setSelectedValue(record);
+    setOpenModalNewBid(true)
   }
   const columns: ColumnsType<DataType> = [
     {
       title: 'Date',
-      dataIndex: 'claimDate',
-      key: 'claimDate',
-      sorter: (a, b) => a.claimDate.length - b.claimDate.length,
+      dataIndex: 'date',
+      key: 'date',
+      sorter: (a, b) => a.date.length - b.date.length,
       sortOrder: sortedInfo.columnKey === 'claimDate' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Accident ID',
-      dataIndex: 'accidentId',
-      key: 'accidentId',
-      sorter: (a, b) => a.accidentId.length - b.accidentId.length,
-      sortOrder: sortedInfo.columnKey === 'accidentId' ? sortedInfo.order : null,
+      dataIndex: 'accident_id',
+      key: 'accident_id',
+      sorter: (a, b) => a.accident_id.length - b.accident_id.length,
+      sortOrder: sortedInfo.columnKey === 'accident_id' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -63,7 +65,7 @@ const ActiveClaims = ({data}:any) => {
       title: 'Bids',
       dataIndex: '',
       key: 'x',
-      render: () => <div><Button onClick={()=>setOpenModalNewBid(true)} icon={<PlusOutlined/>}>Create New Bid</Button></div> ,
+      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} icon={<PlusOutlined/>}>Create New Bid</Button></div> ,
     },
   ];
   return (
@@ -86,11 +88,11 @@ const ActiveClaims = ({data}:any) => {
         onCancel={() => setOpenModalNewBid(false)}
         width={800}
       >
-        <CreateNewBidModal/>
+        <CreateNewBidModal data={selectedValue}/>
       </Modal>
       <p>New Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{x:400, y: 300 }} style={{ maxWidth:700, minWidth:300 }} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{x:400, y: 300 }} style={{ maxWidth:700, minWidth:300 }} dataSource={data} onChange={handleChange} />
     </div>
   )
 }
