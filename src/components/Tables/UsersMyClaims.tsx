@@ -8,17 +8,18 @@ import ProgressModal from '../Modals/ProgressModal';
 const { Search } = Input;
 
 interface DataType {
-  claimDate: string;
-  accidentId: string;
+  date: string;
+  accident_id: string;
   progress:any;
   proposer:string;
-  key:string
+  id:string
 }
 
 const UsersMyClaims = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedvalue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
@@ -30,23 +31,24 @@ const UsersMyClaims = ({data}:any) => {
     setSortedInfo(sorter as SorterResult<DataType>);
   };
   const onViewRow = (record:any) => {
+    setSelectedValue(record);
     setOpenModal(true);
   }
   const columns: ColumnsType<DataType> = [
     {
       title: 'Date',
-      dataIndex: 'claimDate',
-      key: 'claimDate',
-      sorter: (a, b) => a.claimDate.length - b.claimDate.length,
-      sortOrder: sortedInfo.columnKey === 'claimDate' ? sortedInfo.order : null,
+      dataIndex: 'date',
+      key: 'date',
+      sorter: (a, b) => a.date.length - b.date.length,
+      sortOrder: sortedInfo.columnKey === 'date' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Accident ID',
-      dataIndex: 'accidentId',
-      key: 'accidentId',
-      sorter: (a, b) => a.accidentId.length - b.accidentId.length,
-      sortOrder: sortedInfo.columnKey === 'accidentId' ? sortedInfo.order : null,
+      dataIndex: 'accident_id',
+      key: 'accident_id',
+      sorter: (a, b) => a.accident_id.length - b.accident_id.length,
+      sortOrder: sortedInfo.columnKey === 'accident_id' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -80,11 +82,11 @@ const UsersMyClaims = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        <ProgressModal/>
+        <ProgressModal data={selectedvalue}/>
       </Modal>
       <p>My Claims</p>
       <Input className='mb-2' placeholder="Search with Date" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposer.includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

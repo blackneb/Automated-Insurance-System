@@ -7,11 +7,13 @@ import UsersMyClaims from './Tables/UsersMyClaims';
 import VehicleClaimModal from './Modals/VehicleClaimModal';
 import HealthClaimModal from './Modals/HealthClaimModal';
 import { Button, Modal } from 'antd';
+import axios from 'axios';
 
 const UserClaims = () => {
   const dispatch = useDispatch();
   const [openModalVehicle, setOpenModalVehicle] = useState(false);
   const [openModalHealth, setOpenModalHealth] = useState(false);  
+  const [sampleData, setSampleData] = useState([]);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"claims",path:"/userclaims"},
@@ -19,6 +21,10 @@ const UserClaims = () => {
   const data:any[] = progress;
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get('http://ais.blackneb.com/api/ais/getclaims').then((response:any) => {
+      console.log(response.data);
+      setSampleData(response.data);
+    })
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
@@ -46,7 +52,7 @@ const UserClaims = () => {
         <Button onClick={()=>setOpenModalVehicle(true)}>Vehicle Claim</Button>
         <Button onClick={()=>setOpenModalHealth(true)}>Health Claim</Button>
       </div>
-      <UsersMyClaims data={data}/>
+      <UsersMyClaims data={sampleData}/>
     </div>
   )
 }
