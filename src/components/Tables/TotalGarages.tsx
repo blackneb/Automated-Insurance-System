@@ -6,18 +6,17 @@ import GarageModal from '../Modals/GarageModal';
 const { Search } = Input;
 
 interface DataType{
-  ID:string,
-  garageName:string,
-  phoneNumber:string,
+  name:string,
+  phone:string,
   email:string,
   address:string,
-  documents:string,
 }
 
 const TotalGarages = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedValue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -29,24 +28,25 @@ const TotalGarages = ({data}:any) => {
     setSortedInfo(sorter as SorterResult<DataType>);
   };
   const onViewRow = (record:any) => {
+    setSelectedValue(record)
     setOpenModal(true);
   }
 
   const columns: ColumnsType<DataType> = [
     {
       title: 'Garage Name',
-      dataIndex: 'garageName',
-      key: 'garageName',
-      sorter: (a, b) => a.garageName.length - b.garageName.length,
-      sortOrder: sortedInfo.columnKey === 'garageName' ? sortedInfo.order : null,
+      dataIndex: 'name',
+      key: 'name',
+      sorter: (a, b) => a.name.length - b.name.length,
+      sortOrder: sortedInfo.columnKey === 'name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Phone Number',
-      dataIndex: 'phoneNumber',
-      key: 'phoneNumber',
-      sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
-      sortOrder: sortedInfo.columnKey === 'phoneNumber' ? sortedInfo.order : null,
+      dataIndex: 'phone',
+      key: 'phone',
+      sorter: (a, b) => a.phone.length - b.phone.length,
+      sortOrder: sortedInfo.columnKey === 'phone' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -63,14 +63,6 @@ const TotalGarages = ({data}:any) => {
       key: 'address',
       sorter: (a, b) => a.address.length - b.address.length,
       sortOrder: sortedInfo.columnKey === 'address' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Documents',
-      dataIndex: 'documents',
-      key: 'documents',
-      sorter: (a, b) => a.documents.length - b.documents.length,
-      sortOrder: sortedInfo.columnKey === 'files' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -94,7 +86,7 @@ const TotalGarages = ({data}:any) => {
       </Modal>
       <p>Total Garages</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.garageName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

@@ -8,10 +8,12 @@ import {garages} from '../data/garages';
 import WorkingGarages from './Tables/WorkingGarages';
 import BidsOnVehicle from './Tables/BidsOnVehicle';
 import CreateGarageAccount from './Modals/CreateGarageAccount';
+import axios from 'axios';
 
 
 const Garages = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [sampleData, setSampleData] = useState([]);
     const dispatch = useDispatch();
     const data:any[] = garages;
   const breadcrumb:any[] = [
@@ -25,6 +27,10 @@ const Garages = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get('http://ais.blackneb.com/api/ais/getgarages').then((response:any) => {
+      //console.log(response.data);
+      setSampleData(response.data);
+    })
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
@@ -58,7 +64,7 @@ const Garages = () => {
           <WorkingGarages data={data}/>
         </div>
       </div>
-      <TotalGarages data={data}/>
+      <TotalGarages data={sampleData}/>
     </div>
   )
 }
