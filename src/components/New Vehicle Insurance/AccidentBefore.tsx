@@ -17,10 +17,7 @@ const AccidentBefore = ({next,prev}:any) => {
     const accidentBeforeDefaultValues = useSelector((state:any) => state.accidentBefore);
     const onFinish = (values: any) => {
         console.log('Success:', values);
-        setAccidentBeforeData([...accidentBeforeData, values]);
-        const accidentBeforeArray = [...accidentBeforeData,values];
-        console.log(accidentBeforeArray);
-        dispatch(add_accident_before(accidentBeforeArray));
+        dispatch(add_accident_before(values));
       };
       
       const onFinishFailed = (errorInfo: any) => {
@@ -50,7 +47,7 @@ const AccidentBefore = ({next,prev}:any) => {
                     </Form.Item>
                     <Form.Item
                         label="Vehicle Damage"
-                        name="vehicleDamage"
+                        name="vechileDamage"
                         >
                         <Input />
                     </Form.Item>

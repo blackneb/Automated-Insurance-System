@@ -45,7 +45,7 @@ const ExtraFitting = ({next,prev}:any) => {
           </Form.Item>
           <Form.Item
               label="Bull bar, carry boy, droppers extension ?"
-              name="BCD"
+              name="bsd"
               rules={[{ required: true, message: 'Please input the amount!' }]}
               >
               <Input placeholder='Birr' />

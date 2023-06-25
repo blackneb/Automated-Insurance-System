@@ -35,21 +35,21 @@ const Particular = ({next}:any) => {
                     >
                     <Input.Group compact>
                         <Form.Item
-                        name="plateCode"
+                        name="code"
                         noStyle
                         rules={[{ required: true, message: 'plate code is required' }]}
                         >
                         <Input style={{ width: '20%' }} placeholder="Code" />
                         </Form.Item>
                         <Form.Item
-                        name='plateCountry'
+                        name='city'
                         noStyle
                         rules={[{ required: true, message: 'plate country is required' }]}
                         >
                         <Input style={{ width: '30%' }} placeholder="City" />
                         </Form.Item>
                         <Form.Item
-                        name='plateNumber'
+                        name='number'
                         noStyle
                         rules={[{ required: true, message: 'plate number is required' }]}
                         >
@@ -116,7 +116,7 @@ const Particular = ({next}:any) => {
 
                 <Form.Item
                 label="Goods Carry"
-                name="goodsCarry"
+                name="goodCapacity"
                 rules={[{ required: true, message: 'Please input your goods carry !' }]}
                 >
                 <Input/>
@@ -124,7 +124,7 @@ const Particular = ({next}:any) => {
 
                 <Form.Item
                 label="Passengers Carry"
-                name="passengersCarry"
+                name="passengerCapacity"
                 rules={[{ required: true, message: 'Please input your passengers Carry !' }]}
                 >
                 <Input/>

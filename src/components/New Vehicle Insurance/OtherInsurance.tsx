@@ -63,7 +63,7 @@ const OtherInsurance = ({next,prev}:any) => {
             </Form.Item>
             <Form.Item
                 label="Requrie an increase of premium?"
-                name="require"
+                name="requires"
                 rules={[{ required: true, message: 'Please input your Choice!' }]}
                 >
                 <Select style={{width:150}} placeholder="Yes/No">

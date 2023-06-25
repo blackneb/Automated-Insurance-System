@@ -73,7 +73,7 @@ const AdditionalInformations = ({next,prev}:any) => {
                     </Form.Item>
                 <Form.Item
                     label="Purpose of Vehicle"
-                    name="vehiclePurpose"
+                    name="purpose"
                     rules={[{ required: true, message: 'Please input purpose of vehicle!' }]}
                     >
                     <Select style={{width:250}} placeholder="Please Select">
@@ -94,7 +94,7 @@ const AdditionalInformations = ({next,prev}:any) => {
                 </Form.Item>
                 <Form.Item
                     label="Insure Vehicle from Bandit, Shifta and Guerrilla?"
-                    name="BSG"
+                    name="bsgAction"
                     rules={[{ required: true, message: 'Please input your Choice!' }]}
                     >
                     <Select style={{width:250}} placeholder="Yes/No">
