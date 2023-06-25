@@ -8,10 +8,10 @@ import ExpertsModal from '../Modals/ExpertsModal';
 const { Search } = Input;
 
 interface DataType{
-    ID:string,
-    fullName:string,
-    userName:string,
-    phoneNumber:string,
+    f_name:string,
+    l_name:string,
+    username:string,
+    phone:string,
     email:string,
   }
 
@@ -35,18 +35,18 @@ const AdminExpertsTable = ({data}:any) => {
   const columns: ColumnsType<DataType> = [
     {
       title: 'User Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
-      sorter: (a, b) => a.fullName.length - b.fullName.length,
-      sortOrder: sortedInfo.columnKey === 'fullName' ? sortedInfo.order : null,
+      dataIndex: 'f_name',
+      key: 'f_name',
+      sorter: (a, b) => a.f_name.length - b.f_name.length,
+      sortOrder: sortedInfo.columnKey === 'f_name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Phone Number',
-      dataIndex: 'phoneNumber',
-      key: 'phoneNumber',
-      sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
-      sortOrder: sortedInfo.columnKey === 'phoneNumber' ? sortedInfo.order : null,
+      dataIndex: 'phone',
+      key: 'phone',
+      sorter: (a, b) => a.phone.length - b.phone.length,
+      sortOrder: sortedInfo.columnKey === 'phone' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -78,7 +78,7 @@ const AdminExpertsTable = ({data}:any) => {
       </Modal>
       <p>Total Experts</p>
       <Input className='mb-2' placeholder="Search With Expert Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

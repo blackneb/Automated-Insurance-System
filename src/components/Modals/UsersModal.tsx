@@ -2,7 +2,7 @@ import React from 'react'
 import { Descriptions, Badge } from 'antd'
 
 
-const UsersModal = () => {
+const UsersModal = ({data}:any) => {
   return (
     <div className=' h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
         <Descriptions bordered>

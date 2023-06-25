@@ -7,19 +7,16 @@ import UsersModal from '../Modals/UsersModal';
 const { Search } = Input;
 
 interface DataType{
-  ID:string,
-  fullName:string,
-  userName:string,
-  phoneNumber:string,
-  Email:string,
-  insuranceTypes:string,
-  files:string,
+  f_name:string,
+  l_name:string,
+  username:string
 }
 
 const TotalUsers = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedValue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -31,48 +28,33 @@ const TotalUsers = ({data}:any) => {
     setSortedInfo(sorter as SorterResult<DataType>);
   };
   const onViewRow = (record:any) => {
+    setSelectedValue(record)
     setOpenModal(true);
   }
 
   const columns: ColumnsType<DataType> = [
     {
       title: 'User Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
-      sorter: (a, b) => a.fullName.length - b.fullName.length,
-      sortOrder: sortedInfo.columnKey === 'fullName' ? sortedInfo.order : null,
+      dataIndex: 'f_name',
+      key: 'f_name',
+      sorter: (a, b) => a.f_name.length - b.f_name.length,
+      sortOrder: sortedInfo.columnKey === 'f_name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Phone Number',
-      dataIndex: 'phoneNumber',
-      key: 'phoneNumber',
-      sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
-      sortOrder: sortedInfo.columnKey === 'phoneNumber' ? sortedInfo.order : null,
+      dataIndex: 'l_name',
+      key: 'l_name',
+      sorter: (a, b) => a.l_name.length - b.l_name.length,
+      sortOrder: sortedInfo.columnKey === 'l_name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'E-mail',
-      dataIndex: 'Email',
-      key: 'Email',
-      sorter: (a, b) => a.Email.length - b.Email.length,
-      sortOrder: sortedInfo.columnKey === 'Email' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Insurance Types',
-      dataIndex: 'insuranceTypes',
-      key: 'insuranceTypes',
-      sorter: (a, b) => a.insuranceTypes.length - b.insuranceTypes.length,
-      sortOrder: sortedInfo.columnKey === 'insuranceTypes' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Files',
-      dataIndex: 'files',
-      key: 'files',
-      sorter: (a, b) => a.files.length - b.files.length,
-      sortOrder: sortedInfo.columnKey === 'files' ? sortedInfo.order : null,
+      dataIndex: 'username',
+      key: 'username',
+      sorter: (a, b) => a.username.length - b.username.length,
+      sortOrder: sortedInfo.columnKey === 'username' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -92,11 +74,11 @@ const TotalUsers = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        < UsersModal />
+        < UsersModal data={selectedValue} />
       </Modal>
       <p>Total Users</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.fullName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

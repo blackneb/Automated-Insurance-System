@@ -6,10 +6,12 @@ import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
 import ExpertCreateAccount from './Modals/ExpertCreateAccount';
 import {experts} from '../data/experts';
 import AdminExpertsTable from './Tables/AdminExpertsTable';
+import axios from 'axios';
 
 
 const AdminExperts = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [simpleData, setSimpleData] = useState([])
   const data:any[] = experts;
   const dispatch = useDispatch();
   const breadcrumb:any[] = [
@@ -22,6 +24,9 @@ const AdminExperts = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get("http://ais.blackneb.com/api/ais/getexperts").then((response:any) => {
+        setSimpleData(response.data)
+    })
   },[])
   return (
     <div className='mt-4 ml-4'>
@@ -36,7 +41,7 @@ const AdminExperts = () => {
       >
         <ExpertCreateAccount/>
       </Modal>
-      <AdminExpertsTable data={data} />
+      <AdminExpertsTable data={simpleData} />
     </div>
   )
 }
