@@ -46,22 +46,19 @@ const Login = ({setlog, setCreateAccount}:any) => {
   const onFinish = async (values: any) => {
     console.log('Success:', values);
     try {
-      const response = await axios.post('http://automated.blackneb.com/api/token/', values, {
+      const response = await axios.post('http://ais.blackneb.com/api/token/', values, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      await console.log(response.data);
       try{
-        const res =  await axios.post('http://automated.blackneb.com/api/ais/login', values, {
+        const res =  await axios.post('http://ais.blackneb.com/api/ais/login', values, {
         headers: {
           Authorization: `Bearer ${response.data.access}`,
           'Content-Type': 'application/json',
         },
       });
-      console.log(res.data);
       dispatch(add_user_type(res.data[0]));
-      console.log(res.data[0].username);
       if(res.data[0].status === "pass"){
         setlog(true);
       }
@@ -149,12 +146,12 @@ const Login = ({setlog, setCreateAccount}:any) => {
       </section>
 
       <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar anchorOrigin={{ vertical, horizontal }} open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={servity} sx={{ width: '100%' }}>
-          login Failed!
-        </Alert>
-      </Snackbar>
-    </Stack>
+        <Snackbar anchorOrigin={{ vertical, horizontal }} open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity={servity} sx={{ width: '100%' }}>
+            login Failed!
+          </Alert>
+        </Snackbar>
+      </Stack>
 
     </div>
   )

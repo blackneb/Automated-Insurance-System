@@ -64,7 +64,7 @@ const Sidebar = () => {
                 </Link>
 
                 <ul className='pt-6'>
-                    {sideBarLists.map((menu, index) => (
+                    {Menus.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
                                key={index}

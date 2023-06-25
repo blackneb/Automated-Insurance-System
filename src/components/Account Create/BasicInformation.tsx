@@ -44,27 +44,6 @@ const BasicInformation = ({next,setCreateAccountReterive}:any) => {
           >
             <Input />
           </Form.Item>
-
-          <Form.Item 
-            label="Profile Image" 
-            name="profileImage"
-            rules={[{ required: true, message: 'Please input your Profile Image!' }]}>
-            <Upload listType="picture-card" beforeUpload={(file:any) =>{
-              return new Promise((resolve:any,reject:any) => {
-                if(file.size > 2){
-                  reject("File size exceed");
-                }
-                else{
-                  resolve("Success");
-                }
-              })
-            }} >
-              <div className=''>
-                <PlusOutlined/>
-                <div style={{ marginTop: 8 }}>Upload</div>
-              </div>
-            </Upload>
-          </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
           <Button style={{ margin: '0 8px' }} type="default" htmlType="submit">

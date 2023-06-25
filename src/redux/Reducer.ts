@@ -6,7 +6,6 @@ const initialStateBreadCrumb:any[] = [
 const initialStateBasicInformation:any={
     firstName:"",
     lastName:"",
-    profileImage:"",
 }
 const initialStateAddress:any={
     residentialSubCity:"",
@@ -28,6 +27,7 @@ const initialStateAddress:any={
 const initialStateAccountSetup:any={
     userName:"",
     password:"",
+    profileImage:"",
 };
 const initialStateParticular:any={
     plateCode:"",
