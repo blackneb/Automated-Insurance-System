@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Button, Space, Table,Input, Modal } from 'antd';
-import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
-import {vehicles} from '../../data/vehicles';
 import VehiclesModal from '../Modals/VehiclesModal';
+import {vehicles} from '../../data/vehicles';
+import NewInsuranceVehicleModal from '../Modals/NewInsuranceVehicleModal';
 const { Search } = Input;
 
 interface DataType {
-  vehicleType: string;
-  vehiclePlate: string;
-  vehicleOwner: string;
-  VehicleBrand: string;
-  vehicleColor:string;
-  key:string
+  appointmentdate: string;
+  proposer: string;
+  purpose: string;
+  cover_required: string;
+  currentestimation:string;
 }
 
 const Vechicles = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedvalue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -32,62 +32,60 @@ const Vechicles = ({data}:any) => {
   };
 
   const onViewRow = (record:any) => {
+    setSelectedValue(record);
     setOpenModal(true);
   }
 
   const columns: ColumnsType<DataType> = [
     {
-      title: 'Vehcile Type',
-      dataIndex: 'vehicleType',
-      key: 'vehicleType',
-      sorter: (a, b) => a.vehicleType.length - b.vehicleType.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleType' ? sortedInfo.order : null,
+      title: 'Appointed Date',
+      dataIndex: 'appointmentdate',
+      key: 'appointmentdate',
+      sorter: (a, b) => a.appointmentdate.length - b.appointmentdate.length,
+      sortOrder: sortedInfo.columnKey === 'appointedDate' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehcile Plate',
-      dataIndex: 'vehiclePlate',
-      key: 'vehiclePlate',
-      sorter: (a, b) => a.vehiclePlate.length - b.vehiclePlate.length,
-      sortOrder: sortedInfo.columnKey === 'vehiclePlate' ? sortedInfo.order : null,
+      title: 'Proposer',
+      dataIndex: 'proposer',
+      key: 'proposer',
+      sorter: (a, b) => a.proposer.length - b.proposer.length,
+      sortOrder: sortedInfo.columnKey === 'proposer' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehcile Owner',
-      dataIndex: 'vehicleOwner',
-      key: 'vehicleOwner',
-      sorter: (a, b) => a.vehicleOwner.length - b.vehicleOwner.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleOwner' ? sortedInfo.order : null,
+      title: 'Vehicle Purpose',
+      dataIndex: 'purpose',
+      key: 'purpose',
+      sorter: (a, b) => a.purpose.length - b.purpose.length,
+      sortOrder: sortedInfo.columnKey === 'purpose' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehcile Brand',
-      dataIndex: 'VehicleBrand',
-      key: 'VehicleBrand',
-      sorter: (a, b) => a.VehicleBrand.length - b.VehicleBrand.length,
-      sortOrder: sortedInfo.columnKey === 'VehicleBrand' ? sortedInfo.order : null,
+      title: 'Cover Required',
+      dataIndex: 'cover_required',
+      key: 'cover_required',
+      sorter: (a, b) => a.cover_required.length - b.cover_required.length,
+      sortOrder: sortedInfo.columnKey === 'cover_required' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehcile Color',
-      dataIndex: 'vehicleColor',
-      key: 'vehicleColor',
-      sorter: (a, b) => a.vehicleColor.length - b.vehicleColor.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleColor' ? sortedInfo.order : null,
+      title: 'Current Estimation',
+      dataIndex: 'currentestimation',
+      key: 'currentestimation',
+      sorter: (a, b) => a.currentestimation.length - b.currentestimation.length,
+      sortOrder: sortedInfo.columnKey === 'currentestimation' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
+      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div>
     },
   ];
-
-
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
-      <p>Total Vehicles</p>
       <Modal
         title="Vehicles"
         style={{ top: 20 }}
@@ -96,10 +94,11 @@ const Vechicles = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        <VehiclesModal/>
+        <VehiclesModal data={selectedvalue}/>
       </Modal>
-      <Input className='mb-2' placeholder="Search with Plate number" allowClear onChange={onChange} />
-      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data.filter((items:any) => items.vehiclePlate.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <p>New pending vehicle insurances</p>
+      <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.purpose.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
