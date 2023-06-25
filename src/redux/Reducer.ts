@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT, ADD_USER_TYPE } from "./ActionTypes";
+import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES, CLEAR_VEHICLES_ONLY } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -71,6 +71,13 @@ const initialStateAdditionalInfo:any={
 const initialStateDateAppointment:any={
     appointmentDate:"",
 };
+
+const initialStateVehicles = {
+    totalVehicles:[],
+}
+const initialStateVehiclesOnly = {
+    Vehicles:[],
+}
 
 const initialStateUserType:any={
 }
@@ -183,3 +190,26 @@ export const userTypeReducers = (state=initialStateUserType, action:any)=>{
             return state;
     }
 }
+
+export const vehicleReducers = (state=initialStateVehicles, action:any)=>{
+    const { type, payload } = action;
+    switch(type){
+        case VEHICLES:
+            return {...state,totalVehicles:[...state.totalVehicles,payload]}
+        case CLEAR_VEHICLES:
+            return initialStateVehicles;
+        default:
+            return state;
+    };
+};
+export const vehicleOnlyReducers = (state=initialStateVehiclesOnly, action:any)=>{
+    const { type, payload } = action;
+    switch(type){
+        case VEHICLES_ONLY:
+            return {...state,Vehicles:[...state.Vehicles,payload]}
+            case CLEAR_VEHICLES_ONLY:
+                return initialStateVehiclesOnly;
+        default:
+            return state;
+    };
+};

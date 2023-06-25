@@ -1,4 +1,4 @@
-import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT, ADD_USER_TYPE } from "./ActionTypes";
+import { ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES,CLEAR_VEHICLES_ONLY } from "./ActionTypes";
 
 export const add_breadcrumb = (breadcrumb:any) => {
     return{
@@ -76,3 +76,31 @@ export const add_user_type=(usertype:any)=>{
         payload:usertype,
     };
 };
+
+export const add_vehicles = (accident:any) => {
+    return{
+        type:VEHICLES,
+        payload:accident
+    }
+}
+
+export const clear_vehicles = (clear_accident:any) => {
+    return{
+        type:CLEAR_VEHICLES,
+        payload:clear_accident
+    }
+}
+
+export const clear_vehicles_only = (clear_accident_only:any) => {
+    return{
+        type:CLEAR_VEHICLES_ONLY,
+        payload:clear_accident_only
+    }
+}
+
+export const only_vehicles = (only:any) => {
+    return{
+        type:VEHICLES_ONLY,
+        payload:only
+    }
+}

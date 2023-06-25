@@ -7,17 +7,18 @@ import NewInsuranceVehicleModal from '../Modals/NewInsuranceVehicleModal';
 const { Search } = Input;
 
 interface DataType {
-  appointedDate: string;
-  proposerName: string;
-  vehicleId: string;
-  estimatedPrice: string;
-  carBrand:string;
+  appointmentdate: string;
+  proposer: string;
+  purpose: string;
+  cover_required: string;
+  currentestimation:string;
 }
 
 const NewPendingIsurances = ({data}:any) => {
   const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [selectedvalue, setSelectedValue] = useState();
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
     setSearchValue(e.target.value.toLowerCase());
@@ -30,55 +31,56 @@ const NewPendingIsurances = ({data}:any) => {
   };
 
   const onViewRow = (record:any) => {
+    setSelectedValue(record);
     setOpenModal(true);
   }
 
   const columns: ColumnsType<DataType> = [
     {
       title: 'Appointed Date',
-      dataIndex: 'appointedDate',
-      key: 'appointedDate',
-      sorter: (a, b) => a.appointedDate.length - b.appointedDate.length,
+      dataIndex: 'appointmentdate',
+      key: 'appointmentdate',
+      sorter: (a, b) => a.appointmentdate.length - b.appointmentdate.length,
       sortOrder: sortedInfo.columnKey === 'appointedDate' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Proposer',
-      dataIndex: 'proposerName',
-      key: 'proposerName',
-      sorter: (a, b) => a.proposerName.length - b.proposerName.length,
-      sortOrder: sortedInfo.columnKey === 'proposerName' ? sortedInfo.order : null,
+      dataIndex: 'proposer',
+      key: 'proposer',
+      sorter: (a, b) => a.proposer.length - b.proposer.length,
+      sortOrder: sortedInfo.columnKey === 'proposer' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehicle ID',
-      dataIndex: 'vehicleId',
-      key: 'vehicleId',
-      sorter: (a, b) => a.vehicleId.length - b.vehicleId.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleId' ? sortedInfo.order : null,
+      title: 'Vehicle Purpose',
+      dataIndex: 'purpose',
+      key: 'purpose',
+      sorter: (a, b) => a.purpose.length - b.purpose.length,
+      sortOrder: sortedInfo.columnKey === 'purpose' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Estimated Price',
-      dataIndex: 'estimatedPrice',
-      key: 'estimatedPrice',
-      sorter: (a, b) => a.estimatedPrice.length - b.estimatedPrice.length,
-      sortOrder: sortedInfo.columnKey === 'estimatedPrice' ? sortedInfo.order : null,
+      title: 'Cover Required',
+      dataIndex: 'cover_required',
+      key: 'cover_required',
+      sorter: (a, b) => a.cover_required.length - b.cover_required.length,
+      sortOrder: sortedInfo.columnKey === 'cover_required' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Car Brand',
-      dataIndex: 'carBrand',
-      key: 'carBrand',
-      sorter: (a, b) => a.carBrand.length - b.carBrand.length,
-      sortOrder: sortedInfo.columnKey === 'carBrand' ? sortedInfo.order : null,
+      title: 'Current Estimation',
+      dataIndex: 'currentestimation',
+      key: 'currentestimation',
+      sorter: (a, b) => a.currentestimation.length - b.currentestimation.length,
+      sortOrder: sortedInfo.columnKey === 'currentestimation' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Action',
       dataIndex: '',
       key: 'x',
-      render: () => <div> <Button type='link' onClick={()=>setOpenModal(true)}>View</Button></div> ,
+      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div>
     },
   ];
   return (
@@ -91,11 +93,11 @@ const NewPendingIsurances = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        <NewInsuranceVehicleModal/>
+        <NewInsuranceVehicleModal data={selectedvalue}/>
       </Modal>
       <p>New pending vehicle insurances</p>
       <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposerName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.purpose.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
