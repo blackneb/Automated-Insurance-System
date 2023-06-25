@@ -11,6 +11,7 @@ import axios from 'axios';
 const ExpertClaims = () => {
   const dispatch = useDispatch();  
   const [sampleData, setSampleDate] = useState([]);
+  const [sampleSecData, setSampleSecData] = useState([]);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"claims",path:"/userclaims"},
@@ -20,6 +21,10 @@ const ExpertClaims = () => {
     dispatch(add_breadcrumb(breadcrumb));
     axios.get("http://ais.blackneb.com/api/ais/getclaims").then((response:any) => {
       setSampleDate(response.data);
+    })
+    axios.get('http://ais.blackneb.com/api/ais/getclaims').then((response:any) => {
+      console.log(response.data);
+      setSampleSecData(response.data);
     })
   },[])
   return (
@@ -41,7 +46,7 @@ const ExpertClaims = () => {
           </div>
         <ActiveClaims data={sampleData}/>
         </div>
-        <ClaimProgress data={data}/>
+        <ClaimProgress data={sampleSecData}/>
     </div>
   )
 }
