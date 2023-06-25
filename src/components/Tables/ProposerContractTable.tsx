@@ -8,17 +8,18 @@ import VehiclesModal from '../Modals/VehiclesModal';
 const { Search } = Input;
 
 interface DataType {
-    vehicleId: string;
-    proposerName: string;
-    contractPrice: string;
-    contractType: string;
-    expireDate:string;
+    vehicle: string;
+    contract_date: string;
+    contract_price: string;
+    contract_type: string;
+    expire_date:string;
   }
 
 const ProposerContractTable = ({data}:any) => {
     const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
     const [searchValue, setSearchValue] = useState("");
     const [openModal, setOpenModal] = useState(false);
+    const [selectedValue, setSelectedValue] = useState();
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       console.log(e.target.value);
       setSearchValue(e.target.value.toLowerCase());
@@ -37,42 +38,42 @@ const ProposerContractTable = ({data}:any) => {
     const columns: ColumnsType<DataType> = [
       {
         title: 'Vehcile ID',
-        dataIndex: 'vehicleId',
-        key: 'vehicleId',
-        sorter: (a, b) => a.vehicleId.length - b.vehicleId.length,
-        sortOrder: sortedInfo.columnKey === 'vehicleId' ? sortedInfo.order : null,
+        dataIndex: 'vehicle',
+        key: 'vehicle',
+        sorter: (a, b) => a.vehicle.length - b.vehicle.length,
+        sortOrder: sortedInfo.columnKey === 'vehicle' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
-        title: 'Proposer Name',
-        dataIndex: 'proposerName',
-        key: 'proposerName',
-        sorter: (a, b) => a.proposerName.length - b.proposerName.length,
-        sortOrder: sortedInfo.columnKey === 'proposerName' ? sortedInfo.order : null,
+        title: 'Contract Date',
+        dataIndex: 'contract_date',
+        key: 'contract_date',
+        sorter: (a, b) => a.contract_date.length - b.contract_date.length,
+        sortOrder: sortedInfo.columnKey === 'contract_date' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
         title: 'Contract Price',
-        dataIndex: 'contractPrice',
-        key: 'contractPrice',
-        sorter: (a, b) => a.contractPrice.length - b.contractPrice.length,
-        sortOrder: sortedInfo.columnKey === 'contractPrice' ? sortedInfo.order : null,
+        dataIndex: 'contract_price',
+        key: 'contract_price',
+        sorter: (a, b) => a.contract_price.length - b.contract_price.length,
+        sortOrder: sortedInfo.columnKey === 'contract_price' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
         title: 'Contract Type',
-        dataIndex: 'contractType',
-        key: 'contractType',
-        sorter: (a, b) => a.contractType.length - b.contractType.length,
-        sortOrder: sortedInfo.columnKey === 'contractType' ? sortedInfo.order : null,
+        dataIndex: 'contract_type',
+        key: 'contract_type',
+        sorter: (a, b) => a.contract_type.length - b.contract_type.length,
+        sortOrder: sortedInfo.columnKey === 'contract_type' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
         title: 'Expire Date',
-        dataIndex: 'expireDate',
-        key: 'expireDate',
-        sorter: (a, b) => a.expireDate.length - b.expireDate.length,
-        sortOrder: sortedInfo.columnKey === 'expireDate' ? sortedInfo.order : null,
+        dataIndex: 'expire_date',
+        key: 'expire_date',
+        sorter: (a, b) => a.expire_date.length - b.expire_date.length,
+        sortOrder: sortedInfo.columnKey === 'expire_date' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
@@ -96,7 +97,7 @@ const ProposerContractTable = ({data}:any) => {
         <VehiclesModal/>
       </Modal>
       <Input className='mb-2' placeholder="Search with proposer name" allowClear onChange={onChange} />
-      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data.filter((items:any) => items.proposerName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Card, Space } from 'antd';
 import ContractListTable from './Tables/ContractListTable';
 import ContractRenewalTable from './Tables/ContractRenewalTable';
 import {contract} from '../data/contract';
+import axios from 'axios';
 
 
 const ContractRenewal = () => {
   const dispatch = useDispatch();
   const data:any[] = contract;
+  const [sampleData, setSampleDate] = useState([]);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Contract renewal",path:"/analytics"},
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
+    axios.get("http://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
+      setSampleDate(response.data);
+      console.log(response.data);
+    })
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
@@ -30,7 +36,7 @@ const ContractRenewal = () => {
           </div>
           <ContractRenewalTable data={data}/>
         </div>
-        <ContractListTable data={data}/>
+        <ContractListTable data={sampleData}/>
     </div>
   )
 }

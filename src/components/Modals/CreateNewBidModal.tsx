@@ -1,21 +1,48 @@
-import React, { useState } from 'react'
-import { Button, Form, Input, Tag} from 'antd';
+import React, { useEffect, useState } from 'react'
+import { Button, Form, Input, Tag, notification} from 'antd';
+import axios from 'axios';
 
 
 const CreateNewBidModal = ({data}:any) => {
+    const [loading, setLoading] = useState(false);
     const [items, setItems] = useState<any[]>([]);
     const onFinish = (values: any) => {
         console.log('Success:', values);
-        setItems([...items, values]);
+        setItems([...items, values.items]);
         console.log(items);
       };
       
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
-    const onSubmit = () => {
-        alert(JSON.stringify(items,null,2))
+    const onSubmit = async() => {
+        setLoading(true)
+        const submittedData = {
+            vehicleID:data.vehicle,
+            items:items
+        }
+        console.log(JSON.stringify(submittedData, null,2))
+        axios.post("http://ais.blackneb.com/api/ais/createbid", submittedData).then((response:any) => {
+            console.log(response.data);
+            if(response.data[0].status === "pass"){
+                notification.success({
+                  message: 'success',
+                  description: 'Bid Created Successfully',
+                });
+                setLoading(false);
+              }
+              else{
+                notification.error({
+                    message: 'Error',
+                    description: 'Bid Not Created',
+                  });
+                setLoading(false);
+              }
+        })
     }
+    useEffect(() => {
+        setItems([]);
+    }, [])
   return (
     <div className='flex flex-col items-center'>
         <Form
@@ -44,7 +71,7 @@ const CreateNewBidModal = ({data}:any) => {
                     {
                         items.map((item:any) => {
                             return(
-                                <Tag className='m-2' style={{fontSize:13}} color="#87d068">{item.items}</Tag>
+                                <Tag className='m-2' style={{fontSize:13}} color="#87d068">{item}</Tag>
                             )
                         })
                     }
