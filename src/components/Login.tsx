@@ -1,5 +1,6 @@
 import React, {useState,useEffect } from 'react'
 import Loginvector from '../images/vectorforlogin.jpg'
+import logoais from '../images/logoais.png'
 import { useForm } from 'react-hook-form'
 import { Button, Input, Form, notification } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
@@ -99,7 +100,15 @@ const Login = ({setlog, setCreateAccount}:any) => {
         </div>
         <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
           <div className="w-full h-100">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+          <div className='flex align-center justify-center mb-8'>
+              <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Wellcome back</h1>
+            </div>
+            <div className='flex align-center justify-center'>
+              <img src={logoais} alt="" className="h-32 rounded-full"/>
+            </div>
+            <div className='flex align-center justify-center'>
+              <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
+            </div>
             <Form
                 name="basic"
                 onFinish={onFinish}

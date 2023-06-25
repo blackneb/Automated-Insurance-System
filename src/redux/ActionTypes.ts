@@ -18,3 +18,5 @@ export const ADD_CONTRACT = 'ADD_CONTRACT';
 export const ADD_REFERENCE = 'ADD_REFERENCE';
 export const ADD_ITEMS = 'ADD_ITEMS';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
+export const ADD_GARAGE_BIDS = 'ADD_GARAGE_BIDS';
+export const CLEAR_GARAGE_BIDS = 'CLEAR_GARAGE_BIDS';

@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import {composeWithDevTools} from '@redux-devtools/extension';
-import {  itemReducers, addReferenceReducers, addContractReducers, breadcrumbReducers, basicInformationReducers, addressReducers, accountSetupReducers, particularReducers, extraFittingReducers, otherInsuranceReducers, accidentBeforeReducers, additionalInfoReducers, dateAppointmentReducers, userTypeReducers, vehicleOnlyReducers, vehicleReducers } from "./Reducer";
+import { garageBidReducers, itemReducers, addReferenceReducers, addContractReducers, breadcrumbReducers, basicInformationReducers, addressReducers, accountSetupReducers, particularReducers, extraFittingReducers, otherInsuranceReducers, accidentBeforeReducers, additionalInfoReducers, dateAppointmentReducers, userTypeReducers, vehicleOnlyReducers, vehicleReducers } from "./Reducer";
 
 const reducers = combineReducers(
     {
@@ -20,6 +20,7 @@ const reducers = combineReducers(
         contract:addContractReducers,
         reference:addReferenceReducers,
         items:itemReducers,
+        garageBids:garageBidReducers,
 
     }
 );
