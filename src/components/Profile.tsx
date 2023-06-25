@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Form, Input, Button } from 'antd';
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const profileData = useSelector((state:any) => state.userType);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Profile",path:"/profile"},
@@ -43,19 +44,19 @@ const Profile = () => {
             colon={false}
             >
               <div className='flex flex-col'>
-              <Form.Item label="User Name" name="username" rules={[{ required: true, message: 'Please Enter username!' }]}>
+              <Form.Item label="User Name" name="username" initialValue={profileData.username} rules={[{ required: true, message: 'Please Enter username!' }]}>
                 <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="First Name" name="firstName" rules={[{ required: true, message: 'Please Enter First Name!' }]}>
+              <Form.Item label="First Name" name="firstName" initialValue={profileData.f_name} rules={[{ required: true, message: 'Please Enter First Name!' }]}>
                 <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Last Name" name="lastName" rules={[{ required: true, message: 'Please Enter Last Name!' }]}>
+              <Form.Item label="Last Name" name="lastName" initialValue={profileData.l_name} rules={[{ required: true, message: 'Please Enter Last Name!' }]}>
                 <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please Enter Email!' }]}>
+              <Form.Item label="Email" name="email" initialValue={profileData.user_name} rules={[{ required: true, message: 'Please Enter Email!' }]}>
                 <Input placeholder=""/>
               </Form.Item>
-              <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter Phone!' }]}>
+              <Form.Item label="Phone" name="phone" initialValue={profileData.user_name} rules={[{ required: true, message: 'Please enter Phone!' }]}>
                 <Input placeholder=""/>
               </Form.Item>
               </div>
