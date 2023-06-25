@@ -36,8 +36,7 @@ const NavBar = () => {
     }
     const Menus = [
       { title: 'Home', path: '/' },
-      { title: 'Calander', path:'/calander'},
-      { title: 'Reports', path: '/reports'},
+      { title: 'Calander', path:'/calander'}
   ]
 
   const menusMobile = [

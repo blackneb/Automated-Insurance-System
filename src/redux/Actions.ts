@@ -1,4 +1,4 @@
-import { ADD_CONTRACT, ADD_REFERENCE, ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES,CLEAR_VEHICLES_ONLY } from "./ActionTypes";
+import { ADD_CONTRACT, ADD_ITEMS, CLEAR_ITEMS, ADD_REFERENCE, ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_OTHER_INSURANCE, ADD_ACCIDENT_BEFORE, ADD_ADDITIONAL_INFO, ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES,CLEAR_VEHICLES_ONLY } from "./ActionTypes";
 
 export const add_breadcrumb = (breadcrumb:any) => {
     return{
@@ -111,6 +111,21 @@ export const add_contract = (contract:any) => {
         payload:contract
     }
 }
+
+export const add_items = (item:any) => {
+    return{
+        type:ADD_ITEMS,
+        payload:item
+    }
+}
+
+export const clear_items = (item:any) => {
+    return{
+        type:CLEAR_ITEMS,
+        payload:item
+    }
+}
+
 
 export const add_reference = (refer:any) => {
     return{

@@ -1,4 +1,4 @@
-import {ADD_CONTRACT,ADD_REFERENCE, ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES, CLEAR_VEHICLES_ONLY } from "./ActionTypes";
+import {ADD_ITEMS, CLEAR_ITEMS,ADD_CONTRACT,ADD_REFERENCE, ADD_BREADCRUMB, ADD_BASIC_INFORMATION, ADD_ADDRESS, ADD_ACCOUNT_SET_UP, ADD_PARTICULAR, ADD_EXTRA_FITTING, ADD_ACCIDENT_BEFORE, ADD_OTHER_INSURANCE,ADD_ADDITIONAL_INFO,ADD_DATE_APPOINTMENT, ADD_USER_TYPE, VEHICLES, VEHICLES_ONLY, CLEAR_VEHICLES, CLEAR_VEHICLES_ONLY } from "./ActionTypes";
 
 const initialStateBreadCrumb:any[] = [
     {title:"Home",path:"/"},
@@ -53,6 +53,9 @@ const initialStateExtraFitting:any={
 };
 const initialStateAccidentBefore = {
     previousAccident:[],
+}
+const initialStateAddItems = {
+    items:[],
 }
 const initialStateOtherInsurance:any={
     decline:"",
@@ -204,6 +207,19 @@ export const vehicleReducers = (state=initialStateVehicles, action:any)=>{
             return state;
     };
 };
+
+export const itemReducers = (state=initialStateAddItems, action:any)=>{
+    const { type, payload } = action;
+    switch(type){
+        case ADD_ITEMS:
+            return {...state,items:[...state.items,payload]}
+        case CLEAR_ITEMS:
+            return initialStateAddItems;
+        default:
+            return state;
+    };
+};
+
 export const vehicleOnlyReducers = (state=initialStateVehiclesOnly, action:any)=>{
     const { type, payload } = action;
     switch(type){

@@ -1,26 +1,34 @@
 import React, {useState} from 'react'
 import type { TableProps } from 'antd';
-import { Button, Space, Table,Input } from 'antd';
+import { Button, Space, Table,Input, Tag, Modal } from 'antd';
 import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {vehicles} from '../../data/vehicles';
+import GarageBidModal from '../Modals/GarageBidModal';
 const { Search } = Input;
 
 interface DataType {
-    date: string;
-    proposer: string;
-    items:string;
-    deadline:string
+    id: string;
+    vehicle: string;
+    items:any;
   }
 
 
 const AllVehiclesBid = ({data}:any) => {
     const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
     const [searchValue, setSearchValue] = useState("");
+    const [openModal, setOpenModal] = useState(false);
+    const [ selectedValue, setSelectedValue ] = useState();
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       console.log(e.target.value);
       setSearchValue(e.target.value.toLowerCase());
     };
+
+    const onViewRow = (record:any) => {
+      setSelectedValue(record);
+      setOpenModal(true);
+    }
     
   
     const handleChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter) => {
@@ -29,49 +37,58 @@ const AllVehiclesBid = ({data}:any) => {
     };
     const columns: ColumnsType<DataType> = [
       {
-        title: 'Date',
-        dataIndex: 'date',
-        key: 'date',
-        sorter: (a, b) => a.date.length - b.date.length,
-        sortOrder: sortedInfo.columnKey === 'date' ? sortedInfo.order : null,
+        title: 'Bid ID',
+        dataIndex: 'id',
+        key: 'id',
+        sorter: (a, b) => a.id.length - b.id.length,
+        sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
-        title: 'Client Name',
-        dataIndex: 'proposer',
-        key: 'proposer',
-        sorter: (a, b) => a.proposer.length - b.proposer.length,
-        sortOrder: sortedInfo.columnKey === 'proposer' ? sortedInfo.order : null,
+        title: 'Veicle ID',
+        dataIndex: 'vehicle',
+        key: 'vehicle',
+        sorter: (a, b) => a.vehicle.length - b.vehicle.length,
+        sortOrder: sortedInfo.columnKey === 'vehicle' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
-        title: 'Items Number',
+        title: 'Tags',
         dataIndex: 'items',
         key: 'items',
-        sorter: (a, b) => a.items.length - b.items.length,
-        sortOrder: sortedInfo.columnKey === 'items' ? sortedInfo.order : null,
-        ellipsis: true,
+        render: (items) => (
+          <div>
+            {items.map((tag:any) => (
+              <Tag color="blue" key={tag.id}>
+                {tag.item_name}
+              </Tag>
+            ))}
+          </div>
+        ),
       },
-      {
-        title: 'Deadline',
-        dataIndex: 'deadline',
-        key: 'deadline',
-        sorter: (a, b) => a.deadline.length - b.deadline.length,
-        sortOrder: sortedInfo.columnKey === 'deadline' ? sortedInfo.order : null,
-        ellipsis: true,
-      },
+
       {
         title: 'Action',
         dataIndex: '',
         key: 'x',
-        render: () => <div><Button type='link'>view</Button></div> ,
+        render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
       },
     ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>Active Bids</p>
+      <Modal
+        title="Bid Modal"
+        style={{ top: 20 }}
+        open={openModal}
+        onOk={() => setOpenModal(false)}
+        onCancel={() => setOpenModal(false)}
+        width={1200}
+      >
+        <GarageBidModal data={selectedValue}/>
+      </Modal>
       <Input className='mb-2' placeholder="Search with Client name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.proposer.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }

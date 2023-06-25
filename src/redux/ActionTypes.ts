@@ -16,3 +16,5 @@ export const VEHICLES_ONLY = 'VEHICLES_ONLY';
 export const CLEAR_VEHICLES_ONLY = 'CLEAR_VEHICLES_ONLY';
 export const ADD_CONTRACT = 'ADD_CONTRACT';
 export const ADD_REFERENCE = 'ADD_REFERENCE';
+export const ADD_ITEMS = 'ADD_ITEMS';
+export const CLEAR_ITEMS = 'CLEAR_ITEMS';
