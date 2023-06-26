@@ -20,9 +20,7 @@ const GarageSubmittedBids = () => {
       const totalBids = response.data[0];
       const garageBids = response.data[1];
       const vehicleData = response.data[2];
-      for(let i=0;i<garageBids.length;i++){
-        
-      }
+      console.log(garageBids);
     })
 
   },[])

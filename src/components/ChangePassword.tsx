@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
+import axios from 'axios';
 
 const ChangePassword = () => {
     const dispatch = useDispatch();
+    const tid = useSelector((state:any) => state.userType.username);
    const breadcrumb:any[] = [
     {title:"Home",path:"/"},
     {title:"Change Password",path:"/profile"},
@@ -12,6 +14,34 @@ const ChangePassword = () => {
 
     const onFinishPassword = (values: any) => {
         console.log('Success:', values);
+        if(values.newPassword !== values.confirmPassword){
+          notification.error({
+            message: 'Error',
+            description: 'confirm password again',
+          });
+        }
+        else if(values.newPassword === values.confirmPassword){
+          const subdata = {
+            typeid:tid,
+            oldpassword:values.oldPassword,
+            newpassword:values.newPassword
+          }
+          axios.post("http://ais.blackneb.com/api/ais/changepassword",subdata).then((response:any) => {
+            console.log(response.data);
+            if(response.data[0].status === "password changed successfuly"){
+              notification.success({
+                message: 'Success',
+                description: 'Password Changed Successfully',
+              });
+            }
+            else{
+              notification.error({
+                message: 'Error',
+                description: 'Please Try Again',
+              });
+            }
+          })
+        }
       };
       
       const onFinishFailedPassword = (errorInfo: any) => {

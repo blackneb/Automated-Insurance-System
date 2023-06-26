@@ -98,7 +98,7 @@ const Vechicles = ({data}:any) => {
       </Modal>
       <p>New pending vehicle insurances</p>
       <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.purpose.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>
   )
 }
