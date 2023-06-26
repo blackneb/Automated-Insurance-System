@@ -69,7 +69,7 @@ const Vehicle = () => {
             <p>Number</p>
           </Card>
         </div>
-        <OnClaimVehicles data={data}/>
+        
       </div>
       
       <Vechicles data={simpleData}/>
