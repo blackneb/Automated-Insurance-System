@@ -45,7 +45,7 @@ const ContractRenewalTable = ({data}:any) => {
       title:"Contract Renewal",
       message:"Dear Customer, Your Contract has been expired please Make a contact",
     }
-    await axios.post("http://ais.blackneb.com/api/ais/sendemail",emailPost).then((response:any) => {
+    await axios.post("https://ais.blackneb.com/api/ais/sendemail",emailPost).then((response:any) => {
       console.log(response.data);
     })
   }

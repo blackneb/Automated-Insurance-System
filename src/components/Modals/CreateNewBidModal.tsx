@@ -22,7 +22,7 @@ const CreateNewBidModal = ({data}:any) => {
             items:items
         }
         console.log(JSON.stringify(submittedData, null,2))
-        axios.post("http://ais.blackneb.com/api/ais/createbid", submittedData).then((response:any) => {
+        axios.post("https://ais.blackneb.com/api/ais/createbid", submittedData).then((response:any) => {
             console.log(response.data);
             if(response.data[0].status === "pass"){
                 notification.success({

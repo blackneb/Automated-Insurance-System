@@ -16,7 +16,7 @@ const GarageBidModal = ({data}:any) => {
             price:values.price
         }
         console.log(JSON.stringify(submittedData,null,2));
-        await axios.post("http://ais.blackneb.com/api/ais/creategaragebid", submittedData).then((response:any) => {
+        await axios.post("https://ais.blackneb.com/api/ais/creategaragebid", submittedData).then((response:any) => {
             if(response.data[0].status === "created"){
                 notification.success({
                   message: 'success',

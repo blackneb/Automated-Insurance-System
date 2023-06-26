@@ -24,7 +24,7 @@ const AdminExperts = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get("http://ais.blackneb.com/api/ais/getexperts").then((response:any) => {
+    axios.get("https://ais.blackneb.com/api/ais/getexperts").then((response:any) => {
         setSimpleData(response.data)
     })
   },[])

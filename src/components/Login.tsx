@@ -29,8 +29,6 @@ interface loginprofile {
 }
 
 const Login = ({setlog, setCreateAccount}:any) => {
-  console.log(getCookie("username"));
-  console.log(getCookie("password"));
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const [servity, setServity] = useState<any>("error");
@@ -53,13 +51,13 @@ const Login = ({setlog, setCreateAccount}:any) => {
     const username:string = values.username;
     const password:string = values.password;
     try {
-      const response = await axios.post('http://ais.blackneb.com/api/token/', values, {
+      const response = await axios.post('https://ais.blackneb.com/api/token/', values, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
       try{
-        const res =  await axios.post('http://ais.blackneb.com/api/ais/login', values, {
+        const res =  await axios.post('https://ais.blackneb.com/api/ais/login', values, {
         headers: {
           Authorization: `Bearer ${response.data.access}`,
           'Content-Type': 'application/json',

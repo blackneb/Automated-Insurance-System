@@ -25,7 +25,7 @@ const DateAppointment = ({prev}:any) => {
     }
     const submittedData = {...particular, ...extraFitting, ...otherInsurance, ...accidentBefore, ...additionalInfo, ...values,...proposerId};
     console.log(JSON.stringify(submittedData,null,2));
-    await axios.post("http://ais.blackneb.com/api/ais/createvehicleinsurance", submittedData).then((response:any) => {
+    await axios.post("https://ais.blackneb.com/api/ais/createvehicleinsurance", submittedData).then((response:any) => {
       console.log(response.data[0].status);
       if(response.data[0].status === "created"){
         notification.success({

@@ -21,7 +21,7 @@ const VehicleClaimModal = () => {
       closedDate:"",
       proposerId:pid
     }
-    await axios.post("http://ais.blackneb.com/api/ais/addclaim", submittedData).then((response:any) => {
+    await axios.post("https://ais.blackneb.com/api/ais/addclaim", submittedData).then((response:any) => {
       if(response.data[0].status === "created"){
         notification.success({
           message: 'success',

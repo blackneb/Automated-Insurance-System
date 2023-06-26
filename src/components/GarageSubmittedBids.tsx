@@ -15,7 +15,7 @@ const GarageSubmittedBids = () => {
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get("http://ais.blackneb.com/api/ais/getgaragebid").then((response:any) => {
+    axios.get("https://ais.blackneb.com/api/ais/getgaragebid").then((response:any) => {
       console.log(response.data);
       const totalBids = response.data[0];
       const garageBids = response.data[1];

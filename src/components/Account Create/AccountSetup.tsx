@@ -19,7 +19,7 @@ const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
     dispatch(add_account_set_up(values));
     formData.delete('image');
         formData.append("image", values.profileImage.file);
-    axios.post( "http://blackneb.com/images/Upload_file.php", formData).then(res => {
+    axios.post( "https://blackneb.com/images/Upload_file.php", formData).then(res => {
         console.log(res.data);
         if(res.data.status === "success"){
           const jsonArray = {
@@ -45,7 +45,7 @@ const AccountSetup = ({prev,setCreateAccountReterive}:any) => {
             bus_fax:address.bussinessFax
           }
           console.log(JSON.stringify(jsonArray,null,2));
-            axios.post("http://ais.blackneb.com/api/ais/createproposeraccount", jsonArray).then(response => {
+            axios.post("https://ais.blackneb.com/api/ais/createproposeraccount", jsonArray).then(response => {
                 if(response.data[0].status === "created"){
                   notification.success({
                     message: 'success',

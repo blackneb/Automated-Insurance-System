@@ -29,11 +29,11 @@ const Garages = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get('http://ais.blackneb.com/api/ais/getgarages').then((response:any) => {
+    axios.get('https://ais.blackneb.com/api/ais/getgarages').then((response:any) => {
       //console.log(response.data);
       setSampleData(response.data);
     })
-    axios.get("http://ais.blackneb.com/api/ais/getbid").then((response:any) => {
+    axios.get("https://ais.blackneb.com/api/ais/getbid").then((response:any) => {
       const bids = response.data[0];
       const itemsInfo = response.data[1];
       dispatch(clear_items({}))

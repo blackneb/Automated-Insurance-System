@@ -28,7 +28,7 @@ const NewInsuranceVehicleModal = ({data}:any) => {
             isApproved:"false"
         }
         console.log(JSON.stringify(submittedArray,null,2));
-        axios.post("http://ais.blackneb.com/api/ais/addvehiclecontract", submittedArray).then((response:any)=>{
+        axios.post("https://ais.blackneb.com/api/ais/addvehiclecontract", submittedArray).then((response:any)=>{
             console.log(response.data);
             if(response.data[0].status === "created"){
                 notification.success({

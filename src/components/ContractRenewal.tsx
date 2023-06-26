@@ -18,7 +18,7 @@ const ContractRenewal = () => {
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get("http://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
+    axios.get("https://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
       setSampleDate(response.data);
       console.log(response.data);
     })

@@ -21,7 +21,7 @@ const UserClaims = () => {
   const data:any[] = progress;
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get('http://ais.blackneb.com/api/ais/getclaims').then((response:any) => {
+    axios.get('https://ais.blackneb.com/api/ais/getclaims').then((response:any) => {
       console.log(response.data);
       setSampleData(response.data);
     })

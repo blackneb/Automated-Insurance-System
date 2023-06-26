@@ -46,7 +46,7 @@ const ExpertCreateAccount = () => {
             title:"Traffic Account Create",
             message:`your user name is ${values.userName} and password is ${password}`
           }
-          axios.post("http://ais.blackneb.com/api/ais/sendemail",sendEmail).then((response) => {
+          axios.post("https://ais.blackneb.com/api/ais/sendemail",sendEmail).then((response) => {
             console.log(response.data);
           })
           console.log(JSON.stringify(jsonArray,null,2));
