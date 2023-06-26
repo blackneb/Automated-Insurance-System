@@ -30,147 +30,149 @@ import ContractRenewal from '../components/ContractRenewal';
 import ProposerContract from '../components/ProposerContract';
 import ChangePassword from '../components/ChangePassword';
 import VerifyPayment from '../components/VerifyPayment';
+import PageNotFound from '../components/PageNotFound';
 import { Breadcrumb } from 'antd';
 import { useSelector } from 'react-redux/es/exports';
 
 
 function DashboardMain() {
   const breadcrumb = useSelector((state:any) => state.breadcrumb);
+  const userType = useSelector((state:any) => state.userType.accounttype);
   const MainRoutes = [
     {
       path:"/",
       element:<Home/>,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/dashboard",
       element:<Dashboard/>,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/profile",
       element:<Profile />,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/login",
       element:<Login />,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/vehicle",
       element:<Vehicle />,
-      auth:"",
+      auth:"admin",
     },
     {
       path:"/reports",
       element:<Reports />,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/users",
       element:<Users />,
-      auth:"",
+      auth:"admin",
     },
     {
       path:"/Analytics",
       element:<Analytics />,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/calander",
       element:<Calander />,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/garages",
       element:<Garages />,
-      auth:"",
+      auth:"expert",
     },
     {
       path:"/signup",
       element:<Signup/>,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/newinsurance",
       element:<NewInsurance/>,
-      auth:"",
+      auth:"proposer",
     },
     {
       path:"/adminprogress",
       element:<AdminProgress/>,
-      auth:"",
+      auth:"admin",
     },
     {
       path:"/newhealthinsurance",
       element:<NewHealthInsurance/>,
-      auth:"",
+      auth:"proposer",
     },
     {
       path:"/userclaims",
       element:<UserClaims/>,
-      auth:"",
+      auth:"proposer",
     },
     {
       path:"/userhistory",
       element:<UserHistory/>,
-      auth:"",
+      auth:"proposer",
     },
     {
       path:"/bids",
       element:<Bids/>,
-      auth:"",
+      auth:"garage",
     },
     {
       path:"/garagevehicles",
       element:<GarageVehicles/>,
-      auth:"",
+      auth:"garage",
     },
     {
       path:"/garagesubmittedbids",
       element:<GarageSubmittedBids/>,
-      auth:"",
+      auth:"garage",
     },
     {
       path:"/expertnewinsurances",
       element:<ExpertNewInsurance/>,
-      auth:"",
+      auth:"expert",
     },
     {
       path:"/expertclaims",
       element:<ExpertClaims/>,
-      auth:"",
+      auth:"expert",
     },
     {
       path:"/verifypayment",
       element:<VerifyPayment/> ,
-      auth:"",
+      auth:"all",
     },
     {
       path:"/expertprogress",
       element:<ExpertProgress/>,
-      auth:"",
+      auth:"expert",
     },
     {
       path:"/adminexperts",
       element:<AdminExperts/>,
-      auth:"",
+      auth:"admin",
     },
     {
       path:"/contractrenewal",
       element:<ContractRenewal/>,
-      auth:"",
+      auth:"expert",
     },
     {
       path:"/proposercontract",
       element:<ProposerContract/>,
-      auth:"",
+      auth:"proposer",
     },
     {
       path:"/changepassword",
       element:<ChangePassword/>,
-      auth:"",
+      auth:"all",
     },
   ]
   return (
@@ -193,7 +195,8 @@ function DashboardMain() {
           </div>
           <div className="scrollbar scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100 " >
             <Routes>
-                {MainRoutes.map((item:any, index:any) => (
+                <Route path="*" element={<PageNotFound/>} />
+                {MainRoutes.filter((items:any) => items.auth === userType || items.auth === "all").map((item:any, index:any) => (
                   <Route key={item.path} path={item.path} element={item.element} />
                 ))}
               </Routes>
