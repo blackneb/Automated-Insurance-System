@@ -5,6 +5,10 @@ import { Progress } from 'antd';
 import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/interface';
 import {vehicles} from '../../data/vehicles';
 import VehiclesModal from '../Modals/VehiclesModal';
+import { PlusOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 const { Search } = Input;
 
 interface DataType {
@@ -16,6 +20,7 @@ interface DataType {
   }
 
 const ContractRenewalTable = ({data}:any) => {
+  console.log(data);
     const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
@@ -32,6 +37,17 @@ const ContractRenewalTable = ({data}:any) => {
 
   const onViewRow = (record:any) => {
     setOpenModal(true);
+  }
+
+  const sendNotification = async () => {
+    const emailPost = {
+      email:"",
+      title:"Contract Renewal",
+      message:"Dear Customer, Your Contract has been expired please Make a contact",
+    }
+    await axios.post("http://ais.blackneb.com/api/ais/sendemail",emailPost).then((response:any) => {
+      console.log(response.data);
+    })
   }
 
   const columns: ColumnsType<DataType> = [
@@ -56,6 +72,17 @@ const ContractRenewalTable = ({data}:any) => {
       dataIndex: '',
       key: 'x',
       render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
+    },
+    {
+      title: 'Bids',
+      dataIndex: '',
+      key: 'x',
+      render: (record) => 
+        <div>
+          <Button onClick={()=>{ sendNotification() }}>
+            Send Renewal Email
+          </Button>
+        </div> ,
     },
   ];
   return (

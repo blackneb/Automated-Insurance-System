@@ -29,7 +29,7 @@ const Sidebar = () => {
         { title: 'Vehicle Insurance', path: '/newinsurance', src: <AiFillCar />, auth:"proposer"},
         { title: 'Health Insurance', path: '/newhealthinsurance', src: <GiHealthNormal />, auth:"proposer"},
         { title: 'Claims', path: '/userclaims', src: <SiAcclaim />, auth:"proposer" },
-        { title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
+        //{ title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
         { title: 'My Contract', path: '/proposercontract', src: <MdAutorenew />, auth:"proposer" },
         { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
         { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},

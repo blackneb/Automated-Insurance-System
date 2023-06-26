@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -72,6 +72,9 @@ const CoverRequiredChart = () => {
           },
         ],
       };
+      useEffect(() => {
+        
+      }, [])
   return (
     <div className='w-[32rem] bg-white rounded-md p-4 shadow mx-4 mt-4'>
       <Bar options={options} data={data} />
