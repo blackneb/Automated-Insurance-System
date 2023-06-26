@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form, Input, Upload,notification} from 'antd';
 import { useSelector } from 'react-redux';
 import axios from 'axios'
@@ -6,18 +6,27 @@ import axios from 'axios'
 
 const CreateGarageAccount = () => {
     const pid = useSelector((state:any) => state.userType.expertID)
+    const [password, setPassword] = useState("");
     const onFinish = async (values: any) => {
         console.log('Success:', values);
         const submittedData = {
             expertId:pid,
             username: values.username,
-            password:values.password,
+            password:password,
             name:values.name,
             email:values.name,
             phone:values.phone,
             address:values.address
         }
         console.log(JSON.stringify(submittedData,null,2))
+        const sendEmail = {
+          email:values.email,
+          title:"Traffic Account Create",
+          message:`your user name is ${values.username} and password is ${password}`
+        }
+        axios.post("http://ais.blackneb.com/api/ais/sendemail",sendEmail).then((response) => {
+          console.log(response.data);
+        })
         await axios.post("http://ais.blackneb.com/api/ais/creategarageaccount", submittedData).then((response:any) => {
             console.log(response.data);
             if(response.data[0].status === "created"){
@@ -38,6 +47,18 @@ const CreateGarageAccount = () => {
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
+      useEffect(() => {
+        const passwordLength = 10; 
+        const passwordChars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()ABCDEFGHIJKLMOPQRSTUVWXYZ"; // Define characters to be included in the password
+
+        let generatedPassword = "";
+        for (let i = 0; i < passwordLength; i++) {
+          const randomIndex = Math.floor(Math.random() * passwordChars.length);
+          generatedPassword += passwordChars[randomIndex];
+        }
+
+        setPassword(generatedPassword);
+      }, [])
   return (
     <div className='flex justify-center'>
       <Form
@@ -86,14 +107,6 @@ const CreateGarageAccount = () => {
                 rules={[{ required: true, message: 'Please input Address!' }]}
            >
             <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please generate password!' }]}
-          >
-            <Input.Password/>
           </Form.Item>
         </div>
         <div className='flex flex-row justify-center'>
