@@ -52,7 +52,7 @@ const UsersMyClaims = ({data}:any) => {
       ellipsis: true,
     },
     {
-      title: 'Vehcile Owner',
+      title: 'Vehcile ID',
       dataIndex: 'proposer',
       key: 'proposer',
       sorter: (a, b) => a.proposer.length - b.proposer.length,

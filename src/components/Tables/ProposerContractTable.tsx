@@ -13,6 +13,7 @@ interface DataType {
     contract_price: string;
     contract_type: string;
     expire_date:string;
+    Full_Name:string;
   }
 
 const ProposerContractTable = ({data}:any) => {
@@ -22,7 +23,7 @@ const ProposerContractTable = ({data}:any) => {
     const [selectedValue, setSelectedValue] = useState();
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       console.log(e.target.value);
-      setSearchValue(e.target.value.toLowerCase());
+      setSearchValue(e.target.value);
     };
     
   
@@ -42,6 +43,14 @@ const ProposerContractTable = ({data}:any) => {
         key: 'vehicle',
         sorter: (a, b) => a.vehicle.length - b.vehicle.length,
         sortOrder: sortedInfo.columnKey === 'vehicle' ? sortedInfo.order : null,
+        ellipsis: true,
+      },
+      {
+        title: 'Proposer Name',
+        dataIndex: 'Full_Name',
+        key: 'Full_Name',
+        sorter: (a, b) => a.Full_Name.length - b.Full_Name.length,
+        sortOrder: sortedInfo.columnKey === 'Full_Name' ? sortedInfo.order : null,
         ellipsis: true,
       },
       {
@@ -76,12 +85,12 @@ const ProposerContractTable = ({data}:any) => {
         sortOrder: sortedInfo.columnKey === 'expire_date' ? sortedInfo.order : null,
         ellipsis: true,
       },
-      {
-        title: 'Action',
-        dataIndex: '',
-        key: 'x',
-        render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
-      },
+      // {
+      //   title: 'Action',
+      //   dataIndex: '',
+      //   key: 'x',
+      //   render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
+      // },
     ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
@@ -97,7 +106,7 @@ const ProposerContractTable = ({data}:any) => {
         <VehiclesModal/>
       </Modal>
       <Input className='mb-2' placeholder="Search with proposer name" allowClear onChange={onChange} />
-      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data} onChange={handleChange} />
+      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data.filter((items:any) => items.Full_Name.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

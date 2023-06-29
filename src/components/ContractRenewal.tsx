@@ -34,7 +34,7 @@ const ContractRenewal = () => {
               <p>Number</p>
             </Card>
           </div>
-          <ContractRenewalTable data={data}/>
+          <ContractRenewalTable data={sampleData}/>
         </div>
         <ContractListTable data={sampleData}/>
     </div>

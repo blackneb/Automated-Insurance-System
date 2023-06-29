@@ -10,12 +10,16 @@ import BidsOnVehicle from './Tables/BidsOnVehicle';
 import CreateGarageAccount from './Modals/CreateGarageAccount';
 import axios from 'axios';
 import { add_items, clear_items } from '../redux/Actions';
+import GarageSubBids from './Tables/GarageSubBids';
 
 
 const Garages = () => {
   const [openModal, setOpenModal] = useState(false);
   const [sampleData, setSampleData] = useState([]);
+  const [garageData, setGarageData] = useState([]);
+  const totalg = sampleData.length
   const simpleBidData = useSelector((state:any) => state.items.items);
+  const totalbids = simpleBidData.length
     const dispatch = useDispatch();
     const data:any[] = garages;
   const breadcrumb:any[] = [
@@ -47,6 +51,10 @@ const Garages = () => {
         dispatch(add_items(tempData))
       }
     })
+    axios.get("https://ais.blackneb.com/api/ais/getgaragebid").then((response:any) => {
+      console.log(response.data);
+      setGarageData(response.data);
+    })
   },[])
   return (
     <div className='mt-4 ml-4 h-screen'>
@@ -66,17 +74,17 @@ const Garages = () => {
         </div>
       <div className='flex flex-row flex-wrap justify-center'>
           <Card className='mx-4 my-4' size="small" title="Total Garages" style={{ width: 300 }}>
-            <p>Number</p>
+            <p>{totalg}</p>
           </Card>
           <Card className='mx-4 my-4' size="small" title="Total Vehicles Under Garages" style={{ width: 300 }}>
             <p>Number</p>
           </Card>
           <Card className='mx-4 my-4' size="small" title="Current Bids To Maintained" style={{ width: 300 }}>
-            <p>Number</p>
+            <p>{totalbids}</p>
           </Card>
         </div>
         <div className='flex flex-row flex-wrap justify-center'>
-          <BidsOnVehicle data={data}/>
+        <GarageSubBids data={garageData}/>
           <WorkingGarages data={simpleBidData}/>
         </div>
       </div>

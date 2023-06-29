@@ -2,32 +2,34 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Button, Result } from 'antd';
+import { getCookie, setCookie } from 'typescript-cookie'
+
+
 
 const VerifyPayment = () => {
     const navigate = useNavigate();
     const reference = useSelector((state:any) => state.reference);
+    const goToMainPage = () => {
+      navigate("/")
+    }
     useEffect(() => {
-
-        const verify = async() => {
-            try{
-                const url = 'https://api.chapa.co/v1/transaction/verify/32562023143028912'
-            const res =  await axios.get(url,{
-            headers: {
-              Authorization: `Bearer ${"CHASECK_TEST-TIQS836F9jgZaybMMPs2TFybGeVOqSb3"}`,
-              'Content-Type': 'application/json',
-            },
-          });
-          console.log(res.data);
-          }
-          catch(error){
-            
-          }
-        }
-        verify();
+      const id = getCookie("vehicleid")
+      axios.post("https://ais.blackneb.com/api/ais/approvecontract", {id}).then((response:any) => {
+        console.log(response.data);
+      })            
+          
     }, [])
   return (
     <div>
-      
+      <Result
+        status="success"
+        title="Successfully paid!"
+        subTitle=""
+        extra={[
+          <Button key="buy" onClick={()=> {goToMainPage();}}>Go to Main Page</Button>,
+        ]}
+      />
     </div>
   )
 }

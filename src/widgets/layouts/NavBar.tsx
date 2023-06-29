@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Transition } from "@headlessui/react";
+import logo from '../../images/logoais.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Input, Avatar } from 'antd';
 import type { MenuProps } from 'antd';
@@ -25,6 +26,7 @@ const { Search } = Input;
 
 
 const NavBar = () => {
+    const usertype = useSelector((state:any) => state.userType.accounttype);
     const avatar = useSelector((state:any) => state.userType.p_image);
     const avatarImage = "https://blackneb.com/images/photos/" + avatar;
     const [isOpen, setIsOpen] = useState(false);
@@ -99,9 +101,7 @@ const NavBar = () => {
       <nav className="bg-white shadow-md">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-start w-full h-16">
-          <div className="flex-shrink-0">
-                <p className='text-zinc-800 w-48'>LOGO</p>
-              </div>
+              <img src={logo} alt="" className="h-12 rounded-full"/>
             <div className="flex items-center justify-start w-full">
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4 ">

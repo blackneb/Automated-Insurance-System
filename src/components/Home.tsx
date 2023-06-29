@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col, Row, Statistic } from 'antd'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,19 +9,46 @@ import ClaimsChartYearly from './Charts/ClaimsChartYearly';
 import MonthlyExpenduters from './Charts/MonthlyExpenduters';
 import CityAccidentChart from './Charts/CityAccidentChart';
 import ClientNewPendingIsurances from './Tables/ClientNewPendingInsurances';
+import NewPendingIsurances from './Tables/NewPendingIsurances';
 import axios from 'axios';
-import { add_contract } from '../redux/Actions';
+import { add_contract, clear_vehicles,clear_vehicles_only, only_vehicles, add_vehicles } from '../redux/Actions';
+import ProposerVehicles from './Tables/ProposerVehicles';
 const Home = () => {
   const dispatch = useDispatch();
+  const usertype = useSelector((state:any) => state.userType.accounttype);
   const data:any[] = clientnewinsurancevehicle;
   const sampleData = useSelector((state:any) => state.contract)
+  const pid = useSelector((state:any) => state.userType.proposerID)
+  const simpleData = useSelector((state:any) => state.vehiclesOnly.Vehicles).filter((items:any) => items.proposer === pid);
+  const [allVehicles, setAllVehicles] = useState([]);
   const breadcrumb:any[] = [
     {title:"Home",path:"/"},
   ]
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
     axios.get("https://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
-      dispatch(add_contract(response.data));
+      dispatch(add_contract(response.data.filter((items:any) => items.proposer === pid && items.is_approved === "false")));
+      console.log(response.data.filter((items:any) => items.proposer === pid && items.is_approved === "false"))
+    })
+    const initialState = {}
+    dispatch(add_breadcrumb(breadcrumb));
+    axios.get("https://ais.blackneb.com/api/ais/getvehicles").then((response:any) => {
+      const vehicles = response.data[0];
+      const accidentBefore = response.data[1];
+      const otherInsurances = response.data[2];
+      const plate = response.data[3];
+      dispatch(clear_vehicles(initialState));
+      dispatch(clear_vehicles_only(initialState));
+      for(let i = 0;i<vehicles.length;i++){
+        dispatch(only_vehicles(vehicles[i]));
+        const newForm = {
+            vehicles:vehicles[i],
+            accidentBefore:accidentBefore.filter((items:any) => items.vehicle === vehicles[i].id),
+            otherInsurances:otherInsurances.filter((items:any) => items.vehicle === vehicles[i].id),
+            plate:plate.filter((items:any) => items.vehicle === vehicles[i].id),
+        }
+        dispatch(add_vehicles(newForm))       
+      }
     })
   },[])
   return (
@@ -130,7 +157,12 @@ const Home = () => {
         <MonthlyExpenduters/>
         <CityAccidentChart/>
       </div>
-      <ClientNewPendingIsurances data={sampleData} />
+      {
+        usertype === "proposer" ? <ClientNewPendingIsurances data={sampleData} /> : <div> </div>
+      }
+      {
+        usertype === "proposer" ? <NewPendingIsurances data={simpleData}/> : <div> </div>
+      }
     </div>
   )
 }

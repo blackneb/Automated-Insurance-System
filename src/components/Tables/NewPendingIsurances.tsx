@@ -96,7 +96,7 @@ const NewPendingIsurances = ({data}:any) => {
         <NewInsuranceVehicleModal data={selectedvalue}/>
       </Modal>
       <p>New pending vehicle insurances</p>
-      <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
+      <Input className='mb-2' placeholder="Search with Proposer purpose" allowClear onChange={onChange} />
       <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.purpose.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )

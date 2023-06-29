@@ -21,7 +21,7 @@ const DateAppointment = ({prev}:any) => {
     const accidentBefore = {...accidentbefore};
     const proposerId = {
       proposerId:pid,
-      expertId:"2",
+      expertId:"10",
     }
     const submittedData = {...particular, ...extraFitting, ...otherInsurance, ...accidentBefore, ...additionalInfo, ...values,...proposerId};
     console.log(JSON.stringify(submittedData,null,2));
@@ -30,7 +30,7 @@ const DateAppointment = ({prev}:any) => {
       if(response.data[0].status === "created"){
         notification.success({
           message: 'success',
-          description: 'Accident Registered Successfully',
+          description: 'Vehicle Registered Successfully',
         });
         setLoading(false);
       }

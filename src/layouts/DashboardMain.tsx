@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../widgets/layouts/SideBar';
 import NavBar from '../widgets/layouts/NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Routes, Route } from 'react-router-dom'
 import Home from '../components/Home'
 import Dashboard from '../components/Dashboard'
 import Course from '../components/Course'
@@ -177,7 +177,7 @@ function DashboardMain() {
   ]
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
       <NavBar/>
       <div className='flex flex-row'>
         <div>
@@ -205,7 +205,7 @@ function DashboardMain() {
 
       </div>
       
-        </BrowserRouter>
+        </HashRouter>
     </div>
   );
 }

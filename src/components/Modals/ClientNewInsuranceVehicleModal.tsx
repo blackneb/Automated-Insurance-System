@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Descriptions, Badge, Form, InputNumber, Button } from 'antd'
 import { useDispatch } from 'react-redux';
 import { add_reference } from '../../redux/Actions';
+import { getCookie, setCookie } from 'typescript-cookie'
+
 
 const ClientNewInsuranceVehicleModal = ({data}:any) => {
     const dispatch = useDispatch()
@@ -18,12 +20,15 @@ const ClientNewInsuranceVehicleModal = ({data}:any) => {
 
       useEffect(() => {
         setReference(Date().toString());
+        console.log(data);
         let date = new Date();
         let forRef = `${date.getDate()}${date.getMonth() + 1}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
         let transactionReferences = data.proposer.toString() + "" +  forRef;
         console.log(transactionReferences)
         dispatch(add_reference(transactionReferences))
         setTransactionReference(transactionReferences);
+        setCookie("reference", transactionReferences,{ expires: 1/144 })
+        setCookie("vehicleid", data.id,{ expires: 1/144 })
       }, [])
   return (
     <div className=' h-[32rem] scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
@@ -90,7 +95,7 @@ const ClientNewInsuranceVehicleModal = ({data}:any) => {
             <input 
                 type="hidden" 
                 name="return_url" 
-                value="http://localhost:3000/verifypayment" />
+                value="https://automatedinsurance.blackneb.com/#/verifypayment" />
             <input 
                 type="hidden" 
                 name="meta[title]" 

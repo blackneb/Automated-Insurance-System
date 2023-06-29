@@ -82,11 +82,11 @@ const TotalGarages = ({data}:any) => {
         onCancel={() => setOpenModal(false)}
         width={1200}
       >
-        < GarageModal />
+        < GarageModal data={selectedValue}/>
       </Modal>
       <p>Total Garages</p>
-      <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
+      <Input className='mb-2' placeholder="Search With Garage Name" allowClear onChange={onChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.name.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

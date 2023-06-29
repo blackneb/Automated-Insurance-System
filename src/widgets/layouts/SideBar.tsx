@@ -32,7 +32,7 @@ const Sidebar = () => {
         //{ title: 'History', path: '/userhistory', src: <HistoryOutlined />, auth:"proposer" },
         { title: 'My Contract', path: '/proposercontract', src: <MdAutorenew />, auth:"proposer" },
         { title: 'Bids', path: '/bids', src: <ProfileOutlined />, auth:"garage" },
-        { title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
+        //{ title: 'Vehicles', path:'/garagevehicles', src:<AiFillCar/>, auth:"garage"},
         { title: 'Submitted Bids', path:'/garagesubmittedbids', src:<FileProtectOutlined />, auth:"garage"},
         { title: 'New Insurances', path:'/expertnewinsurances', src:<HiDocumentAdd/>, auth:"expert"},
         { title: 'Claims', path: '/expertclaims', src: <SiAcclaim />, auth:"expert" },

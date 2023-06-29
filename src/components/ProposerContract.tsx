@@ -21,7 +21,7 @@ const ProposerContract = () => {
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
     axios.get("https://ais.blackneb.com/api/ais/getcontracts").then((response:any) => {
-      setSampleDate(response.data.filter((items:any) => items.proposer === pid));
+      setSampleDate(response.data.filter((items:any) => items.proposer === pid && items.is_approved === "True"));
       console.log(response.data);
     })
   },[])

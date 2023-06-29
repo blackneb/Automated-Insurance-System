@@ -96,7 +96,7 @@ const ClientNewPendingIsurances = ({data}:any) => {
       >
         <ClientNewInsuranceVehicleModal data={selectedvalue}/>
       </Modal>
-      <p>New pending vehicle insurances</p>
+      <p>New pending vehicle Contracts</p>
       <Input className='mb-2' placeholder="Search with Proposer Name" allowClear onChange={onChange} />
       <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
     </div>

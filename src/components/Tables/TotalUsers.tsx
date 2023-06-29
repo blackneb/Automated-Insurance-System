@@ -78,7 +78,7 @@ const TotalUsers = ({data}:any) => {
       </Modal>
       <p>Total Users</p>
       <Input className='mb-2' placeholder="Search With Client Name" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data} onChange={handleChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.f_name.toLowerCase().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

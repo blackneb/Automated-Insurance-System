@@ -5,11 +5,9 @@ import type { ColumnsType, FilterValue, SorterResult } from 'antd/es/table/inter
 const { Search } = Input;
 
 interface DataType{
-    date:string,
-    vehicleId:string,
-    itemsNumber:string,
-    totalAmount:string,
-    ownerName:string,
+    price:string,
+    bid:string,
+    item_name:string
   }
 
 const GarageSubBids = ({data}:any) => {
@@ -17,7 +15,7 @@ const GarageSubBids = ({data}:any) => {
   const [searchValue, setSearchValue] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase());
+    setSearchValue(e.target.value);
   };
   
 
@@ -28,57 +26,35 @@ const GarageSubBids = ({data}:any) => {
 
   const columns: ColumnsType<DataType> = [
     {
-      title: 'Date',
-      dataIndex: 'date',
-      key: 'date',
-      sorter: (a, b) => a.date.length - b.date.length,
-      sortOrder: sortedInfo.columnKey === 'date' ? sortedInfo.order : null,
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      sorter: (a, b) => a.price.length - b.price.length,
+      sortOrder: sortedInfo.columnKey === 'price' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Vehicle ID',
-      dataIndex: 'vehicleId',
-      key: 'vehicleId',
-      sorter: (a, b) => a.vehicleId.length - b.vehicleId.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleId' ? sortedInfo.order : null,
+      title: 'Bid Id',
+      dataIndex: 'bid',
+      key: 'bid',
+      sorter: (a, b) => a.bid.length - b.bid.length,
+      sortOrder: sortedInfo.columnKey === 'bid' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Items Number',
-      dataIndex: 'itemsNumber',
-      key: 'itemsNumber',
-      sorter: (a, b) => a.itemsNumber.length - b.itemsNumber.length,
-      sortOrder: sortedInfo.columnKey === 'itemsNumber' ? sortedInfo.order : null,
+      title: 'Items',
+      dataIndex: 'item_name',
+      key: 'item_name',
+      sorter: (a, b) => a.item_name.length - b.item_name.length,
+      sortOrder: sortedInfo.columnKey === 'item_name' ? sortedInfo.order : null,
       ellipsis: true,
-    },
-    {
-      title: 'Total Amount',
-      dataIndex: 'totalAmount',
-      key: 'totalAmount',
-      sorter: (a, b) => a.totalAmount.length - b.totalAmount.length,
-      sortOrder: sortedInfo.columnKey === 'totalAmount' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Owner Name',
-      dataIndex: 'ownerName',
-      key: 'ownerName',
-      sorter: (a, b) => a.ownerName.length - b.ownerName.length,
-      sortOrder: sortedInfo.columnKey === 'ownerName' ? sortedInfo.order : null,
-      ellipsis: true,
-    },
-    {
-      title: 'Action',
-      dataIndex: '',
-      key: 'x',
-      render: () => <div><Button type='link'>view</Button></div> ,
-    },
+    }
   ];
   return (
     <div className='mx-4 mt-4 bg-white shadow rounded-md border-0 p-2 shadow'>
       <p>Submitted Bids</p>
-      <Input className='mb-2' placeholder="Search With Vehicle ID" allowClear onChange={onChange} />
-      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.vehicleId.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Input className='mb-2' placeholder="Search With Bid Id" allowClear onChange={onChange} />
+      <Table columns={columns} scroll={{ x: 900 }} style={{minHeight:700}} dataSource={data.filter((items:any) => items.bid.toString().includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

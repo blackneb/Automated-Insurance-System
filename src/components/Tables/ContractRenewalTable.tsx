@@ -12,11 +12,12 @@ import { useSelector } from 'react-redux';
 const { Search } = Input;
 
 interface DataType {
-    vehicleId: string;
-    proposerName: string;
-    contractPrice: string;
-    contractType: string;
-    expireDate:string;
+  vehicle: string;
+  Full_Name:string;
+  contract_date: string;
+  contract_price: string;
+  contract_type: string;
+  expire_date:string;
   }
 
 const ContractRenewalTable = ({data}:any) => {
@@ -24,9 +25,10 @@ const ContractRenewalTable = ({data}:any) => {
     const [sortedInfo, setSortedInfo] = useState<SorterResult<DataType>>({});
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const proposerid:string = data.proposer;
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase());
+    setSearchValue(e.target.value);
   };
   
 
@@ -40,38 +42,52 @@ const ContractRenewalTable = ({data}:any) => {
   }
 
   const sendNotification = async () => {
-    const emailPost = {
-      email:"",
-      title:"Contract Renewal",
-      message:"Dear Customer, Your Contract has been expired please Make a contact",
-    }
-    await axios.post("https://ais.blackneb.com/api/ais/sendemail",emailPost).then((response:any) => {
+
+    await axios.post("https://ais.blackneb.com/api/ais/getproposeremail",{proposerID:proposerid}).then((response:any) => {
       console.log(response.data);
+      const emailPost = {
+        email:response.data,
+        title:"Contract Renewal",
+        message:"Dear Customer, Your Contract has been expired please Make a contact",
+      }
+      axios.post("https://ais.blackneb.com/api/ais/sendemail",emailPost).then((response:any) => {
+        console.log(response.data);
+      })
     })
   }
 
   const columns: ColumnsType<DataType> = [
     {
       title: 'Vehcile ID',
-      dataIndex: 'vehicleId',
-      key: 'vehicleId',
-      sorter: (a, b) => a.vehicleId.length - b.vehicleId.length,
-      sortOrder: sortedInfo.columnKey === 'vehicleId' ? sortedInfo.order : null,
+      dataIndex: 'vehicle',
+      key: 'vehicle',
+      sorter: (a, b) => a.vehicle.length - b.vehicle.length,
+      sortOrder: sortedInfo.columnKey === 'vehicle' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Proposer Name',
-      dataIndex: 'proposerName',
-      key: 'proposerName',
-      sorter: (a, b) => a.proposerName.length - b.proposerName.length,
-      sortOrder: sortedInfo.columnKey === 'proposerName' ? sortedInfo.order : null,
+      dataIndex: 'Full_Name',
+      key: 'Full_Name',
+      sorter: (a, b) => a.Full_Name.length - b.Full_Name.length,
+      sortOrder: sortedInfo.columnKey === 'Full_Name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
-      title: 'Action',
-      dataIndex: '',
-      key: 'x',
-      render: (record) => <div><Button onClick={()=>{ onViewRow(record); }} type='link'>view</Button></div> ,
+      title: 'Contract Date',
+      dataIndex: 'contract_date',
+      key: 'contract_date',
+      sorter: (a, b) => a.contract_date.length - b.contract_date.length,
+      sortOrder: sortedInfo.columnKey === 'contract_date' ? sortedInfo.order : null,
+      ellipsis: true,
+    },
+    {
+      title: 'Expire Date',
+      dataIndex: 'expire_date',
+      key: 'expire_date',
+      sorter: (a, b) => a.expire_date.length - b.expire_date.length,
+      sortOrder: sortedInfo.columnKey === 'expire_date' ? sortedInfo.order : null,
+      ellipsis: true,
     },
     {
       title: 'Bids',
@@ -99,7 +115,7 @@ const ContractRenewalTable = ({data}:any) => {
         <VehiclesModal/>
       </Modal>
       <Input className='mb-2' placeholder="Search with proposer name" allowClear onChange={onChange} />
-      <Table scroll={{x:400, y: 300 }} style={{ maxWidth:700, minWidth:300 }}  columns={columns} dataSource={data.filter((items:any) => items.proposerName.toLowerCase().includes(searchValue))} onChange={handleChange} />
+      <Table scroll={{x:400, y: 300 }} style={{ maxWidth:700, minWidth:300 }}  columns={columns} dataSource={data.filter((items:any) => items.Full_Name.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }

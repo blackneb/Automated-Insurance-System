@@ -14,13 +14,14 @@ const VehicleClaimModal = () => {
     const submittedData = {
       vehicleId: values.vehicleId,
       accident_id: values.accidentId,
-      garageId: "11",
+      garageId: "19",
       date:currentData,
       progress:0,
       totalPrice:"0",
       closedDate:"",
       proposerId:pid
     }
+    console.log(JSON.stringify(submittedData,null,2))
     await axios.post("https://ais.blackneb.com/api/ais/addclaim", submittedData).then((response:any) => {
       if(response.data[0].status === "created"){
         notification.success({

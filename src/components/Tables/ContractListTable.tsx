@@ -9,6 +9,7 @@ const { Search } = Input;
 
 interface DataType {
   vehicle: string;
+  Full_Name:string;
   contract_date: string;
   contract_price: string;
   contract_type: string;
@@ -21,7 +22,7 @@ const ContractListTable = ({data}:any) => {
   const [openModal, setOpenModal] = useState(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     console.log(e.target.value);
-    setSearchValue(e.target.value.toLowerCase());
+    setSearchValue(e.target.value);
   };
   
 
@@ -41,6 +42,14 @@ const ContractListTable = ({data}:any) => {
       key: 'vehicle',
       sorter: (a, b) => a.vehicle.length - b.vehicle.length,
       sortOrder: sortedInfo.columnKey === 'vehicle' ? sortedInfo.order : null,
+      ellipsis: true,
+    },
+    {
+      title: 'Proposer Name',
+      dataIndex: 'Full_Name',
+      key: 'Full_Name',
+      sorter: (a, b) => a.Full_Name.length - b.Full_Name.length,
+      sortOrder: sortedInfo.columnKey === 'Full_Name' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
@@ -96,7 +105,7 @@ const ContractListTable = ({data}:any) => {
         <VehiclesModal/>
       </Modal>
       <Input className='mb-2' placeholder="Search with proposer name" allowClear onChange={onChange} />
-      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data} onChange={handleChange} />
+      <Table style={{minHeight:700}} scroll={{ x: 900 }}  columns={columns} dataSource={data.filter((items:any) => items.Full_Name.includes(searchValue))} onChange={handleChange} />
     </div>
   )
 }
