@@ -20,3 +20,4 @@ export const ADD_ITEMS = 'ADD_ITEMS';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
 export const ADD_GARAGE_BIDS = 'ADD_GARAGE_BIDS';
 export const CLEAR_GARAGE_BIDS = 'CLEAR_GARAGE_BIDS';
+export const BASEURL = 'https://ais.blackneb.com/api/ais/'
