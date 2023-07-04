@@ -7,6 +7,7 @@ import ExpertCreateAccount from './Modals/ExpertCreateAccount';
 import {experts} from '../data/experts';
 import AdminExpertsTable from './Tables/AdminExpertsTable';
 import axios from 'axios';
+import { BASEURL } from '../redux/ActionTypes';
 
 
 const AdminExperts = () => {
@@ -24,7 +25,7 @@ const AdminExperts = () => {
 
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get("https://ais.blackneb.com/api/ais/getexperts").then((response:any) => {
+    axios.get( BASEURL + "getexperts").then((response:any) => {
         setSimpleData(response.data)
     })
   },[])

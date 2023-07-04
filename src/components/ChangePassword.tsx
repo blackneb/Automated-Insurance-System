@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { add_breadcrumb } from '../redux/Actions';
 import { Form, Input, Button, notification } from 'antd';
 import axios from 'axios';
+import { BASEURL } from '../redux/ActionTypes';
 
 const ChangePassword = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const ChangePassword = () => {
             oldpassword:values.oldPassword,
             newpassword:values.newPassword
           }
-          axios.post("https://ais.blackneb.com/api/ais/changepassword",subdata).then((response:any) => {
+          axios.post(BASEURL + "changepassword",subdata).then((response:any) => {
             console.log(response.data);
             if(response.data[0].status === "password changed successfuly"){
               notification.success({

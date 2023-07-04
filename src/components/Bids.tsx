@@ -5,6 +5,7 @@ import {bids} from '../data/bids';
 import AllVehiclesBid from './Tables/AllVehiclesBid';
 import axios from 'axios';
 import { add_items, clear_items } from '../redux/Actions';
+import { BASEURL } from '../redux/ActionTypes';
 
 
 const Bids = () => {
@@ -18,7 +19,7 @@ const Bids = () => {
   const data:any[] = bids;
   useEffect(() => {
     dispatch(add_breadcrumb(breadcrumb));
-    axios.get("https://ais.blackneb.com/api/ais/getbid").then((response:any) => {
+    axios.get(BASEURL + "getbid").then((response:any) => {
       const bids = response.data[0];
       const itemsInfo = response.data[1];
       dispatch(clear_items({}))
